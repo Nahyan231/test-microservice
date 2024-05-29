@@ -1,0 +1,226 @@
+apiVersion: appsody.dev/v1beta1
+kind: AppsodyApplication
+metadata:
+  annotations:
+    architecture: x86_64
+    authoritative-source-url: registry.access.redhat.com
+    build-date: 2020-09-03T09:04:29.841722
+    commit.image.appsody.dev/date: Thu Nov 26 14:06:04 2020 +0500
+    commit.image.appsody.dev/message: API Key Validation added
+    commit.stack.appsody.dev/date: Fri Oct 2 03:51:01 2020 +0200
+    commit.stack.appsody.dev/message: move appmetrics to dependencies
+    description:
+      This image contains the Kabanero development stack for the Nodejs
+      Express collection
+    distribution-scope: public
+    help: For more information visit https://github.com/sclorg/s2i-nodejs-container
+    image.opencontainers.org/created: '2020-11-26T15:12:58+05:00'
+    image.opencontainers.org/documentation: https://aliebad:a375430c0a170da4088de4b163d1a01395260b89@github.com/JazzCash/qrpayment-microservice
+    image.opencontainers.org/revision: f83b6b18e39e4e94509dc3d5b82c2a313b3256b4-modified
+    image.opencontainers.org/source: https://aliebad:a375430c0a170da4088de4b163d1a01395260b89@github.com/JazzCash/qrpayment-microservice/tree/ftr-pipeline
+    image.opencontainers.org/url: https://aliebad:a375430c0a170da4088de4b163d1a01395260b89@github.com/JazzCash/qrpayment-microservice
+    k8s.io/description:
+      Node.js 12 available as container is a base platform for building
+      and running various Node.js 12 applications and frameworks. Node.js is a platform
+      built on Chrome's JavaScript runtime for easily building fast, scalable network
+      applications. Node.js uses an event-driven, non-blocking I/O model that makes
+      it lightweight and efficient, perfect for data-intensive real-time applications
+      that run across distributed devices.
+    k8s.io/display-name: Node.js 12
+    maintainer: SoftwareCollections.org <sclorg@redhat.com>
+    name: kabanero/nodejs-express
+    openshift.io/expose-services: 8080:http
+    openshift.io/tags: builder,nodejs,nodejs12
+    redhat.com/build-host: cpt-1008.osbs.prod.upshift.rdu2.redhat.com
+    redhat.com/component: nodejs-12-container
+    redhat.com/deployments-dir: /opt/app-root/src
+    redhat.com/dev-mode: DEV_MODE:false
+    redhat.com/dev-mode.port: DEBUG_PORT:5858
+    redhat.com/license_terms: https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI
+    release: '59'
+    s2i.io/scripts-url: image:///usr/libexec/s2i
+    s2i.openshift.io/scripts-url: image:///usr/libexec/s2i
+    stack.appsody.dev/authors: Jahangir Khalid <>
+    stack.appsody.dev/configured: dev.local/appsody/jazzcash-appsody-stack:0.4
+    stack.appsody.dev/created: '2020-10-27T19:55:01+05:00'
+    stack.appsody.dev/description: Express web framework for Node.js
+    stack.appsody.dev/documentation: https://aliebad:a375430c0a170da4088de4b163d1a01395260b89@github.com/JazzCash/jazzcash-appsody-stack/tree/master/README.md
+    stack.appsody.dev/licenses: Apache-2.0
+    stack.appsody.dev/revision: a1d8ba11dc5807e622fed127810439822da971e8
+    stack.appsody.dev/source: https://aliebad:a375430c0a170da4088de4b163d1a01395260b89@github.com/JazzCash/jazzcash-appsody-stack/tree/master/image
+    stack.appsody.dev/tag: dev.local/appsody/jazzcash-appsody-stack:0.4.8
+    stack.appsody.dev/title: Node.js Express
+    stack.appsody.dev/url: https://aliebad:a375430c0a170da4088de4b163d1a01395260b89@github.com/JazzCash/jazzcash-appsody-stack
+    summary: Image for Kabanero Node.js Express development
+    url: https://access.redhat.com/containers/#/registry.access.redhat.com/ubi8/nodejs-12/images/1-59
+    usage: s2i build <SOURCE-REPOSITORY> ubi8/nodejs-12:latest <APP-NAME>
+    vcs-ref: a6b3970d86fb885d9c20445676a2f31aa9bedf0b
+    vcs-type: git
+    vendor: Kabanero
+    version: 0.4.8
+  creationTimestamp: null
+  labels:
+    image.opencontainers.org/title: qrpayment-microservice
+    stack.appsody.dev/id: jazzcash-appsody-stack
+    stack.appsody.dev/version: 0.4.8
+  name: qrpayment-microservice
+  namespace: m11s
+spec:
+  applicationImage: image-registry.openshift-image-registry.svc:5000/m11s/qrpayment-microservice:v10.6
+  createKnativeService: false
+  env:
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name
+    - name: MONGO_CONNECTION
+      valueFrom:
+        secretKeyRef:
+          key: mongo-connection-string
+          name: mongo-connection-payment-and-transaction
+    - name: CACHE_SERVER
+      value: datagrid.datagrid-prod
+    - name: CACHE_URL
+      value: http://datagrid.datagrid-prod:11222/rest/v2/caches/
+    - name: ESB_URL
+      value: http://cps-rest-service-r1-is.ace:7800/rest/requestmgrservice/v1/sync
+    - name: MASTER_DATA_API_GET_RESPCODE_URL
+      value: http://masterdata-microservice:3000/rest/api/v1/masterdata/responseCodes
+    - name: GET_MERCHANT_LOGO
+      value: http://masterdata-microservice:3000/rest/api/v2/masterfile/files/get?fileURL=
+    - name: ENCRYPTION_ENABLED
+      value: 'true'
+    - name: ACCOUNT_MANAGEMENT_API_ADD_TO_FAV_URL
+      value: http://account-management-microservice:3000/addToFavouritList
+    - name: AKSA_URL
+      value: https://qrpaybe.jazzcash.com.pk:7070
+    - name: AKSA_MERCHANT_PATH
+      value: /api/Account/CheckQRCode
+    - name: SMS_NOTIFICATION_URL
+      value: http://notification-microservice:3000/rest/api/v1/notification/sms
+    - name: EMAIL_NOTIFICATION_URL
+      value: http://notification-microservice:3000/rest/api/v1/notification/email
+    - name: PUSH_NOTIFICATION_URL
+      value: http://notification-microservice:3000/rest/api/v1/notification/pushnotification
+    - name: PUSH_NOTIFICATION_MSISDN_URL
+      value: http://notification-microservice:3000/rest/api/v1/notification/pushnotification/msisdn
+    - name: USER_PROFILE_URL
+      value: http://account-management-microservice:3000/rest/api/v1/account/profile
+    - name: USER_PROFILE_ONPREM_URL
+      value: "http://account-management-microservice-m11s.apps.pjcocp.jazzcash.com.pk/rest/api/v1/account/profile"
+    - name: QR_CODE_URL
+      value: http://account-management-microservice:3000/rest/api/v1/account/qrcode/display
+    - name: MERCHANT_RATING_CONFIG_MASTER_DATA
+      value: http://masterdata-microservice:3000/rest/api/v1/masterdata/configuration?key=QR_RATINGS
+    - name: MERCHANT_RATING_CONFIG_ACC_MNG
+      value: http://account-management-microservice:3000/rest/api/v1/account/profile/minratingamount?internal=true&msisdn=
+    - name: QR_RATING_API
+      value: http://account-management-microservice:3000/rest/api/v1/account/profile/rating
+    - name: SMS_NOTIFIERS
+      value: http://account-management-microservice:3000/rest/api/v1/merchant/notifiers/sms
+    - name: CREATE_OTHER_PROFILE
+      value: http://account-management-microservice:3000/rest/api/v1/account/otherprofile
+    - name: CASH_REPAYMENT_USECASE
+      value: ReadyCashRePayment
+    - name: LOAN_REPAYMENT_MERCHANT
+      value: InstantLoanRepayment
+    - name: FONEPAY_ENABLED
+      value: 'false'
+    - name: KAFKA_DRAIN_CHECK
+      value: 'false'
+    - name: REQUEST_TO_PAY_SCHEDULAR_CRON
+      value: '0 12 * * *'
+    - name: SPECIALMSISDNTOCHECKINTRXHISTORY
+      value: 923079770177,923079770309,923008523283
+    - name: CONSUMER_GROUP_ID
+    - name: GET_KPKPSC_CONSUMER_URL
+      value: "http://kpkpsc-server-http-ace.apps.pjcocp.jazzcash.com.pk/kpkpscservice/v1/GenerateConsumerNumber"
+      valueFrom:
+        configMapKeyRef:
+          name: consumer-groups
+          key: CONSUMER_GROUP_PAYMENT
+    - name: CONSUMER_GROUP_USSD_ID
+      valueFrom:
+        configMapKeyRef:
+          name: consumer-groups
+          key: CONSUMER_GROUP_USSD      
+    - name: THIRD_PARTY_MAP
+      valueFrom:
+        secretKeyRef:
+          key: THIRD_PARTY_MAP
+          name: r1-configuration-map
+    - name: THIRD_PARTY_MAP_R_FIVE
+      valueFrom:
+        secretKeyRef:
+          name: r5-configuration-map
+          key: THIRD_PARTY_MAP_R_FIVE
+    - name: IBFT_CONFIGURATION_MAP
+      valueFrom:
+        secretKeyRef:
+          key: IBFT_CONFIGURATION_MAP
+          name: ibft-configuration-map
+    - name: PRODUCTION_LOG_LEVEL
+      value: info
+    - name: EP_IBFT_RECEIVER_KEEP_DYNAMIC
+      value: 'true'   
+    - name: NODE_ENV
+      value: live
+    - name: ORG_CVID_REQUESTID
+      value: 'true'
+    - name: MPIN_ENCRYPTION_KEY
+      value: 98ae67823eodfj4904jdf34fj045k742
+    - name: MPIN_3DES_ENCRYPTION_KEY
+      value: 7493jfl;d832kd73$5%&@3!2
+    - name: Token_Validation
+      value: 'false'
+    - name: FONEPAY_USERNAME
+      value: 'disable'
+    - name: TRANSACTION_HISTORY_TTL
+      value: '14400'
+    - name: MAYA_CALLBACK_URL
+      value: https://jc-api-test.maya-apa.com/api/v1/jazzcash/store/payment-info
+    - name: CACHE_TRANSACTION_TTL
+      value: '86400'
+    - name: CACHE_REGISTRY_PENDING_TRANSACTION_TTL
+      value: '86400'
+    - name: NON_JC_EXPIRY
+      value: '48'
+    - name: KAFKA_DRAIN_FLAG
+      value: 'false'
+  expose: true
+  livenessProbe:
+    failureThreshold: 15
+    httpGet:
+      path: /live
+      port: 3000
+    initialDelaySeconds: 30
+    periodSeconds: 30
+  monitoring:
+    labels:
+      k8s-app: jazzcash-project
+  resourceConstraints:
+    limits:
+      memory: 768Mi
+      cpu: '900m'
+    requests:
+      memory: 112Mi
+      cpu: '360m'
+  autoscaling:
+    maxReplicas: 50
+    minReplicas: 3
+    targetCPUUtilizationPercentage: 90
+  readinessProbe:
+    failureThreshold: 15
+    httpGet:
+      path: /ready
+      port: 3000
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 10
+  service:
+    annotations:
+      prometheus.io/scrape: 'true'
+    port: 3000
+    type: NodePort
+  stack: jazzcash-stack
+  version: 1.0.0

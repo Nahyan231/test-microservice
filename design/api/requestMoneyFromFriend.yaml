@@ -1,0 +1,391 @@
+swagger: '2.0'
+info:
+  title: Consumer Request Money APIs
+  version: '1.0.0'
+  description: Consumer Request Money APIs
+host: 'ibm.com'
+basePath: /rest/api/v1
+paths:
+# ====================================================================
+          
+  /rest/api/v1/requestmoney/friend:
+    post:
+      tags:
+        - 'Request Money From Friend'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: ''
+          schema:
+            $ref: '#/definitions/requestMoneyFromFriendBody'
+      description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '422':
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+  
+    get:
+      tags:
+        - 'Request Money From Friend'
+      description: ''
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+       
+        # - in: body
+        #   name: body
+        #   description: Give details of a given preset
+        #   schema:
+        #     $ref: '#/definitions/getShippingPresetDetailsReqBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+              message_en:
+                type: string
+              message_ur:
+                type: string
+              data:
+                type: 'array'
+                items: 
+                
+                  $ref: '#/definitions/requestMoneyFromFriendResponse'
+    #     items:
+       
+        '422':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error'
+       
+  /rest/api/v1/requestmoney/friend/{invoiceID}:          
+    put:
+      tags:
+        - 'Request Money From Friend'
+      description: ''
+      operationId: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: path
+          required: true
+          name: 'invoiceID'
+          type: string
+        
+        - in: body
+          name: body
+          description: Update preset information based on ID
+          schema:
+            $ref: '#/definitions/requestMoneyFromFriendBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '422':
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+      
+            
+    delete:
+      tags:
+        - 'Request Money From Friend'
+      description: ''
+      operationId: 'deleteShippingPreset'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: path
+          required: true
+          name: 'invoiceID'
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '422':
+          description: error 
+          schema:
+            $ref: '#/definitions/error'
+       
+ 
+# ====================================================================
+definitions:
+# request money from friend
+  requestMoneyFromFriendBody:
+    type: 'object'
+    properties:
+      
+      amount:
+        type: number
+        example: 1
+      attachment:
+        type: object
+        example: 'test.jpg'
+        description: 'Multipart File Object'
+      note:
+        type: string
+        example: 'I need some money'
+      status:
+        type: string
+        example: approved
+        enum:
+          - Approved
+          - Rejected
+          - Default
+          - Delayed
+          - Canceled
+      recepientDetails:
+        type: object
+        properties:
+          phoneNo:
+            type: string
+            example: '923462104357'
+          email:
+            type: string
+            example: 'example@gmail.com'
+          name:
+            type: string
+            example: 'Test User'
+    required:
+      - 'amount'
+      - 'attachment'
+      - 'recepientDetails'
+      - 'invoiceID'
+  requestMoneyFromFriendResponse:
+    type: object
+    properties:
+      invoiceID:
+        type: string
+        example: 123
+      invoiceType:
+        type: string
+        example: requestmoneyfromfriend
+      amount:
+        type: string
+        example: 1
+      attachment:
+        type: object
+        example: 'test.jpg'
+        description: 'abc.jpg'
+      note:
+        type: string
+        example: 'Nido Fortigro'
+      status:
+        type: string
+        example: approved
+        enum:
+          - Approved
+          - Rejected
+          - Pending
+          - Delayed
+          - Canceled
+      reminders:
+        type: number
+        example: 0
+      recepientDetails:
+        type: object
+        properties:
+          phoneNo:
+            type: string
+            example: '923462104357'
+          email:
+            type: string
+            example: 'example@gmail.com'
+
+  
+  genericSuccessResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+        example: SM-C2C-T38
+      message_en:
+        type: string
+      message_ur:
+        type: string
+ 
+  # success model & error model
+  error:
+    description: Bad Request
+    type: object
+    title: Bad Request
+    properties:
+      success:
+        type: string
+        example: false
+      responseCode:
+        type: string
+        example: SM-C2C-T34
+      message_en:
+        type: string
+      message_ur:
+        type: string
+  
+  
+
+  additionalObject:
+    type: 'object'
+    properties:
+      key:
+        type: string
+        example: 'abc'
+      value:
+        type: string
+        example: 'def'
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+
+
+
+
+

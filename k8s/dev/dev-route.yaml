@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: qrpayment-microservice
+  namespace: jc-microservices
+spec:
+  to:
+    kind: Service
+    name: qrpayment-microservice
+  port:
+    targetPort: 3000-tcp
+  

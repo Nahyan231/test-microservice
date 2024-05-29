@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  annotations:
+  labels:
+    app: tekton-app
+    tekton.dev/pipeline: nodejs-express-kaniko
+  namespace: kabanero
+  generateName: qrpayment-microservice-
+spec:
+  params:
+  - name: service-path
+    value: /
+  - name: DeploymentConfig-path
+    value: k8s/deployment.yaml
+  - name: imageUrl
+    value: image-registry.openshift-image-registry.svc:5000/jazzcash-microservices-dev/qrpayment-microservice
+  - name: imageTag
+    value: latest
+  pipelineRef:
+    name: nodejs-express-kaniko
+  resources:
+  - name: git-source
+    resourceRef:
+      name: __GIT_RESOURCE__
+  serviceAccountName: kabanero-operator
+  timeout: 1h0m0s

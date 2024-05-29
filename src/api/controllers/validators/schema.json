@@ -1,0 +1,472 @@
+{
+  "QR_HEADER_SCHEMA": {
+    "title": "VDC",
+    "description": "QR Payment headers schema",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "x-msisdn",
+      "x-channel",
+      "x-app-type",
+      "x-app-version",
+      "x-device-id",
+      "x-ip-address"
+    ],
+    "properties": {
+      "x-msisdn": {
+        "type": "string"
+      },
+      "x-channel": {
+        "type": "string"
+      },
+      "x-app-type": {
+        "type": "string"
+      },
+      "x-app-version": {
+        "type": "string"
+      },
+      "x-device-id": {
+        "type": "string"
+      },
+      "x-ip-address": {
+        "type": "string"
+      },
+      "x-meta-data": {
+        "type": "string"
+      }
+    }
+  },
+  "MERCHANT_DETAILS": {
+    "title": "MerchantDetails",
+    "description": "returns merchant details",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "type",
+      "payload"
+    ],
+    "properties": {
+      "type": {
+        "type": "string"
+      },
+      "payload": {
+        "type": "string"
+      }
+    }
+  },
+  "UPDATE_DETAILS": {
+    "title": "UpdateDetails",
+    "description": "returns update details",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "tillNumber",
+      "oldtillNumber",
+      "Data"
+    ],
+    "properties": {
+      "tillNumber": {
+        "type": "string"
+      },
+      "oldtillNumber": {
+        "type": "string"
+      },
+      "Data": {
+        "type": "array"
+      }
+    }
+  },
+  "QR_CONFIRM_SCHEMA": {
+    "title": "QR_ConfirmTransaction",
+    "description": "Confirmation of QR Payment",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "transactionID",
+      "transactionType",
+      "paidVia",
+      "merchantDetails",
+      "qrCode"
+    ],
+    "properties": {
+      "transactionID": {
+        "type": "string"
+      },
+      "transactionType": {
+        "type": "string"
+      },
+      "paidVia": {
+        "type": "string"
+      },
+      "qrCode": {
+        "type": "string"
+      },
+      "merchantDetails": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "msisdn",
+          "name",
+          "tillNumber"
+        ],
+        "properties": {
+          "msisdn": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "tillNumber": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "QR_Mastercard_Payment_SCHEMA": {
+    "title": "QR_FONEPAY_ConfirmTransaction",
+    "description": "Confirmation of QR Fonepay",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "transactionType",
+      "paidVia",
+      "qrCode",
+      "qrString",
+      "cardAccepTermID",
+      "cardAccepIDCode",
+      "amount",
+      "totalAmount",
+      "isDynamicQr",
+      "isTipRequired",
+      "merchantDetails"
+    ],
+    "properties": {
+      "transactionType": {
+        "type": "string"
+      },
+      "paidVia": {
+        "type": "string"
+      },
+      "qrCode": {
+        "type": "string"
+      },
+      "qrString": {
+        "type": "string"
+      },
+      "cardAccepTermID": {
+        "type": "string"
+      },
+      "cardAccepIDCode": {
+        "type": "string"
+      },
+      "amount": {
+        "type": "number"
+      },
+      "totalAmount": {
+        "type": "number"
+      },
+      "tipAmount": {
+        "type": "number"
+      },
+      "convenienceFee": {
+        "type": "number"
+      },
+      "conveniencePercentage": {
+        "type": "number"
+      },
+      "conveniencePercentageAmount": {
+        "type": "number"
+      },
+      "isTipRequired": {
+        "type": "string"
+      },
+      "isDynamicQr": {
+        "type": "string"
+      },
+      "surchargeFee": {
+        "type": "number"
+      },
+      "merchantDetails": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "tillNumber",
+          "name",
+          "msisdn"
+        ],
+        "properties": {
+          "tillNumber": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "msisdn": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "CONFIRM_HEADER_SCHEMA": {
+    "title": "VDC",
+    "description": "VDC headers schema",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "x-msisdn",
+      "x-mpin",
+      "x-channel",
+      "x-app-type",
+      "x-app-version",
+      "x-device-id",
+      "x-ip-address"
+    ],
+    "properties": {
+      "x-msisdn": {
+        "type": "string"
+      },
+      "x-channel": {
+        "type": "string"
+      },
+      "x-app-type": {
+        "type": "string"
+      },
+      "x-app-version": {
+        "type": "string"
+      },
+      "x-device-id": {
+        "type": "string"
+      },
+      "x-ip-address": {
+        "type": "string"
+      },
+      "x-mpin": {
+        "type": "string"
+      }
+    }
+  },
+  "QR_PAYMENT": {
+    "title": "QR_Payment",
+    "description": "QR Payment",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "amount",
+      "identifier",
+      "identifierType"
+    ],
+    "properties": {
+      "amount": {
+        "type": "number"
+      },
+      "identifier": {
+        "type": "string"
+      },
+      "identifierType": {
+        "type": "string"
+      },
+      "tillNumber": {
+        "type": "string"
+      },
+      "additionaldetails": {
+        "type": "object"
+      }
+    }
+  },
+  "QR_REFUND": {
+    "title": "QR REFUND",
+    "description": "QR Refund",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "originalTxID"
+    ],
+    "properties": {
+      "originalTxID": {
+        "type": "string"
+      },
+      "additionaldetails": {
+        "type": "object"
+      }
+    }
+  },
+  "QR_REFUND_CONFIRM_SCHEMA": {
+    "title": "QRREFUND_ConfirmTransaction",
+    "description": "Confirmation of QR Refund",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "txID",
+      "originalTxID"
+    ],
+    "properties": {
+      "txID": {
+        "type": "string"
+      },
+      "originalTxID": {
+        "type": "string"
+      }
+    }
+  },
+  "RAAST_INCOMMING_HEADER": {
+    "title": "INCOMMING",
+    "description": "INCOMMING Payment headers schema",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "x-msisdn",
+      "x-channel"
+    ],
+    "properties": {
+      "x-msisdn": {
+        "type": "string"
+      },
+      "x-channel": {
+        "type": "string"
+      }
+    }
+  },
+  "RAAST_INCOMMING_PAYLOAD": {
+    "title": "INCOMMING DETAILS",
+    "description": "returns incomming details",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "merchant_msisdn",
+      "customer_name",
+      "transaction_amount",
+      "transaction_id",
+      "rrn",
+      "transaction_dt",
+      "fee",
+      "fed",
+      "reverseTransaction"
+    ],
+    "properties": {
+      "merchant_msisdn":{
+        "type": "string"
+      },
+      "customer_name":{
+        "type": "string"
+      },
+      "transaction_amount":{
+        "type": "number"
+      },
+      "transaction_id":{
+        "type": "string"
+      },
+      "rrn":{
+        "type": "string"
+      },
+      "transaction_dt":{
+        "type": "string"
+      },
+      "fee":{
+        "type": "string"
+      },
+      "fed":{
+        "type": "string"
+      },
+      "reverseTransaction": {
+        "type": "object",
+        "properties" : {
+            "ref_id": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "ref_id"
+        ]
+      }
+    }
+  },
+  "P2M_REFUND_HEADERS": {
+    "title": "P2M Headers",
+    "description": "P2M Refund Headers",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "x-msisdn",
+      "x-channel"
+    ],
+    "properties": {
+      "x-msisdn": {
+        "type": "string"
+      },
+      "x-channel": {
+        "type": "string"
+      }
+    }
+  },
+  "P2M_REFUND_SCHEMA": {
+    "title": "P2M Request Body",
+    "description": "Incoming Refund Body",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "transactionID",
+      "amount",
+      "ac_from",
+      "ac_to",
+      "sender_name",
+      "receiver_name",
+      "reverseTransaction"
+
+    ],
+    "properties": {
+      "transactionID":{
+        "type": "string"
+      },
+      "amount":{
+        "type": "string"
+      },
+      "reverseTransaction": {
+        "type": "object",
+        "properties" : {
+            "ref_id": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "ref_id"
+        ]
+      }
+    }
+  },
+  "QR_GENERATION_REQUEST_HEADERS": {
+    "title": "QR_GENERATION_REQUEST_HEADERS",
+    "description": "QR_GENERATION_REQUEST_HEADERS",
+    "type": "object",
+    "additionalProperties": true,
+    "required": ["x-msisdn", "x-channel"],
+    "properties": {
+      "x-msisdn": {
+        "type": "string"
+      },
+      "x-channel": {
+        "type": "string"
+      }
+    }
+  },
+  "P2M_CONFIRM_PAYLOAD": {
+    "title": "P2M CONFIRM DETAILS",
+    "description": "confirm details",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "customerIban",
+      "amount"
+    ],
+    "properties": {
+      "customerIban":{
+        "type": "string"
+      },
+      "amount":{
+        "type": "string"
+      }
+    }
+  }
+
+}

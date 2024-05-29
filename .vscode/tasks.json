@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [{
+            "label": "Appsody: run enviornment with Jazz Cash Docker network",
+            "type": "shell",
+            "command": "appsody run --network qrpayment-microservice_default --docker-options '--env KAFKA_BOOTSTRAP_SERVERS=kafka:9092'",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Appsody: run",
+            "type": "shell",
+            "command": "appsody run",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Appsody: debug",
+            "type": "shell",
+            "command": "appsody debug --network qrpayment-microservice_default --docker-options '--env KAFKA_BOOTSTRAP_SERVERS=kafka:9092'",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Appsody: test",
+            "type": "shell",
+            "command": "appsody test",
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "Appsody: build",
+            "type": "shell",
+            "command": "appsody build",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Appsody: deploy",
+            "type": "shell",
+            "command": "appsody deploy",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Appsody: stop",
+            "type": "shell",
+            "command": "appsody stop",
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}

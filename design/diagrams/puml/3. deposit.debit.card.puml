@@ -1,0 +1,58 @@
+@startuml Basic
+autonumber
+
+title Deposit via Debit Card without saving 
+'skinparam Monochrome true 
+participant "Amna" as alice #Cyan
+participant "Payment\nMicroservice" as pm #IndianRed
+participant "Payment\nGateway" as pgw #GreenYellow
+participant "CPS" as cps 
+
+alice -> alice : Enters Debit Card details
+
+alice-> pm ++: /rest/api/v1/deposit/debitCard/check3DS
+
+pm->pgw: /api/../Purchase/Check3DsEnrollment
+pgw-->pm:
+
+alt if card is enrolled
+    pm -> pm: save card details in cache
+    pm --> alice -- : return HTML form data
+    alice-> alice : Enters OTP(s)
+
+    alice-> pgw : Form Submit Data [POST]
+
+    pgw->pm ++: /api/deposit/debit/callBackURL [paRES,pp_C3DSecureID]
+
+
+    pm-> pgw : /api/../Purchase/ProcessACSResult
+    pm->pm --: update status in cache (saved in step 5)
+    alice -> pm ++: /api/v1/deposit/debitCard/confirm
+    alt If ProcessACSResult is successful
+        pm -> pgw: /api/../authorize/AuthorizePayment
+        pm->cps: InitTrans_CustomerDeposit()
+        pm-> cps: ConfirmTransaction()
+
+        alt If deposit failed 
+            pm->pgw: /../Void
+            pm->alice: return error response
+        else
+            pm->pgw: /api/../authorize/capture
+            alt If save card details is checked
+                alt If card not linked and with not more than 1 account
+                    pm->pm: save card details against user profile
+                end
+            end
+            pm->alice: return success response
+        end 
+    else 
+        pm->alice: return error response
+    end    
+else  
+    pm --> alice: return error response
+end
+
+
+
+
+@enduml

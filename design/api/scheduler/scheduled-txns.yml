@@ -1,0 +1,540 @@
+---
+swagger: '2.0'
+info:
+  title: Scheduled Transactions
+  version: 1.0.0
+  description: JazzCash APIs for Scheduled Transactions.
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /rest/api/v1/transactions/scheduled:
+    get:
+      tags:
+        - Scheduled Transactions
+      parameters:
+      - $ref: '#/parameters/acceptLanguage'
+      - $ref: '#/parameters/appType'
+      - $ref: '#/parameters/appVersion'
+      - $ref: '#/parameters/deviceID'
+      - $ref: '#/parameters/ipAddress'
+      - $ref: '#/parameters/channel'
+      - $ref: '#/parameters/ibmClientID'
+      responses:
+        '200':
+          description: successful request
+          schema:
+            $ref: '#/definitions/scheduledTxnListRsp'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+      summary: Fetch all scheduled transactions
+    post:
+      tags:
+        - Scheduled Transactions
+      parameters:
+      - in: body
+        name: body
+        description: Post Request Body
+        schema:
+          $ref: '#/definitions/createScheduleReq'
+      - $ref: '#/parameters/acceptLanguage'
+      - $ref: '#/parameters/appType'
+      - $ref: '#/parameters/appVersion'
+      - $ref: '#/parameters/deviceID'
+      - $ref: '#/parameters/ipAddress'
+      - $ref: '#/parameters/channel'
+      - $ref: '#/parameters/ibmClientID'
+      - $ref: '#/parameters/mPinHeader'
+      responses:
+        '200':
+          description: successful request
+          schema:
+            $ref: '#/definitions/createScheuleRsp'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+      summary: Create/Update Scheduled Transaction
+  /rest/api/v1/transactions/scheduled/{scheduleId}:
+    get:
+      tags:
+        - Scheduled Transactions
+      parameters:
+        - in: path
+          name: scheduleId
+          type: string
+          required: true
+        - $ref: '#/parameters/acceptLanguage'
+        - $ref: '#/parameters/appType'
+        - $ref: '#/parameters/appVersion'
+        - $ref: '#/parameters/deviceID'
+        - $ref: '#/parameters/ipAddress'
+        - $ref: '#/parameters/channel'
+        - $ref: '#/parameters/ibmClientID'
+      responses:
+        '200':
+          description: successful request
+          schema:
+            $ref: '#/definitions/scheduledTxnDetailsRsp'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+      summary: Fetch scheduled transaction details (history)
+  /rest/api/v1/transactions/scheduled/update/{status}:
+    post:
+      tags:
+        - Scheduled Transactions
+      parameters:
+      - in: path
+        name: status
+        type: string
+        required: true
+      - in: body
+        name: body
+        description: Post Request Body
+        schema:
+          $ref: '#/definitions/updateSchedulesStatusReq'
+      - $ref: '#/parameters/acceptLanguage'
+      - $ref: '#/parameters/appType'
+      - $ref: '#/parameters/appVersion'
+      - $ref: '#/parameters/deviceID'
+      - $ref: '#/parameters/ipAddress'
+      - $ref: '#/parameters/channel'
+      - $ref: '#/parameters/ibmClientID'
+      responses:
+        '200':
+          description: successful request
+          schema:
+            $ref: '#/definitions/createScheuleRsp'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+      summary: Update Scheduled Transaction Status (Active/Paused)
+  /rest/api/v1/transactions/scheduled/{scheduleId}/skip-next-occurrence:
+    post:
+      tags:
+        - Scheduled Transactions
+      parameters:
+      - in: path
+        name: scheduleId
+        type: string
+        required: true
+      - $ref: '#/parameters/acceptLanguage'
+      - $ref: '#/parameters/appType'
+      - $ref: '#/parameters/appVersion'
+      - $ref: '#/parameters/deviceID'
+      - $ref: '#/parameters/ipAddress'
+      - $ref: '#/parameters/channel'
+      - $ref: '#/parameters/ibmClientID'
+      responses:
+        '200':
+          description: successful request
+          schema:
+            $ref: '#/definitions/createScheuleRsp'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+      summary: Skip upcoming occurence of schedule
+  /rest/api/v1/transactions/scheduled/delete:
+    post:
+      tags:
+        - Scheduled Transactions
+      parameters:
+      - in: body
+        name: body
+        description: Post Request Body
+        schema:
+          $ref: '#/definitions/updateSchedulesStatusReq'
+      - $ref: '#/parameters/acceptLanguage'
+      - $ref: '#/parameters/appType'
+      - $ref: '#/parameters/appVersion'
+      - $ref: '#/parameters/deviceID'
+      - $ref: '#/parameters/ipAddress'
+      - $ref: '#/parameters/channel'
+      - $ref: '#/parameters/ibmClientID'
+      responses:
+        '200':
+          description: successful request
+          schema:
+            $ref: '#/definitions/createScheuleRsp'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+      summary: Delete Scheduled Transactions
+
+parameters:
+  acceptLanguage:
+    name: Accept-Language
+    description:
+      Describe which language you prefer to get back the response in ,
+      current possible values are "en" or "ur" for English and Urdu
+    in: header
+    type: string
+  appType:
+    name: X-APP-TYPE
+    description: Describes application or device type.
+    in: header
+    required: true
+    type: string
+    enum:
+      - Android
+      - IOS
+      - Web
+  appVersion:
+    name: X-APP-VERSION
+    description: Describes application version 1.0.1.
+    in: header
+    required: true
+    type: string
+  deviceID:
+    name: X-DEVICE-ID
+    description: Describes device ID XDFSD23345435.
+    in: header
+    required: true
+    type: string
+  ipAddress:
+    name: X-IP-ADDRESS
+    description: Describes IP Address of the device.
+    in: header
+    required: true
+    type: string
+  channel:
+    name: X-CHANNEL
+    description: Describes channel code
+    in: header
+    required: true
+    type: string
+    enum:
+      - Third Party
+      - Mobile APP
+      - Backend Portal
+  ibmClientID:
+    name: X-IBM-CLIENT-ID
+    description: Client credentials required for API Connect
+    in: header
+    required: true
+    type: string
+  msisdn:
+    name: X-MSISDN
+    description: Client credentials required for API Connect
+    in: header
+    required: true
+    type: string
+  mPinHeader:
+    name: X-MPIN
+    description: User MPIN
+    in: header
+    required: true
+    type: string
+
+definitions:
+  updateSchedulesStatusReq:
+    type: object
+    properties:
+      schedules:
+        type: array
+        items: 
+          type: string
+          example: "5fb8d7426f0d9a00e027fd9e"
+  createScheduleReq:
+    allOf:
+      - $ref: '#/definitions/scheduledTxnBaseObj'
+      - type: object
+        required: 
+            - txID
+            - txnType
+            - repeat
+            - usecase
+        properties:
+          id: 
+            type: string
+            example: "123 //Only required for update"
+            description: id is required for update operation
+          txID:
+            type: string
+  createScheuleRsp:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+        example: T01
+      responseMessage_en:
+        type: string
+        example: The transaction was completed successfully.
+      responseMessage_ur:
+        type: string
+        example: The transaction was completed successfully.
+      data:
+        type: object
+  scheduledTxnDetailsRsp:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+        example: T01
+      responseMessage_en:
+        type: string
+        example: The transaction was completed successfully.
+      responseMessage_ur:
+        type: string
+        example: The transaction was completed successfully.
+      data:
+        $ref: '#/definitions/scheduledTxnDetailsObj'
+  scheduledTxnListRsp:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+        example: T01
+      responseMessage_en:
+        type: string
+        example: The transaction was completed successfully.
+      responseMessage_ur:
+        type: string
+        example: The transaction was completed successfully.
+      data:
+        type: array
+        items: 
+          $ref: '#/definitions/scheduledTxnObj'
+  scheduledTxnBaseObj:
+    properties:
+      txnType:
+        type: string
+        example: Scheduled/Manual
+      startDate:
+        type: string
+        example: DD/MM/YYYY
+      endDate:
+        type: string
+        example: DD/MM/YYYY
+      repeat:
+        type: string
+        example: None/Daily/Weekly/Monthly/Yearly
+      repeatDay:
+        type: number
+        example: 1
+        description: 1-7 if repeat Weekly, 1-31 if repeat Monthly or Yearly
+      repeatMonth:
+        type: number
+        example: 1
+        description: 1-12
+      nickName:
+        type: string
+      usecase:
+        $ref: '#/definitions/useCaseObj'
+  scheduledTxnObj:
+    allOf:
+      - $ref: '#/definitions/scheduledTxnBaseObj'
+      - type: object
+        properties:
+          id:
+            type: string
+          status:
+            type: string
+            example: Active/Paused
+          active:
+            type: boolean
+          completed:
+            type: boolean
+          nextExecutionDate:
+            type: string
+            example: DD/MM/YYYY
+          lastExecutionDate:
+            type: string
+            example: DD/MM/YYYY
+          createdAt:
+            type: string
+            example: DD/MM/YYYY HH:mm:ss
+  useCaseObj:
+    type: object
+    properties:
+      name:
+        type: string
+        example: C2C/B2B/CNIC
+      amount:
+        type: number
+        example: 50
+      receiverMsisdn:
+        type: string
+      receiverCnic:
+        type: string
+      metadata:
+        type: object
+  scheduledTxnDetailsObj:
+    allOf:
+      - $ref: '#/definitions/scheduledTxnObj'
+      - type: object
+        properties:
+          history:
+            type: array
+            items: 
+              $ref: '#/definitions/scheduledTxnHistoryObj'
+  scheduledTxnHistoryObj:
+    type: object
+    properties:
+      executionDate:
+        type: string
+        example: DD/MM/YYYY
+      status: 
+        type: string
+        example: Success/Failed/Paused
+      amount:
+        type: number
+        example: 50
+  error400:
+    description: Bad Request
+    type: object
+    title: Bad Request
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T01
+      responseMessage:
+        type: string
+        example: Bad Request
+  error401:
+    type: object
+    title: Unauthorized
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T02
+      responseMessage:
+        type: string
+        example: Authentication Failed
+  error402:
+    type: object
+    title: Timed-out or Failed to submit the transaction to CPS
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T03
+      responseMessage:
+        type: string
+        example: ''
+  error409:
+    type: object
+    title: Conflict
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T06
+      responseMessage:
+        type: string
+        example: Conflict
+  error500:
+    type: object
+    title: Server Error
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T07
+      responseMessage:
+        type: string
+        example: Internal Server Error

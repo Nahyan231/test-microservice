@@ -1,0 +1,71 @@
+{
+  "name": "nodejs-express-simple",
+  "version": "0.1.0",
+  "description": "Simple Node.js Express application",
+  "license": "Apache-2.0",
+  "main": "dist/app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/appsody/stacks.git",
+    "directory": "incubator/nodejs-express/templates/simple"
+  },
+  "scripts": {
+    "start": "node dist/app.js",
+    "test": "nyc --reporter=text mocha --exit ./test/unit/*",
+    "build": "rm -rf dist/* && npx babel src --out-dir dist --copy-files --include-dotfiles"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "chai": "^4.3.10",
+    "chai-http": "^4.4.0",
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "mocha": "~10.2.0",
+    "nyc": "^15.1.0",
+    "prettier": "^3.0.3",
+    "mongodb-memory-server": "9.0.1"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.2",
+    "@babel/plugin-transform-classes": "^7.22.15",
+    "@babel/plugin-transform-runtime": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "agenda": "^5.0.0",
+    "ajv": "^8.12.0",
+    "axios": "^1.5.1",
+    "emvqr": "0.0.2",
+    "emvqr-latest": "npm:emvqr@^0.0.5",
+    "express": "^4.18.2",
+    "express-http-context": "^1.2.4",
+    "form-data": "^4.0.0",
+    "gen-uid": "0.0.2",
+    "infinispan": "^0.11.0",
+    "json-stringify-safe": "^5.0.1",
+    "libphonenumber-js": "^1.10.53",
+    "protobufjs":"7.2.5",
+    "lodash": "^4.17.21",
+    "md5": "^2.3.0",
+    "qrcode": "^1.4.4",
+    "moment": "^2.29.4",
+    "moment-timezone": "0.5.43",
+    "mongoose": "^7.6.3",
+    "multer": "^1.4.4",
+    "node-cache": "^5.1.2",
+    "node-rdkafka": "^2.17.0",
+    "uuidv4": "^6.2.13",
+    "validator": "^13.11.0",
+    "winston": "^3.11.0",
+    "wuzzy": "^0.1.8",
+    "yamljs": "^0.3.0"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  }
+}

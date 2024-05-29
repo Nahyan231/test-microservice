@@ -1,0 +1,250 @@
+swagger: "2.0"
+info:
+  description: "Contains APIs For QR Payments - Fonepay"
+  version: "1.0.0"
+  title: "QR Payment - Fonepay"
+host: "ibm.com"
+basePath: /rest/api/v1/payment/
+
+schemes:
+- "https"
+- "http"
+
+paths:
+  /rest/api/v1/payment/fonepay/confirm:
+    post:
+      security:
+        - Bearer: []
+      tags:
+      - "Confirm Fonepay QR Payment"
+      summary: "Confirm Fonepay QR Payment"
+      description: ""
+      produces:
+      - "application/json"
+      parameters: 
+      - in: header
+        name: X-APP-TYPE
+        required: true
+        type: string
+        enum:
+         - Andriod
+         - IOS
+         - Web
+        description: Describes application or device type.
+      - in: header
+        name: X-APP-VERSION
+        required: true
+        type: string
+        description: Describes application version 1.0.1.
+      - in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+        description: Describes device ID XDFSD23345435.
+      - in: header
+        name: X-IP-ADDRESS
+        required: true
+        type: string
+        description: Describes IP Address of the device.
+      - in: header
+        name: X-MPIN
+        required: true
+        type: string
+        description: User MPIN
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - Third Party
+         - Mobile APP
+         - Backend Portal
+        description: Describes channel code
+      - in: header
+        name: X-MSISDN
+        required: true
+        type: string
+          
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: true
+             responseCode:
+              type: string
+              example: QR-PAY-T34
+             responseMessage_en:
+              type: string
+              example: Payment Successful
+             responseMessage_ur:
+              type: string
+              example: Payment Successful
+             data:
+               $ref: "#/definitions/ConfirmResponse"
+        "422":
+          description: "Error"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: QR-PAY-T02
+             responseMessage:
+              type: string
+              example: Error
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/ConfirmRequest'
+        description: The request body for the operation
+  
+
+definitions:  
+  ConfirmRequest:
+    type: "object"
+    properties:
+      transactionType:
+        type: string
+        example: "Closed Loop"
+      paidVia:
+        type: string
+        example: "Scan from Camera, Scan from gallery, Till Number"
+      qrCode:
+        type: string
+        example: "Static / Till Number"
+      qrString:
+        type: string
+        example: "00020101021202164600678934521435041555554444333311152041234530335"
+      amount:
+        type: number
+        example: 100
+      totalAmount:
+        type: number
+        example: 110
+      isDynamicQr:
+        type: string
+        example: 0
+      tipAmount:
+        type: number
+        example: 20
+      convenienceFee:
+        type: number
+        example: 10
+      conveniencePercentage:
+        type: number
+        example: 5
+      isTipRequired:
+        type: string
+        example: 1
+      merchantDetails:
+        type: object
+        properties:
+          merchantId:
+            type: string
+            example: "1001027"
+          name:
+            type: string
+            example: "GO GO TRANSPORT"
+          city:
+            type: string
+            example: "Lahore"
+          pan:
+            type: string
+            example: "111122223333444"
+          nickName:
+            type: string
+            example: "Test Name"
+        required:
+          - "merchantId"
+          - "name"
+    required:
+     - "transactionType"
+     - "paidVia"
+     - "qrCode"
+     - "qrString"
+     - "amount"
+     - "totalAmount"
+     - "isDynamicQr"
+     - "merchantDetails"
+
+  ConfirmResponse:
+    type: "object"
+    properties:
+      txID:
+        type: string
+        example: "010710821961"
+      txStatus:
+        type: string
+        example: "Completed"
+      txType:
+        type: string
+        example: "Mastercard – FonePay C2B"
+      paidVia:
+        type: string
+        example: "Scan from Camera, Scan from gallery, Till Number"
+      qrCode:
+        type: string
+        example: "Static / Till Number"
+      msisdn:
+        type: string
+        example: "03xxxxx"
+      amount:
+        type: string
+        example: "100"
+      fee:
+        type: string
+        example: "0.00"
+      txEndDate:
+        type: string
+        example: "20140102"
+      txEndTime:
+        type: string
+        example: "210159"
+      isTipRequired:
+        type: string
+        example: 0
+      tipAmount:
+        type: number
+        example: 5
+      convenienceFee:
+        type: number
+        example: 6
+      conveniencePercentage:
+        type: number
+        example: 2
+      isDynamicQr:
+        type: string
+        example: 1
+      qrString:
+        type: string
+        example: "1230987654"
+      contextData:
+        type: object
+        properties:
+          ocvID:
+            type: string
+            example: "S_X2013012921001"
+          cvID:
+            type: string
+            example: "AG_20130129T102103"
+          merchantDetails:
+            type: object
+            properties:
+              name:
+                type: string
+                example: "Al Barkat.com"
+              tillNumber:
+                type: string
+                example: "00000016"
+      
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header

@@ -1,0 +1,196 @@
+swagger: "2.0"
+info:
+  description: "This API returns initiates the request for money transfer"
+  version: "1.0.0"
+  title: "Initiate Money Request"
+host: "ibm.com"
+basePath: /rest/api/v1/requestMoney/request
+tags:
+- name: "Initiate Money Request"
+  description: "This API returns initiates the request for money transfer"
+  externalDocs:
+    description: "Find out more on box"
+    url: "http://box.ibm"
+
+schemes:
+- "https"
+- "http"
+
+paths:
+  /rest/api/v1/payment/request/initiate:
+    post:
+      security:
+        - Bearer: []
+      tags:
+      - "Initiate Money Request"
+      summary: "This API returns initiates the request for money transfer"
+      description: ""
+      produces:
+      - "application/json"
+      parameters: 
+      - in: header
+        name: X-APP-TYPE
+        required: true
+        type: string
+        enum:
+         - Andriod
+         - IOS
+         - Web
+        description: Describes application or device type.
+      - in: header
+        name: X-APP-VERSION
+        required: true
+        type: string
+        description: Describes application version 1.0.1.
+      - in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+        description: Describes device ID XDFSD23345435.
+      - in: header
+        name: X-IP-ADDRESS
+        required: true
+        type: string
+        description: Describes IP Address of the device.
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - Third Party
+         - Mobile APP
+         - Backend Portal
+        description: Describes channel code   
+      - in: header
+        name: X-IBM-CLIENT-ID
+        required: true
+        type: string
+        description: Client credentials required for API Connect
+      - in: header
+        name: X-MSISDN
+        required: true
+        type: string
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: true
+             responseCode:
+              type: string
+              example: T01
+             responseMessage:
+              type: string
+              example: The transaction was completed successfully.
+             data:
+               $ref: "#/definitions/Response"
+             additionalDetails:
+              items:
+               $ref: "#/definitions/additionalObject"
+        "401":
+          description: "Authentication Failed"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: T02
+             responseMessage:
+              type: string
+              example: Authentication Failed.
+        "422":
+          description: "Failed to initiate the request for money."
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: AL-T02
+             responseMessage:
+              type: string
+              example: Failed to initiate the request for money.
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/Request'
+        description: The request body for the operation
+  
+
+definitions:
+  
+  Request:
+    type: "object"
+    properties:
+      amount:
+        type: number
+        format: double
+        example: "100"
+      receiverDetails:
+        type: "object"
+        properties:
+          msisdn:
+            type: "string"
+            example: "920341567809"
+      remarks:
+        type: string
+        example: "hakjfdsa dajh"
+      additionalDetails:
+        type: "object"
+        properties:
+          key:
+            type: string
+            example: "abc"
+          value:
+            type: string
+            example: "def"
+
+    required:
+      - amount
+      - receiverDetails
+  
+  Response:
+    type: object
+    properties:
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      transactionType:
+        type: string
+        example: RequestMoney
+      transactionStatus:
+        type: string
+        example: Pending/Complete
+      transEndDate:
+        type: string
+        example: "2004-01-05"
+      transEndTime:
+        type: string
+        example: "03:33:12.943"
+      amount:
+        type: number
+        example: 0.7
+
+  additionalObject:
+    type: "object"
+    properties:
+      key:
+        type: string
+        example: "abc"
+      value:
+        type: string
+        example: "def"
+      
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+      
+        

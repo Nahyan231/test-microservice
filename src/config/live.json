@@ -1,0 +1,3748 @@
+{
+    "config": {
+        "App": {
+            "webServer": {
+                "host": "127.0.0.1",
+                "port": 3000
+            },
+            "restApiEndpoints": {
+                "v1": "/v1/api"
+            }
+        },
+        "cpsEncryptionKeys": {
+            "tripleDESKey": "U+M84N6aCZybvvXkpuzj7A==",
+            "aes256Key": "98ae67823eodfj4904jdf34fj045k742"
+        },
+        "esb": {
+            "axiosOptions": {
+                "timeout": 70000
+            },
+            "callerType": 2,
+            "channelCode": "ChannelCode",
+            "thirdPartyMap": {
+                "consumerApp": {
+                    "name": "consumer",
+                    "channel": "Mobile",
+                    "value": "ibm_consumer_app",
+                    "password": "wYfqdwXjOyWtaoi0+jeDPQ==",
+                    "channelCode": "1031",
+                    "securityCredential": "dP31WpTjhoo=",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "923040000666",
+                    "organizationIniatorMPIN": "56dxMqlf1E8=",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "merchantApp": {
+                    "name": "merchant",
+                    "channel": "Mobile",
+                    "value": "ibm_merchant_app",
+                    "password": "wYfqdwXjOyWtaoi0+jeDPQ==o",
+                    "channelCode": "1030",
+                    "organizationIniatorType": "14",
+                    "organizationIniatorMSISDN": "MerchantAppSP",
+                    "organizationIniatorMPIN": "f4gQCXtxdP6bvRo9IgymrQ==",
+                    "initiatorIdentifier": 1,
+                    "receiverIdentifier": 1
+                },
+                "backoffice": {
+                    "value": "backoffice",
+                    "password": "B1YNY8GylVo",
+                    "channelCode": "1015"
+                },
+                "consumerPortal": {
+                    "value": "ibm_consumer_portal",
+                    "password": "B1YNY8GylVo",
+                    "channelCode": "1015"
+                },
+                "merchantPortal": {
+                    "value": "ibm_merchant_portal",
+                    "password": "B1YNY8GylVo",
+                    "channelCode": "1015"
+                },
+                "easyPaisaApp": {
+                    "name": "easypaisa",
+                    "channel": "Mobile",
+                    "value": "IBM_DIRECT_IBFT",
+                    "password": "VBEuSiPJfZP0PGEhufx7cA==",
+                    "channelCode": "1021",
+                    "securityCredential": "Ypwe77UkKTc=",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "03042350178",
+                    "organizationIniatorMPIN": "Ypwe77UkKTc=",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "ussdDirect": {
+                    "name": "ussdDirect",
+                    "channel": "Mobile",
+                    "value": "IBM_DIRECT_IBFT",
+                    "password": "VBEuSiPJfZP0PGEhufx7cA==",
+                    "channelCode": "1021",
+                    "securityCredential": "Ypwe77UkKTc=",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "03042350178",
+                    "organizationIniatorMPIN": "Ypwe77UkKTc=",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "merchantAppUSSD": {
+                    "name": "merchant",
+                    "channel": "Mobile",
+                    "value": "ibm_merchant_app",
+                    "password": "JHX1cVbopAn0PGEhufx7cA==",
+                    "channelCode": "1030",
+                    "organizationIniatorType": "14",
+                    "organizationIniatorMSISDN": "BusinessAppSP",
+                    "organizationIniatorMPIN": "6j1IR9J0PlvbllDqSEeTaw==",
+                    "initiatorIdentifier": 1,
+                    "receiverIdentifier": 1
+                },
+                "consumerAppKeyboard": {
+                    "name": "consumer",
+                    "channel": "Mobile",
+                    "value": "ibm_consumer_app",
+                    "password": "wYfqdwXjOyWtaoi0+jeDPQ==",
+                    "channelCode": "1112",
+                    "securityCredential": "dP31WpTjhoo=",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "923040000666",
+                    "organizationIniatorMPIN": "56dxMqlf1E8="
+                },
+                "nonjazzcashInstantRefund": {
+                    "name": "consumer",
+                    "channel": "Mobile",
+                    "value": "ibm_consumer_app",
+                    "password": "wYfqdwXjOyWtaoi0+jeDPQ==",
+                    "channelCode": "1031",
+                    "securityCredential": "dP31WpTjhoo=",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "923040000666",
+                    "organizationIniatorMPIN": "56dxMqlf1E8=",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "gToPCnic": {
+                    "commandID": "InitTrans_G2PToCNIC",
+                    "value": "ibm_consumer_app",
+                    "password": "JHX1cVbopAn0PGEhufx7cA==",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "03268032495",
+                    "organizationIniatorMPIN": "'uIQGHkRjnQk=",
+                    "initiatorIdentifierType": 1,
+                    "initiatorIdentifier": "03268032495",
+                    "initiatorSecurityCredential": "JPu0TyP3bt0un5iXOiXIZA==",
+                    "receiverIdentifierType": 1,
+                    "channelCode": "1016",
+                    "conversationID": "G2PToCNIC1234"
+                },
+                "consumerAppFavorite": {
+                    "name": "consumer",
+                    "channel": "Mobile",
+                    "value": "ibm_consumer_app",
+                    "password": "JHX1cVbopAn0PGEhufx7cA==",
+                    "channelCode": "1021",
+                    "securityCredential": "JHX1cVbopAn0PGEhufx7cA==",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "03071591723",
+                    "organizationIniatorMPIN": "4syxDJvLXiEzkyOmS6fh/Q=="
+                },
+                "merchantAppKPKPSC": {
+                    "name": "merchant",
+                    "value": "testLiu",
+                    "password": "kMhIAmNE4h8",
+                    "channelCode": "1021",
+                    "securityCredential": "JHX1cVbopAn0PGEhufx7cA==",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "03071591723",
+                    "organizationIniatorMPIN": "4syxDJvLXiEzkyOmS6fh/Q=="
+                },
+                "raastC2C": {
+                    "name": "consumer",
+                    "channel": "Mobile",
+                    "value": "ibm_consumer_app",
+                    "password": "wYfqdwXjOyWtaoi0+jeDPQ==",
+                    "channelCode": "1010",
+                    "securityCredential": "dP31WpTjhoo=",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "923040000666",
+                    "organizationIniatorMPIN": "56dxMqlf1E8=",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "merchantAppUpdated": {
+                    "name": "merchant",
+                    "channel": "Mobile",
+                    "value": "ibm_merchant_app",
+                    "password": "wYfqdwXjOyWtaoi0+jeDPQ==o",
+                    "channelCode": "1055",
+                    "organizationIniatorType": "14",
+                    "organizationIniatorMSISDN": "MerchantAppSP",
+                    "organizationIniatorMPIN": "f4gQCXtxdP6bvRo9IgymrQ==",
+                    "initiatorIdentifier": 1,
+                    "receiverIdentifier": 1
+                }
+            },
+            "identifierType": 1,
+            "url": "http://cps-rest-service-r1-is.ace:7800/rest/requestmgrservice/v1/sync",
+            "gToPUrl": "http://cps-rest-service-r1-pre-prod-http-ace.apps.pjcocp.jazzcash.com.pk/rest/requestmgrservice/v1/sync",
+            "commands": {
+                "QRPaymentFonepay": {
+                    "commandID": "InitTrans_MerchantPaymentByCustomer",
+                    "useCase": "QRPayment",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 4,
+                    "receiverIdentifier": "00145178"
+                },
+                "QRFonepayRefund": {
+                    "commandID": "InitTrans_RefundMerchantPayment",
+                    "useCase": "RefundQRPayment",
+                    "parameters": {
+                        "amount": "Amount",
+                        "fee": "WithFee",
+                        "transID": "OriginalTID"
+                    },
+                    "retryCount": 2,
+                    "initiatorIdentifierType": 1,
+                    "initiatorIdentifier": "923028747091",
+                    "initiatorSecurityCredential": "+xfzbhzaGBTK7Lvn2uFSoA=="
+                },
+                "QRPayment": {
+                    "commandID": "InitTrans_MerchantPaymentByCustomer",
+                    "useCase": "QRPayment",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "QRPayment_consumer": {
+                    "commandID": "InitTrans_MerchantPaymentByCustomer",
+                    "useCase": "QRPayment",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "channelCode": "1033",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "MRPayment": {
+                    "commandID": "InitTrans_MerchantPaymentByCustomer",
+                    "useCase": "Request2Pay",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "MRPayment_consumer": {
+                    "commandID": "InitTrans_MerchantPaymentByCustomer",
+                    "useCase": "Request2Pay",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "channelCode": "1033",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "QRPaymentConfirm": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "QRPayment",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "QRRefund": {
+                    "commandID": "InitTrans_RefundMerchantPayment",
+                    "useCase": "RefundQRPayment",
+                    "parameters": {
+                        "amount": "Amount",
+                        "fee": "WithFee",
+                        "transID": "OriginalTID"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "QRRefundConfirm": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "RefundQRPayment",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "MRPaymentConfirm": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "Request2Pay",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "sendMoneyC2C": {
+                    "commandID": "InitTrans_MoneyTransfer(C2C)",
+                    "useCase": "MoneyTransferC2C",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "sendMoneyCNIC": {
+                    "commandID": "InitTrans_CustomerRemittance",
+                    "useCase": "CNICPayment",
+                    "parameters": {
+                        "amount": "Amount",
+                        "receiverMSISDN": "ReceiverMSISDN",
+                        "receiverCNIC": "ReceiverCNIC",
+                        "passCode": "PassCode"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "sendMoneyToBank": {
+                    "commandID": "InitTrans_OFTCredit",
+                    "useCase": "IBFT",
+                    "parameters": {
+                        "amount": "Amount",
+                        "receiverMSISDN": "ReceiverMSISDN",
+                        "bankAccountNumber": "BankAccountNumber",
+                        "bankCode": "BankCode",
+                        "purposeOfRemittance": "PurposeOfRemittance"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "sendMoneyToBank_Merchant": {
+                    "commandID": "InitTrans_OFTCreditOTC",
+                    "useCase": "IBFT",
+                    "parameters": {
+                        "amount": "Amount",
+                        "receiverMSISDN": "ReceiverMSISDN",
+                        "senderCNIC": "SenderCNIC",
+                        "bankAccountNumber": "BankAccountNumber",
+                        "bankCode": "BankCode",
+                        "purposeOfRemittance": "PurposeOfRemittance",
+                        "senderMSISDN": "SenderMSISDN"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "sendMoneyToBank_OFTTitle": {
+                    "commandID": "InitTrans_OFTTitleFetch",
+                    "useCase": "sendMoneyToBank_OFTTitleFetch",
+                    "parameters": {
+                        "amount": "Amount",
+                        "receiverMSISDN": "ReceiverMSISDN",
+                        "bankAccountNumber": "BankAccountNumber",
+                        "bankCode": "BankCode",
+                        "purposeOfRemittance": "PurposeOfRemittance",
+                        "senderCNIC": "SenderCNIC",
+                        "senderMSISDN": "SenderMSISDN"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "sendMoneyToBank_OFTTitle_Merchant": {
+                    "commandID": "InitTrans_OFTTitleFetch",
+                    "useCase": "sendMoneyToBank_OFTTitleFetch",
+                    "parameters": {
+                        "amount": "Amount",
+                        "receiverMSISDN": "ReceiverMSISDN",
+                        "bankAccountNumber": "BankAccountNumber",
+                        "bankCode": "BankCode",
+                        "purposeOfRemittance": "PurposeOfRemittance",
+                        "senderCNIC": "SenderCNIC",
+                        "senderMSISDN": "SenderMSISDN"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "orgMSISDN": "923013350012",
+                    "orgMPIN": "f0lDaTEfWfcvhfZBIPhWqA==",
+                    "receiverIdentifierType": 1
+                },
+                "confirmTransaction": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "Payment",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "key": "98ae67823eodfj4904jdf34fj045k742"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "payBillQuery": {
+                    "commandID": "InitTrans_QueryBill",
+                    "useCase": "PayBills",
+                    "parameters": {
+                        "companyCode": "CompanyCode",
+                        "consumerRefNum": "ConsumerRefNum"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "payBillInit": {
+                    "commandID": "InitTrans_UtilityBillsPayment",
+                    "useCase": "PayBills",
+                    "parameters": {
+                        "consumerRefNum": "ConsumerRefNum",
+                        "companyCode": "CompanyCode",
+                        "customerMSISDN": "CustomerMSISDN"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "payBillConfirm": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "PayBills",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "amount": "Amount",
+                        "key": "98ae67823eodfj4904jdf34fj045k742"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "queryMATitle": {
+                    "commandID": "QueryMATitle",
+                    "useCase": "QueryMATitle",
+                    "parameters": {},
+                    "channelCode": "1021",
+                    "initiatorIdentifierType": 1,
+                    "initiatorIdentifier": "923078460024",
+                    "securityCredential": "91rJ6Cy0nTH0iSyl0NEIrw==",
+                    "receiverIdentifierType": 1
+                },
+                "sendMoneyB2C": {
+                    "commandID": "InitTrans_MoneyTransfer(B2C)",
+                    "useCase": "MoneyTransferB2C",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "sendMoneyB2B": {
+                    "commandID": "InitTrans_MoneyTransfer(B2B)",
+                    "useCase": "MoneyTransferB2B",
+                    "parameters": {
+                        "amount": "Amount",
+                        "organizationOwnerMSISDN": "OrganizationOwnerMSISDN"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "requestMoneyApprove": {
+                    "commandID": "InitTrans_CustomerRemittance",
+                    "useCase": "requestMoneyApprove",
+                    "parameters": {
+                        "amount": "Amount",
+                        "receiverMSISDN": "ReceiverMSISDN",
+                        "receiverCNIC": "ReceiverCNIC",
+                        "passCode": "PassCode"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "accountLimits": {
+                    "commandID": "InitTrans_CheckLimit",
+                    "useCase": "accountLimits",
+                    "parameters": {
+                        "channelCode": "ChannelCode"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "initTransDonation": {
+                    "commandID": "InitTrans_Customer Donation",
+                    "useCase": "Donation",
+                    "parameters": {
+                        "orgShortCode": "OrgShortCode",
+                        "amount": "Amount"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "initTransDirectIBFTIncoming": {
+                    "commandID": "InitTrans_DirectIBFTIncoming",
+                    "useCase": "DirectIBFT",
+                    "channel": "Inbound",
+                    "channelCode": "1021",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1,
+                    "parameters": {
+                        "amount": "Amount",
+                        "remark": "Remark",
+                        "bankCode": "BankCode",
+                        "frontChannel": "Front_Channel",
+                        "type": "Type",
+                        "reserveParameter1": "ReserveParameter1",
+                        "reserveParameter2": "ReserveParameter2",
+                        "reserveParameter3": "ReserveParameter3"
+                    },
+                    "orgMSISDN": "923458505731"
+                },
+                "initTransDirectIBFTOutgoing": {
+                    "commandID": "InitTrans_DirectIBFTOutgoing",
+                    "useCase": "DirectIBFT",
+                    "channel": "USSD",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1,
+                    "channelCode": "1021",
+                    "parameters": {
+                        "amount": "Amount",
+                        "remark": "Remark",
+                        "bankCode": "BankCode",
+                        "frontChannel": "Front_Channel",
+                        "type": "Type",
+                        "reserveParameter1": "ReserveParameter1",
+                        "reserveParameter2": "ReserveParameter2",
+                        "reserveParameter3": "ReserveParameter3"
+                    },
+                    "receiverMSISDN": "923458505731"
+                },
+                "confirmTransactionIBFT": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "DirectIBFT",
+                    "channel": "Inbound",
+                    "channelCode": "1021",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "key": "98ae67823eodfj4904jdf34fj045k742"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1,
+                    "orgMSISDN": "923458505731",
+                    "orgMPIN": "f8FOcv9o+oe+QvT7RJni3g=="
+                },
+                "confirmTransactionOFT": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "DirectIBFT",
+                    "channel": "USSD",
+                    "channelCode": "1021",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "key": "98ae67823eodfj4904jdf34fj045k742"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1,
+                    "orgMSISDN": "923458505731",
+                    "orgMPIN": "f8FOcv9o+oe+QvT7RJni3g=="
+                },
+                "oftCreditUSSD": {
+                    "commandID": "InitTrans_OFTCredit",
+                    "useCase": "DirectIBFT",
+                    "parameters": {
+                        "amount": "Amount",
+                        "receiverMSISDN": "ReceiverMSISDN",
+                        "bankAccountNumber": "BankAccountNumber",
+                        "bankCode": "BankCode",
+                        "purposeOfRemittance": "PurposeOfRemittance"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "sendMoneyCashToGood": {
+                    "commandID": "InitTrans_MerchantPaymentByCustomer",
+                    "useCase": "cashToGood",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "channelCode": "1031",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 4,
+                    "receiverIdentifier": "00241044"
+                },
+                "sendMoneyCashToGoodConfirm": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "cashToGoodConfirm",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 4
+                },
+                "initMayaPayment": {
+                    "commandID": "InitTrans_MerchantPaymentByCustomer",
+                    "useCase": "MayaPayment",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 4,
+                    "receiverIdentifier": "00250037"
+                },
+                "confirmMayaPayment": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "MayaPayment",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "initRedeemCashToGood": {
+                    "commandID": "InitTrans_MoneyTransfer(B2C)",
+                    "useCase": "CashToGoodRedeem",
+                    "organizationIniatorMSISDN": "923077630024",
+                    "organizationIniatorMPIN": "+xfzbhzaGBTK7Lvn2uFSoA==",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "confirmRedeemPaymentMsisdn": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "NonJazzcashMSISDNRedeem",
+                    "organizationIniatorMSISDN": "923072790018",
+                    "organizationIniatorMPIN": "MPYo9wMXm2QdtXrc3SxXlg==",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "key": "98ae67823eodfj4904jdf34fj045k742"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "confirmRedeemCashToGood": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "CashToGoodRedeem",
+                    "organizationIniatorMSISDN": "923077630024",
+                    "organizationIniatorMPIN": "+xfzbhzaGBTK7Lvn2uFSoA==",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "key": "98ae67823eodfj4904jdf34fj045k742"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "refundCashToGood": {
+                    "commandID": "InitTrans_MoneyTransfer(C2B)",
+                    "useCase": "CashToGoodRefund",
+                    "settlementAccount": "923077630024",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "mayaRefundInit": {
+                    "commandID": "InitTrans_RefundMerchantPayment",
+                    "useCase": "RefundMayaPayment",
+                    "parameters": {
+                        "amount": "Amount",
+                        "fee": "WithFee",
+                        "transID": "OriginalTID"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1,
+                    "receiverIdentifier": "923078570016"
+                },
+                "mayaRefundConfirm": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "RefundMayaPayment",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1,
+                    "initiatorIdentifier": "923078570016",
+                    "initiatorMPIN": "Qz4RGXdTchXWKK3FbiGCmQ=="
+                },
+                "sendMoneyB2C_USSD": {
+                    "commandID": "InitTrans_MoneyTransfer(B2C)",
+                    "useCase": "MoneyTransferB2C",
+                    "parameters": {
+                        "transactionID": "transactionID"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "sendMoneyC2CNonJazzCash": {
+                    "commandID": "InitTrans_MoneyTransfer(C2B)",
+                    "useCase": "NonJazzcashMSISDN",
+                    "settlementAccount": "923072790018",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "sendMoneyC2CNonJazzCashRefund": {
+                    "commandID": "InitTrans_MoneyTransfer(B2C)",
+                    "useCase": "NonJazzcashMSISDNRefund",
+                    "organizationIniatorMSISDN": "923072790018",
+                    "organizationIniatorMPIN": "MPYo9wMXm2QdtXrc3SxXlg==",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "confirmSendMoneyNonJcC2C": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "NonJazzcashMSISDN",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "key": "98ae67823eodfj4904jdf34fj045k742"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "initRedeemPaymentNonJcMsisdn": {
+                    "commandID": "InitTrans_MoneyTransfer(B2C)",
+                    "useCase": "NonJazzcashMSISDNRedeem",
+                    "organizationIniatorMSISDN": "923072790018",
+                    "organizationIniatorMPIN": "MPYo9wMXm2QdtXrc3SxXlg==",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "initTransactionNonJcCnic": {
+                    "commandID": "InitTrans_CustomerRemittance",
+                    "useCase": "NonJazzcashCNIC",
+                    "parameters": {
+                        "amount": "Amount",
+                        "receiverMSISDN": "ReceiverMSISDN",
+                        "receiverCNIC": "ReceiverCNIC",
+                        "passCode": "PassCode"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "confirmTransactionNonJcCnic": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "NonJazzcashCNIC",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "amount": "amount",
+                        "uid": "uid",
+                        "msisdn": "msisdn",
+                        "cnic": "cnic",
+                        "key": "98ae67823eodfj4904jdf34fj045k742"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "initRedeemPaymentNonJcBIOCnic": {
+                    "commandID": "InitTrans_CollectRemittanceviaBIO",
+                    "useCase": "NonJazzcashCNICRedeemRetailer",
+                    "organizationIniatorMSISDN": "923072790017",
+                    "organizationIniatorMPIN": "QFObGypDmn4n+5bo1oGJyA==",
+                    "parameters": {
+                        "receiverCNIC": "ReceiverCNIC",
+                        "remittanceID": "RemittanceID"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "confirmRedeemPaymentNonJcBIOCnic": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "NonJazzcashCNICRedeemRetailer",
+                    "organizationIniatorMSISDN": "923072790017",
+                    "organizationIniatorMPIN": "QFObGypDmn4n+5bo1oGJyA==",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "key": "98ae67823eodfj4904jdf34fj045k742"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "initRedeemPaymentNonJcCnicB2C": {
+                    "commandID": "InitTrans_MoneyTransfer(B2C)",
+                    "useCase": "NonJazzcashCNICRedeem",
+                    "organizationIniatorMSISDN": "923072790017",
+                    "organizationIniatorMPIN": "QFObGypDmn4n+5bo1oGJyA==",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "confirmRedeemPaymentCnicB2C": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "NonJazzcashCNICRedeem",
+                    "organizationIniatorMSISDN": "923072790017",
+                    "organizationIniatorMPIN": "QFObGypDmn4n+5bo1oGJyA==",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "key": "98ae67823eodfj4904jdf34fj045k742"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "initMtagPayment": {
+                    "commandID": "InitTrans_MerchantPaymentByCustomer",
+                    "useCase": "mtag",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "channelCode": "1031",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 4,
+                    "receiverIdentifier": "99310967"
+                },
+                "confirmMtagPayment": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "mtag",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "key": "98ae67823eodfj4904jdf34fj045k742"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "initMtagRefund": {
+                    "commandID": "InitTrans_RefundMerchantPayment",
+                    "useCase": "mtag",
+                    "parameters": {
+                        "amount": "Amount",
+                        "originalTransID": "OriginalTID",
+                        "withFee": "WithFee"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "initiator": "923078470017",
+                    "initiatorMPIN": "m/KlEnUN+No=",
+                    "receiverIdentifierType": 4
+                },
+                "confirmMtagRefund": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "mtag",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "amount": "Amount"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "initLoyaltyRefundPayment": {
+                    "commandID": "InitTrans_MerchantPaymentByCustomer",
+                    "useCase": "mtag",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "channelCode": "1031",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 4,
+                    "receiverIdentifier": "99314585"
+                },
+                "confirmLoyaltyRefundPayment": {
+                    "commandID": "ComfirmTransaction",
+                    "useCase": "mtag",
+                    "parameters": {
+                        "transID": "TransID",
+                        "isSuccess": "IsSuccess",
+                        "key": "98ae67823eodfj4904jdf34fj045k742"
+                    },
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "refundMerchantPayment": {
+                    "commandID": "InitTrans_MoneyTransferWithoutConfirm(B2B)",
+                    "useCase": "refundMerchantPayment",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "channelCode": "1030",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 4,
+                    "receiverIdentifier": "99314585"
+                },
+                "refundMerchantPaymentConsumer": {
+                    "commandID": "InitTrans_MerchantPaymentByCustomer",
+                    "useCase": "InitTrans_MerchantPaymentByCustomer",
+                    "parameters": {
+                        "amount": "Amount"
+                    },
+                    "channelCode": "1031",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 4,
+                    "receiverIdentifier": "99314585"
+                },
+                "refundMerchantPaymentLoyaltyRedeem": {
+                    "commandID": "InitTrans_MerchantPaymentByCustomer",
+                    "useCase": "InitTrans_MerchantPaymentByCustomer",
+                    "channelCode": "1031",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 4,
+                    "receiverIdentifier": "99314585"
+                }
+            },
+            "keyOwner": 1
+        },
+        "rFive": {
+            "axiosOptions": {
+                "timeout": 70000
+            },
+            "callerType": 2,
+            "thirdPartyMap": {
+                "consumerApp": {
+                    "name": "consumer",
+                    "channel": "Mobile",
+                    "value": "ibm_consumer_app",
+                    "password": "wYfqdwXjOyWtaoi0+jeDPQ==",
+                    "securityCredential": "dP31WpTjhoo=",
+                    "organizationIniatorType": "14",
+                    "organizationIniatorMSISDN": "MerchantAppSP",
+                    "organizationIniatorMPIN": "f4gQCXtxdP6bvRo9IgymrQ=="
+                },
+                "merchantApp": {
+                    "name": "merchant",
+                    "channel": "Mobile",
+                    "value": "ibm_merchant_app",
+                    "password": "wYfqdwXjOyWtaoi0+jeDPQ==o",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "923046664947",
+                    "organizationIniatorMPIN": "dP31WpTjhoo="
+                },
+                "backoffice": {
+                    "value": "backoffice",
+                    "password": "B1YNY8GylVo",
+                    "channelCode": "1015"
+                },
+                "consumerPortal": {
+                    "value": "ibm_consumer_portal",
+                    "password": "B1YNY8GylVo",
+                    "channelCode": "1015"
+                },
+                "merchantPortal": {
+                    "value": "ibm_merchant_portal",
+                    "password": "B1YNY8GylVo",
+                    "channelCode": "1015"
+                },
+                "easyPaisaApp": {
+                    "name": "easypaisa",
+                    "channel": "Mobile",
+                    "value": "IBM_DIRECT_IBFT",
+                    "password": "VBEuSiPJfZP0PGEhufx7cA==",
+                    "channelCode": "1021",
+                    "securityCredential": "Ypwe77UkKTc=",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "03042350178",
+                    "organizationIniatorMPIN": "Ypwe77UkKTc=",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "ussdDirect": {
+                    "name": "ussdDirect",
+                    "channel": "Mobile",
+                    "value": "IBM_DIRECT_IBFT",
+                    "password": "VBEuSiPJfZP0PGEhufx7cA==",
+                    "channelCode": "1021",
+                    "securityCredential": "Ypwe77UkKTc=",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "03042350178",
+                    "organizationIniatorMPIN": "Ypwe77UkKTc=",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "merchantAppUSSD": {
+                    "name": "merchant",
+                    "channel": "Mobile",
+                    "value": "ibm_merchant_app",
+                    "password": "JHX1cVbopAn0PGEhufx7cA==",
+                    "organizationIniatorType": "14",
+                    "organizationIniatorMSISDN": "BusinessAppSP",
+                    "organizationIniatorMPIN": "6j1IR9J0PlvbllDqSEeTaw=="
+                },
+                "consumerAppKeyboard": {
+                    "name": "consumer",
+                    "channel": "Mobile",
+                    "value": "ibm_consumer_app",
+                    "password": "wYfqdwXjOyWtaoi0+jeDPQ==",
+                    "securityCredential": "dP31WpTjhoo=",
+                    "organizationIniatorType": "14",
+                    "organizationIniatorMSISDN": "MerchantAppSP",
+                    "organizationIniatorMPIN": "f4gQCXtxdP5MrFj7KehyXA=="
+                },
+                "consumerAppFavorite": {
+                    "name": "consumer",
+                    "channel": "Mobile",
+                    "value": "ibm_consumer_app",
+                    "password": "JHX1cVbopAn0PGEhufx7cA==",
+                    "channelCode": "1021",
+                    "securityCredential": "JHX1cVbopAn0PGEhufx7cA==",
+                    "organizationIniatorType": "1",
+                    "organizationIniatorMSISDN": "03071591723",
+                    "organizationIniatorMPIN": "4syxDJvLXiEzkyOmS6fh/Q=="
+                }
+            },
+            "identifierType": 1,
+            "url": "http://cps-rest-service-r5-is.ace:7800/rest/requestmgrr5service/v1/sync",
+            "gToPUrl": "http://cps-rest-service-r1-pre-prod-http-ace.apps.pjcocp.jazzcash.com.pk/rest/requestmgrservice/v1/sync",
+            "commands": {
+                "getLinkedCards": {
+                    "commandID": "GetLinkedCards",
+                    "useCase": "getLinkedCards",
+                    "initiatorIdentifierType": 14,
+                    "receiverIdentifierType": 1
+                },
+                "QRPaymentMasterCard": {
+                    "commandID": "InitTrans_QRIssuingTransaction",
+                    "useCase": "QRPaymentMasterCard",
+                    "initiatorIdentifierType": 1
+                },
+                "customerKyc": {
+                    "commandID": "QueryCustomerKYC",
+                    "useCase": "customerKYC",
+                    "initiatorIdentifierType": 14,
+                    "receiverIdentifierType": 1
+                },
+                "queryCustomerInfo": {
+                    "commandID": "QueryCustomerInfo",
+                    "useCase": "queryCustomerInfo",
+                    "initiatorIdentifierType": 14,
+                    "receiverIdentifierType": 1
+                },
+                "queryIdentityInformation": {
+                    "commandID": "QueryIdentityInformation",
+                    "useCase": "queryIdentityInformation",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1,
+                    "orgMSISDN": "usama",
+                    "orgMPIN": "aAmE5E4G2Y/pktqUAoaL4A=="
+                },
+                "redeemPointsToBalanceConsumer": {
+                    "commandID": "RedeemPointsToBalance",
+                    "useCase": "RedeemPointsToBalance",
+                    "initiatorIdentifierType": 14,
+                    "initiatorIdentifier": "ConsumerAppSP",
+                    "initiatorSecurityCredentials": "X5KyZmugvf8MO1MdkF/abJrM6UOpv0bn6/+KJILxwBk=",
+                    "receiverIdentifierType": 1,
+                    "pointType": "Consumer Loyalty Points"
+                },
+                "adjustOrganizationPointsBySPConsumer": {
+                    "commandID": "AdjustCustomerPoints",
+                    "useCase": "QueryCustomerPoints",
+                    "initiatorIdentifierType": 14,
+                    "initiatorIdentifier": "ConsumerAppSP",
+                    "initiatorSecurityCredentials": "X5KyZmugvf8MO1MdkF/abJrM6UOpv0bn6/+KJILxwBk=",
+                    "receiverIdentifierType": 1,
+                    "pointType": "Consumer Loyalty Points"
+                },
+                "searchTransaction": {
+                    "commandID": "SearchTransaction",
+                    "useCase": "searchTransaction",
+                    "initiatorIdentifierType": 14,
+                    "receiverIdentifierType": 1,
+                    "orgMSISDN": "Momina",
+                    "orgMPIN": "JGib9XUnoZbYQV11jO4txfkI9fKhOD3o72pLbs4x0Yg="
+                },
+                "searchTransactionForMDR": {
+                    "commandID": "SearchTransaction",
+                    "useCase": "searchTransaction",
+                    "initiatorIdentifierType": 14
+                },
+                "queryTransactionStatus": {
+                    "commandID": "QueryTransactionStatus",
+                    "useCase": "queryTransactionStatus",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1,
+                    "orgMSISDN": "923458505731",
+                    "orgMPIN": "f8FOcv9o+oe+QvT7RJni3g=="
+                },
+                "queryIdentityAccumulators": {
+                    "commandID": "QueryIdentityAccumulators",
+                    "useCase": "queryIdentityAccumulators",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1
+                },
+                "queryIdentityLimitUsage": {
+                    "commandID": "QueryIdentityLimitUsage",
+                    "useCase": "queryIdentityLimitUsage",
+                    "initiatorIdentifierType": 1,
+                    "receiverIdentifierType": 1,
+                    "orgMSISDN": "923458505731",
+                    "orgMPIN": "f8FOcv9o+oe+QvT7RJni3g=="
+                },
+                "queryOrganizationInfo": {
+                    "commandID": "QueryOrganizationInfo",
+                    "useCase": "queryOrganizationInfo",
+                    "initiatorIdentifierType": 14,
+                    "receiverIdentifierType": 4
+                },
+                "resetMPINMerchant": {
+                    "commandID": "ResetOrgOperatorPIN",
+                    "useCase": "resetMPIN",
+                    "parameters": {
+                        "FreePIN": "FreePIN"
+                    },
+                    "initiatorIdentifierType": 14,
+                    "receiverIdentifierType": 12
+                },
+                "queryOrgOperatorKYC": {
+                    "commandID": "QueryOrgOperatorKYC",
+                    "useCase": "customerKYC",
+                    "parameters": {
+                        "FreePIN": "FreePIN"
+                    },
+                    "initiatorIdentifierType": 14,
+                    "receiverIdentifierType": 11
+                },
+                "queryOrgOperatorInfo": {
+                    "commandID": "QueryOrgOperatorInfo",
+                    "useCase": "QueryCustomerBriefInfo",
+                    "initiatorIdentifierType": 14,
+                    "receiverIdentifierType": 12,
+                    "receiverIdentifier": 12
+                },
+                "QueryFavoriteRequest": {
+                    "commandID": "QueryFavorite",
+                    "useCase": "ManageFavorite",
+                    "initiatorIdentifier": "ConsumerAppSP",
+                    "initiatorIdentifierMPIN": "6j1IR9J0PlsJ9u0KbQ17KA==",
+                    "initiatorIdentifierType": 14,
+                    "receiverIdentifierType": 1,
+                    "parameters": {
+                        "FavoriteID": "FavoriteID",
+                        "ServiceAlias": "ServiceAlias",
+                        "FavoriteName": "FavoriteName"
+                    }
+                },
+                "ManageFavoriteRequest": {
+                    "commandID": "ManageFavorite",
+                    "useCase": "ManageFavorite",
+                    "initiatorIdentifier": "ConsumerAppSP",
+                    "initiatorIdentifierMPIN": "6j1IR9J0PlsJ9u0KbQ17KA==",
+                    "initiatorIdentifierType": 14,
+                    "receiverIdentifierType": 1,
+                    "parameters": {
+                        "FavoriteID": "FavoriteID",
+                        "ServiceAlias": "ServiceAlias",
+                        "FavoriteName": "FavoriteName"
+                    }
+                }
+            },
+            "keyOwner": 1
+        },
+        "aksa": {
+            "BASE_URL": "https://qrpaybe.jazzcash.com.pk:7070",
+            "MERCHANT": "/api/Account/CheckQRCode",
+            "IPN": "/api/qrtransactionapi/api/",
+            "LOGIN": "/API/Account/Login",
+            "TIMEOUT": 60000,
+            "USERNAME": "qraksa_test@jazzcash.com.pk",
+            "PASSWORD": "(0@dSD9i",
+            "AKSA_UBP_REMAINDER_BASE_URL": "http://10.50.20.209:6002",
+            "AKSA_UBP_REMAINDERS_SUB_END_POINT_URL": "/api/Perform/v1/Sub",
+            "AKSA_UBP_REMAINDERS_USERNAME": "aksa",
+            "AKSA_UBP_REMAINDERS_PASSWORD": "aksa123",
+            "IPNV_2": "https://qrpaybe.jazzcash.com.pk:7070/api/qrtransactionapi/api/v2",
+            "AKSA_GETQR_V1": "https://qrpaybe.jazzcash.com.pk:7070/API/ManageMerchant/GetQrCodeByTypev1"
+        },
+        "fonepay": {
+            "BASE_URL": "http://192.168.202.134:9090",
+            "MERCHANT_INQUIRY": "/FP-Service-Bus/mcqr/v1/merchant/merchantinquiry",
+            "MERCHANT_PAYMENT": "/FP-Service-Bus/mcqr/v1/merchant/merchantpayment",
+            "TIMEOUT": 60000,
+            "BANK_ID": "50122",
+            "USERNAME": "jazzCashlive0001",
+            "PASSWORD": "bujFN!FaV!5r"
+        },
+        "mastercard": {
+            "MessageType": "1200",
+            "TransactionType": "28000",
+            "PosData": "000000100001",
+            "AcquiringCountryCode": "586",
+            "AcquiringInstitutionCode": "158127",
+            "TerminalType": "ITB",
+            "MPINVerification": "1",
+            "Channel": "MOB",
+            "Currency": "PKR",
+            "EpochOffset": 10
+        },
+        "mongodb": {
+            "connectionString": "mongodb://mongodb:27017/paymentAndTransactionDB",
+            "host": "mongodb",
+            "port": 27017,
+            "database": "paymentAndTransactionDB",
+            "requestToPaySchedularCron": "0 0 6 * *"
+        },
+        "IBMDB2": {
+            "username": "jcappdb",
+            "password": "abcd@123",
+            "address": "",
+            "connectionString": "DATABASE=JAZZCASH;HOSTNAME=10.50.20.212;PORT=60000;PROTOCOL=TCPIP;UID=jcappdb;PWD=abcd@123;",
+            "schema": "COMMON",
+            "hostName": "10.50.20.212",
+            "port": 60000,
+            "protocol": "TCPIP",
+            "accountStatementSchema": "STATEMENTS",
+            "poolSize": 100,
+            "poolTimeout": 60
+        },
+        "winston": {
+            "file": {
+                "level": "info",
+                "filename": "./logs/app.log",
+                "handleExceptions": "true",
+                "json": true,
+                "maxsize": 5242880,
+                "maxFiles": 5,
+                "colorize": "false"
+            },
+            "console": {
+                "level": "debug",
+                "handleExceptions": true,
+                "json": false,
+                "colorize": true
+            }
+        },
+        "kafkaBroker": {
+            "brokers": "kafka:9092",
+            "bootstrap_server": "https://kafka-prod-1-kafka-external-bootstrap.es:9094/",
+            "topicName": "jazz-topic",
+            "pollInterval": 100,
+            "consumerGroupID": "test-consumer",
+            "commit-msgs-after": 1,
+            "numMessages": 1,
+            "consumerAutoCommit": true,
+            "consumerConfig": {
+              "debug": "all",
+              "client_id": "kafka-nodejs-console-sample-consumer--dev419",
+              "group_id": "kafka-nodejs-console-sample-group--dev419",
+              "metadata_broker_list": "kafka-prod-1-kafka-bootstrap-es.apps.lhrjcocp.jazzcash.com.pk:443",
+              "security_protocol": "sasl_ssl",
+              "sasl_mechanisms": "SCRAM-SHA-512",
+              "ssl_ca_location": "/project/user-app/dist/util/es-cert.pem",
+              "sasl_username": "m11s-scram",
+              "sasl_password": "uh6vbWqRcVG4syiEAfm4uwXWcK365YZk",
+              "enable_ssl_certificate.verification": false,
+              "enable_auto_commit": true,
+              "broker_version_fallback": "0.10.2.1",
+              "log_connection_close": false,
+              "auto_offset_reset": "smallest"
+          },
+          "producerConfig": {
+              "bootstrap_servers": "kafka-prod-1-kafka-bootstrap-es.apps.lhrjcocp.jazzcash.com.pk:443",
+              "security_protocol": "sasl_ssl",
+              "sasl_mechanisms": "SCRAM-SHA-512",
+              "ssl_ca_location": "/project/user-app/dist/util/es-cert.pem",
+              "sasl_username": "m11s-scram",
+              "sasl_password": "uh6vbWqRcVG4syiEAfm4uwXWcK365YZk",
+              "enable_ssl_certificate_verification": false,
+              "broker_version_fallback": "0.10.0",
+              "log_connection_close": false
+          },
+            "init_topic": "initTopic",
+            "confirm_topic": "confirmTopic",
+            "update_email_topic": "updateEmailTopic",
+            "confirm_bill_payment": "confirmBillPayment",
+            "App_Consumer_Audit_Log": "App_Consumer_Audit_Log",
+            "App_Merchant_Audit_Log": "App_Merchant_Audit_Log",
+            "App_Admin_Audit_Log": "App_Admin_Audit_Log",
+            "Account_Upgrade_Success": "AccountManagement_AccountUpgrade_Successful",
+            "Account_Upgrade_Nadra_Failure": "AccountManagement_AccountUpgrade_Nadra_Failure",
+            "Account_Upgrade_CPS_Failure": "AccountManagement_AccountUpgrade_CPS_Failure",
+            "DisplayQR_Success": "AccountManagement_DisplayQR_Success",
+            "DisplayQR_Failure": "AccountManagement_DisplayQR_Failure",
+            "On_Boarding_Success": "Merchant_Onboarding_Success",
+            "Consumer_Wallet_Success": "Consumer_Wallet_Success",
+            "Consumer_Fallback_Failure": "Consumer_Fallback_Failure",
+            "Consumer_Onboarding": "Consumer_Onboarding_Success",
+            "Device_Registration": "Device_Registration",
+            "topics": {
+                "Notification_Push": "NOTIFICATION_PUSH",
+                "Notification_Sms": "NOTIFICATION_SMS",
+                "Notification_Email": "NOTIFICATION_EMAIL"
+            }
+          },
+        "ESBMockURLs": {
+            "InitTrans_CustomerDeposit": "http://host.docker.internal:4011/rest/requestmgrservice/v1/customer/deposit"
+        },
+        "MasterDataMockURLs": {
+            "SignUpReward": "http://host.docker.internal:4010/rest/api/v1/masterDataAPI/configurations/signUpReward"
+        },
+        "KpKPscURL": {
+            "kpkpscConsumerurl": "http://kpkpsc-server-http-ace.apps.pjcocp.jazzcash.com.pk/kpkpscservice/v1/GenerateConsumerNumber"
+        },
+        "mpinKey": {
+            "value": "98ae67823eodfj4904jdf34fj045k742"
+        },
+        "iv": {
+            "value": "jazzcashtestvect"
+        },
+        "tripleDESKey": {
+            "value": "7493jfl;d832kd73$5%&@3!2"
+        },
+        "externalApiKeyData": {
+            "key": "qyozolunvk8ruetfumdgokewdgzemjqx",
+            "plainText": "pilaster-carful-getup-wildlife",
+            "iv": "easypaisajazzvec"
+        },
+        "cache": {
+            "server": "datagrid",
+            "port": 11222,
+            "cacheName": "jazzcash",
+            "url": "http://datagrid-datagrid-prod.apps.pjcocp.jazzcash.com.pk/rest/v2/caches/",
+            "responseCodeCache": "ResponseCodeCache"
+        },
+        "cache_New": {
+            "server": "datagrid",
+            "port": 11222,
+            "cacheName": "jazzcash",
+            "responseCodeCache": "ResponseCodeCache_New"
+        },
+        "cacheSendMoney": {
+            "server": "datagrid",
+            "port": 11222,
+            "cacheName": "paymentAndTransaction"
+        },
+        "cacheTransactionHistory": {
+            "server": "datagrid",
+            "port": 11222,
+            "cacheName": "transactionHistory"
+        },
+        "cacheTransactionArray": {
+            "size": 20
+        },
+        "cacheSignUpReward": {
+            "server": "datagrid",
+            "port": 11222,
+            "cacheName": "ConfigurationCache",
+            "consumerKey": "consumerSignUpReward"
+        },
+        "cacheFetchPriority": {
+            "server": "datagrid",
+            "port": 11222,
+            "cacheName": "ConfigurationCache",
+            "consumerKey": "raastSchemeList"
+        },
+        "cacheIBFTransaction": {
+            "server": "datagrid",
+            "port": 11222,
+            "cacheName": "IBFTTransactionCache",
+            "expiry": "120"
+        },
+        "cacheUSSDPayment": {
+            "server": "datagrid",
+            "port": 11222,
+            "cacheName": "USSDPaymentCache",
+            "expiry": "2m"
+        },
+        "cacheQRPayment": {
+            "server": "datagrid",
+            "port": 11222,
+            "cacheName": "cacheQRPaymentCache",
+            "expiry": "31536000"
+        },
+        "mongoColletion": {
+            "sendMoney": "sendMoney",
+            "requestMoney": "requestMoney",
+            "payBill": "payBill"
+        },
+        "cacheMtagAmount": {
+            "server": "datagrid",
+            "port": 11222,
+            "cacheName": "mtagAmountCache",
+            "expiry": "600"
+        },
+        "cacheTRXHistoryRevamped": {
+            "server": "datagrid",
+            "port": 11222,
+            "cacheName": "transactionHistoryDB2",
+            "cacheExpiry": "3600"
+        },
+        "responseCode": {
+            "setLanguageFromHeader": false,
+            "default": {
+                "code": "G-01",
+                "message": "Oops! We are facing some temporary issue with your request. "
+            },
+            "useCases": {
+                "C2C": {
+                    "cps": "SM-C2C-CPS-",
+                    "init": "SM-C2C-T35",
+                    "confirm": "SM-C2C-T36",
+                    "invalid": "SM-C2C-T34",
+                    "timeout": "SM-C2C-T03",
+                    "init_success": "SM-C2C-T38"
+                },
+                "CNIC": {
+                    "cps": "SM-CNIC-CPS-",
+                    "init": "SM-CNIC-T35",
+                    "confirm": "SM-CNIC-T36",
+                    "invalid": "SM-CNIC-T34",
+                    "timeout": "SM-CNIC-T03",
+                    "invalidMPIN": "SM-CNIC-T38"
+                },
+                "BA": {
+                    "cps": "SM-BA-CPS-",
+                    "init": "SM-BA-T35",
+                    "confirm": "SM-BA-T36",
+                    "invalid": "SM-BA-T34",
+                    "timeout": "SM-BA-T03"
+                },
+                "QRPayment": {
+                    "cps": "QR-PAY-CPS-",
+                    "header": "QR-PAY-T01",
+                    "invalid": "QR-PAY-T02",
+                    "timeout": "QR-PAY-T03",
+                    "init": "QR-PAY-T34",
+                    "confirm": "QR-PAY-T35"
+                },
+                "QRFonepay": {
+                    "cps": "QR-FP-CPS-",
+                    "header": "QR-FP-T01",
+                    "invalid": "QR-FP-T02",
+                    "timeout": "QR-FP-T03",
+                    "success": "QR-FP-T34",
+                    "helpline": "QR-FP-T35",
+                    "refunded": "QR-FP-T36"
+                },
+                "QRMastercard": {
+                    "cps": "QR-MC-CPS-",
+                    "header": "QR-MC-T01",
+                    "invalid": "QR-MC-T02",
+                    "timeout": "QR-MC-T03",
+                    "success": "QR-MC-T34",
+                    "deviceError": "QR-MC-T35"
+                },
+                "QRRefund": {
+                    "cps": "QR-PR-CPS-",
+                    "header": "QR-PR-T01",
+                    "invalid": "QR-PR-T02",
+                    "timeout": "QR-PR-T03",
+                    "init": "QR-PR-T34",
+                    "confirm": "QR-PR-T35",
+                    "notFound": "QR-PR-T36"
+                },
+                "MRPayment": {
+                    "cps": "MR-PAY-CPS-",
+                    "header": "MR-PAY-T01",
+                    "invalid": "MR-PAY-T02",
+                    "timeout": "MR-PAY-T03",
+                    "init": "MR-PAY-T34",
+                    "confirm": "MR-PAY-T35"
+                },
+                "QRHistory": {
+                    "header": "QR-PH-T01",
+                    "success": "QR-PH-T02",
+                    "error": "QR-PH-T03"
+                },
+                "MerchantDetails": {
+                    "authentication": "QR-MD-AKSA-T01",
+                    "errorAKSA": "QR-MD-AKSA-T02",
+                    "header": "QR-MD-AKSA-T03",
+                    "success": "QR-MD-AKSA-T04",
+                    "invalid": "QR-MD-AKSA-T05",
+                    "notFound": "QR-MD-AKSA-T06",
+                    "errorRaast": "QR-MD-AKSA-T07",
+                    "isClosed": "QR-MD-AKSA-T09"
+                },
+                "PB_QR": {
+                    "cps": "PT-PB-CPS-",
+                    "init": "PT-PB-T35",
+                    "confirm": "PT-PB-T36",
+                    "invalid": "PT-PB-T34",
+                    "timeout": "PT-PB-T03"
+                },
+                "DN": {
+                    "cps": "PT-DN-CPS-",
+                    "init": "PT-DN-T35",
+                    "confirm": "PT-DN-T36",
+                    "invalid": "PT-DN-T34",
+                    "timeout": "PT-DN-T03"
+                },
+                "B2C": {
+                    "cps": "SM-B2C-CPS-",
+                    "init": "SM-B2C-T35",
+                    "confirm": "SM-B2C-T36",
+                    "invalid": "SM-B2C-T34",
+                    "timeout": "SM-B2C-T03"
+                },
+                "B2B": {
+                    "cps": "SM-B2B-CPS-",
+                    "init": "SM-B2B-T35",
+                    "confirm": "SM-B2B-T36",
+                    "invalid": "SM-B2B-T34",
+                    "timeout": "SM-B2B-T03"
+                },
+                "requestMoney": {
+                    "cps": "PT-RM-CPS-",
+                    "init": "PT-RM-T35",
+                    "confirm": "PT-RM-T36",
+                    "invalid": "PT-RM-T34",
+                    "timeout": "PT-RM-T03"
+                },
+                "limits": {
+                    "cps": "AM-AL-CPS-",
+                    "success": "AM-AL-T35",
+                    "invalid": "AM-AL-T34",
+                    "esb": "AM-AL-T02",
+                    "internal": "AM-AL-T01"
+                },
+                "request2Pay": {
+                    "cps": "MR-PAY-CPS-",
+                    "header": "PT-RTP-T02",
+                    "invalid": "PT-RTP-T01",
+                    "timeout": "PT-RTP-T03",
+                    "success": "PT-RTP-T04"
+                },
+                "transactionHistory": {
+                    "header": "PT-TRH-T02",
+                    "invalid": "PT-TRH-T01",
+                    "timeout": "PT-TRH-T03",
+                    "success": "PT-TRH-T04",
+                    "updateFunctionFail": "PT-TRH-T05",
+                    "notFoundInMongo": "PT-TRH-T06",
+                    "failInModifying": "PT-TRH-T07",
+                    "failToUpdateInMongo": "PT-TRH-T08",
+                    "notFoundInCache": "PT-TRH-T09",
+                    "updateSuccess": "PT-TRH-T10"
+                },
+                "easyPaisaIBFT": {
+                    "success": "PT-IFT-T01",
+                    "invalid": "PT-IFT-T62",
+                    "transactionError": "PT-IFT-T02",
+                    "blocked": "PT-IFT-T03",
+                    "internal": "PT-IFT-T41",
+                    "userNotExist": "PT-IFT-T04",
+                    "blockedOrInactive": "PT-IFT-T06",
+                    "limitsBreached": "PT-IFT-T07",
+                    "imdNotFound": "PT-IFT-T63",
+                    "senderTransactionIDNotFound": "PT-IFT-T64",
+                    "transactionIdDuplicated": "PT-IFT-T65",
+                    "authenticationError": "PT-IFT-T61",
+                    "mismatchID": "PT-IFT-T56",
+                    "timeOutOrError": "PT-IFT-T55",
+                    "transactionNotFound": "PT-IFT-T51"
+                },
+                "ussdPayment": {
+                    "successTitleFetch": "PT-USSD-T01",
+                    "successTransfer": "PT-USSD-T02",
+                    "failure": "PT-USSD-T03"
+                },
+                "cancelInitTransaction": {
+                    "success": "CA-INIT-T01",
+                    "failure": "CA-INIT-T02"
+                },
+                "cash2good": {
+                    "failed_to_fetch": "C2G-T01",
+                    "successfully_fetched": "C2G-T02",
+                    "transactionHistory_success": "C2G-T03"
+                },
+                "SendMoneyCashToGood": {
+                    "cps": "SM-C2G-CPS-",
+                    "timeout": "SM-C2G-T03",
+                    "error": "SM-C2G-T01",
+                    "errorNotJcUser": "SM-C2G-T02",
+                    "merchantPaymentInitSuccess": "SM-C2G-T36",
+                    "merchantPaymentConfirmSuccess": "SM-C2G-T48",
+                    "b2cConfirm": "SM-C2G-T36",
+                    "header": "SM-CB-T01",
+                    "categoryError": "SM-C2G-T50",
+                    "categoryNotFound": "SM-C2G-T51"
+                },
+                "checkMayaPayment": {
+                    "cps": "SM-C2G-CPS-",
+                    "invalid_request": "PT-MAYA-T02",
+                    "successfully_fetched": "PT-MAYA-T01",
+                    "failed_to_fetch": "PT-MAYA-T03"
+                },
+                "mayaPayment": {
+                    "cps": "SM-C2G-CPS-",
+                    "invalid_request": "PT-MAYA-T02",
+                    "init_success": "PT-MAYA-T11",
+                    "failed_to_fetch": "PT-MAYA-T03",
+                    "payment_already_exists": "PT-MAYA-T12",
+                    "confirm_success": "PT-MAYA-T21",
+                    "confirm_failed": "PT-MAYA-T22"
+                },
+                "barcodeScan": {
+                    "consumerOrIdIssue": "PB-BS-T01"
+                },
+                "NonJcRedeemPaymentList": {
+                    "error": "AM-CMP-T05"
+                },
+                "NonJcRedeemPayment": {
+                    "cps": "SM-C2C-CPS-",
+                    "timeout": "SM-C2C-T03",
+                    "notFound": "AM-REG-T63",
+                    "error": "AM-CMP-T05",
+                    "b2cConfirm": "SM-B2C-T36"
+                },
+                "redeemNonJcPaymentBVS": {
+                    "notFound": "AM-REG-T63",
+                    "error": "AM-CMP-T05"
+                },
+                "gToPCnic": {
+                    "cpsIssue": "PT-GTOP-CPS-",
+                    "invalidParams": "PT-GTOP-T01",
+                    "generalError": "PT-GTOP-T02",
+                    "gToPSuccess": "PT-GTOP-T03",
+                    "timeout": "PT-GTOP-T04",
+                    "insufficientBalance": "PT-GTOP-T05"
+                },
+                "raast": {
+                    "isMerchant": "SM-RAAST-T01",
+                    "noAliasC2c": "SM-RAAST-T02",
+                    "noAliasjc": "SM-RAAST-T03",
+                    "lowBalance": "CPS-2009"
+                },
+                "mTag": {
+                    "invalidParams": "PT-MTAG-T01",
+                    "MTagSuccess": "PT-MTAG-T02",
+                    "MTagFailure": "PT-MTAG-T03",
+                    "cpsIssue": "PT-MTAG-T04",
+                    "invalidInput": "PT-MTAG-T05",
+                    "invalidCnicInput": "PT-MTAG-T06",
+                    "lowBalance": "PT-MTAG-T07",
+                    "token": "PT-MTAG-T08",
+                    "timeout": "PT-MTAG-T09",
+                    "merchantPaymentInitSuccess": "PT-MTAG-T10"
+                },
+                "refundMerchantPayment": {
+                    "cps": "WLM-DW-CPS-D",
+                    "initRefundTransFail": "WLM-DW-D55",
+                    "confirmRefundTransFail": "WLM-DW-D56",
+                    "confirmRefundTransSuccess": "WLM-DW-D57",
+                    "timeout": "PS-GO-T20"
+                },
+                "loyaltyRedeemLoad": {
+                    "invalidHeader": "GSM-LCC-T01",
+                    "invalidBody": "GSM-LCC-T02",
+                    "success": "GSM-LCC-T03",
+                    "failure": "GSM-LCC-T04",
+                    "cpsFailure": "GSM-LCC-T05",
+                    "redeemFailure": "GSM-LCC-T06",
+                    "adjustPointsFailure": "GSM-LCC-T07",
+                    "refundFailure": "GSM-LCC-T08"
+                },
+                "registration": {
+                    "cps": "AM-REG-CPS-",
+                    "regReqAlreadyParked": "AM-REG-T43",
+                    "internalException": "AM-REG-T62",
+                    "cpsFailure": "AM-REG-T46"
+                },
+                "contactIntegration": {
+                    "success": "AM-CI-T01",
+                    "invalid": "AM-CI-T02",
+                    "success_singleContact": "AM-CI-T03",
+                    "invalid_singleContact": "AM-CI-T04",
+                    "cps": "AM-CI-CPS-"
+                },
+                "changeMPIN": {
+                    "success": "AM-CMP-T01",
+                    "invalid": "AM-CMP-T02",
+                    "data_not_found": "AM-CMP-T04",
+                    "device_unauthentic": "AM-CMP-T03",
+                    "merchant_only": "AM-CMP-T38",
+                    "cps": "AM-CMP-CPS-"
+                },
+                "generateOTPForMPIN": {
+                    "success": "AM-RMP-T02",
+                    "invalid": "AM-RMP-T07",
+                    "data_not_found": "AM-RMP-T09",
+                    "device_unauthentic": "AM-RMP-T08"
+                },
+                "verifyOTPForMPIN": {
+                    "success": "AM-RMP-T01",
+                    "invalid": "AM-RMP-T06",
+                    "data_not_found": "AM-RMP-T09",
+                    "device_unauthentic": "AM-RMP-T08"
+                },
+                "resetMPIN": {
+                    "success": "AM-RMP-T04",
+                    "invalid": "AM-RMP-T05",
+                    "data_not_found": "AM-RMP-T09",
+                    "device_unauthentic": "AM-RMP-T08",
+                    "cps": "AM-RMP-CPS-",
+                    "cnic_not_verified": "AM-RMP-T43",
+                    "dob_not_verified": "AM-RMP-T48",
+                    "query_kyc_success": "AM-RMP-T44",
+                    "query_kyc_invalid": "AM-RMP-T45",
+                    "verify_kyc_success": "AM-RMP-T46",
+                    "verify_kyc_invalid": "AM-RMP-T47",
+                    "kyc_exhausted": "AM-RMP-T49"
+                },
+                "profile": {
+                    "cps": "AM-PR-CPS-",
+                    "success_profile": "AM-PR-T36",
+                    "success_email": "AM-PR-T37",
+                    "success_image_upload": "AM-PR-T38",
+                    "fail_profile": "AM-PR-T35",
+                    "invalid": "AM-PR-T34",
+                    "esb": "AM-PR-T02",
+                    "internal": "AM-PR-T01",
+                    "imageNotExist": "AM-PR-T38",
+                    "lastNameUpdateSuccess": "AM-PR-T39",
+                    "cnicUpdate": "AM-CE-T42",
+                    "cnicUpdateFailed": "AM-PR-T41",
+                    "nickNameUpdatedSuccess": "AM-PR-T40"
+                },
+                "limits": {
+                    "success": "AM-AL-T35",
+                    "cps": "AM-AL-CPS-",
+                    "invalid": "AM-AL-T34",
+                    "esb": "AM-AL-T02",
+                    "internal": "AM-AL-T01"
+                },
+                "favouritList": {
+                    "cps": "AM-FL-CPS-",
+                    "success": "AM-FL-T35",
+                    "delete": "AM-FL-T36",
+                    "invalid": "AM-FL-T34",
+                    "esb": "AM-FL-T02",
+                    "internal": "AM-FL-T01",
+                    "error": "AM-FL-T39",
+                    "notFound": "AM-FL-T38",
+                    "billNotFound": "AM-FL-T40",
+                    "empty": "AM-FL-T36"
+                },
+                "balance": {
+                    "cps": "AM-AB-CPS-",
+                    "success": "AM-AB-T35",
+                    "invalid": "AM-AB-T34",
+                    "esb": "AM-AB-T02",
+                    "internal": "AM-AB-T01"
+                },
+                "accountUpgrade": {
+                    "cps": "AM-AU-CPS-",
+                    "success": "AM-AU-T35",
+                    "invalid": "AM-AU-T34",
+                    "esb": "AM-AU-T32",
+                    "internal": "AM-AU-T31",
+                    "nadraFail": "AM-AU-T36",
+                    "nadraVerificationFail": "AM-AU-T37",
+                    "nadraFingerprintFail": "AM-AU-T39",
+                    "bvsExhausted": "AM-AU-T40",
+                    "processingFailed": "AM-AU-T38",
+                    "trustLevelAlreadyUpgraded": "AM-AU-T41"
+                },
+                "ussdRegistration": {
+                    "cps": "AM-REG-CPS-",
+                    "success": "AM-REG-T36",
+                    "invalid": "AM-REG-T66",
+                    "esb": "AM-REG-T83",
+                    "internal": "AM-REG-T83",
+                    "smsOtpFailure": "AM-REG-T52",
+                    "emailOtpFailure": "AM-REG-T58",
+                    "generateOtpFailure": "AM-REG-T59",
+                    "otpAttemptsExhausted": "AM-REG-T70",
+                    "identityVerificationRequired": "AM-REG-T77",
+                    "emailVerificationRequired": "AM-REG-T78",
+                    "smsOtpVerified": "AM-REG-T79",
+                    "emailOtpVerified": "AM-REG-T80",
+                    "kvcAndEmailNotExist": "AM-REG-T81",
+                    "internalException": "AM-REG-T62",
+                    "deviceIDAndTokenError": "AM-REG-T84",
+                    "kycAnswerFailure": "AM-REG-T55",
+                    "kycExhausted": "AM-REG-T71",
+                    "accountExists": "AM-REG-USSD-T20",
+                    "crmError": "AM-REG-USSD-T21",
+                    "bvNotVerified": "AM-REG-USSD-T22",
+                    "msisdnNotActive": "AM-REG-USSD-T23"
+                },
+                "ussdMerchantRegistration": {
+                    "cps": "AM-MREG-CPS-",
+                    "success": "AM-MREG-T37",
+                    "invalid": "AM-MREG-T59",
+                    "internal": "AM-MREG-T70",
+                    "smsOtpFailure": "AM-MREG-T47",
+                    "generateOtpFailure": "AM-MREG-T53",
+                    "otpAttemptsExhausted": "AM-MREG-T63",
+                    "smsOtpVerified": "AM-REG-T79",
+                    "emailOtpVerified": "AM-REG-T80",
+                    "internalException": "AM-MREG-T56"
+                },
+                "deviceRegistraton": {
+                    "success": "AM-REG-T37",
+                    "alreadyRegistered": "AM-REG-T88",
+                    "invalid": "AM-REG-T66",
+                    "internal": "AM-REG-T83",
+                    "smsOtpFailure": "AM-REG-T52",
+                    "generateOtpFailure": "AM-REG-T59",
+                    "otpAttemptsExhausted": "AM-REG-T70",
+                    "smsOtpVerified": "AM-REG-T79",
+                    "internalException": "AM-REG-T62",
+                    "differentDevicesExhausted": "AM-REG-T85",
+                    "otpOnDeviceExhausted": "AM-REG-T86",
+                    "deviceRegistrationFail": "AM-REG-T87",
+                    "otpGenerated": "AM-REG-T40"
+                },
+                "deviceRegistratonMerchant": {
+                    "success": "AM-MREG-T38",
+                    "alreadyRegistered": "AM-MREG-T71",
+                    "invalid": "AM-MREG-T59",
+                    "internal": "AM-MREG-T70",
+                    "smsOtpFailure": "AM-MREG-T47",
+                    "generateOtpFailure": "AM-MREG-T53",
+                    "otpAttemptsExhausted": "AM-MREG-T63",
+                    "smsOtpVerified": "AM-MREG-T41",
+                    "internalException": "AM-MREG-T56",
+                    "differentDevicesExhausted": "AM-MREG-T64",
+                    "otpOnDeviceExhausted": "AM-MREG-T82",
+                    "deviceRegistrationFail": "AM-MREG-T68",
+                    "otpGenerated": "AM-MREG-T41"
+                },
+                "fallbackRegistration": {
+                    "success": "AM-REG-T42",
+                    "invalid": "AM-REG-T66",
+                    "internal": "AM-REG-T83",
+                    "internalException": "AM-REG-T62",
+                    "fallbackAttemptExhausted": "AM-REG-T93"
+                },
+                "login": {
+                    "cps": "AM-LO-CPS-",
+                    "esb": "AM-LO-T02",
+                    "internal": "AM-LO-T01",
+                    "timeout": "AM-LO-T03",
+                    "invalid": "AM-LO-T34",
+                    "success": "AM-LO-T37",
+                    "registartationRedirect": "AM-LO-T39",
+                    "identityNameError": "AM-LO-T40",
+                    "mpinRedirect": "AM-LO-T41",
+                    "unauthorized": "AM-LO-T42",
+                    "cnicNotMatched": "AM-LO-T43",
+                    "checkMsisdnAndCnicFailure": "AM-LO-T44",
+                    "merchantStatusPending": "AM-LO-T46",
+                    "stc": "AM-LO-T47",
+                    "missMatchingATWithXC": "AM-LO-T48",
+                    "invalidMpin": "AM-LO-T49",
+                    "notMerchant": "AM-LO-T50",
+                    "deviceUpdateFail": "AM-LO-T51",
+                    "registrationRedirect": "AM-LO-T52",
+                    "notActive": "AM-LO-T53",
+                    "dormant": "AM-LO-T54",
+                    "invalidMpinCode": "AM-LO-T49-MPIN"
+                },
+                "displayQR": {
+                    "authentication": "QR-DQR-AKSA-T01",
+                    "error": "QR-DQR-AKSA-T02",
+                    "header": "QR-DQR-AKSA-T03",
+                    "success": "QR-DQR-AKSA-T04",
+                    "internal": "QR-DQR-AKSA-T05",
+                    "invalidBody": "QR-DQR-AKSA-T06"
+                },
+                "notifiersQR": {
+                    "header": "QR-QRN-T01",
+                    "getSuccess": "QR-QRN-T02",
+                    "getError": "QR-QRN-T03",
+                    "updateSuccess": "QR-QRN-T04",
+                    "updateError": "QR-QRN-T05",
+                    "authentication": "QR-QRN-AKSA-T06",
+                    "otherAksaError": "QR-QRN-AKSA-T07",
+                    "body": "QR-QRN-T08"
+                },
+                "merchantOnboarding": {
+                    "cps": "AM-MREG-CPS-",
+                    "cpsFailure": "AM-MREG-T44",
+                    "personalInfoSuccess": "AM-MREG-T76",
+                    "deviceNotVerified": "AM-MREG-T55",
+                    "cnicInUse": "AM-MREG-T65",
+                    "UnexpectedError": "AM-MREG-T70",
+                    "failGetProfile": "AM-MREG-T77",
+                    "bvsExhausted": "AM-MREG-T78",
+                    "nadaraFail": "AM-MREG-T46",
+                    "nadraVerificationFailed": "AM-MREG-T48",
+                    "updateProfileFailed": "AM-MREG-T54",
+                    "bvsSucces": "AM-MREG-T79",
+                    "businessRegister": "AM-MREG-T80",
+                    "stcFail": "AM-MREG-T81",
+                    "cnicExhausted": "AM-MREG-T82",
+                    "nadraVerficationFail": "AM-MREG-T48",
+                    "tryManual": "AM-MREG-T83",
+                    "attemptExhausted": "AM-MREG-T84",
+                    "questionsRetrievedSuccess": "AM-MREG-T85",
+                    "questionsRetrievedFail": "AM-MREG-T86",
+                    "customerVerified": "AM-MREG-T87",
+                    "correctAnswers": "AM-MREG-T88",
+                    "invalidAnswers": "AM-MREG-T89",
+                    "optVerfiy": "AM-MREG-T90",
+                    "emailOtpVerified": "AM-MREG-T91",
+                    "emailOtpFailure": "AM-MREG-T92",
+                    "manualSucces": "AM-MREG-T40",
+                    "discrepancySucces": "AM-MREG-T98",
+                    "locationUpdated": "AM-MREG-T11"
+                },
+                "minorAccount": {
+                    "accountCreatedsuccess": "AM-PS-T10",
+                    "accountExists": "AM-PS-T23",
+                    "minorAccountsLimitNotExceed": "AM-PS-T01",
+                    "minorAccountsLimitExceed": "AM-PS-T60",
+                    "getGuardianMsisdnSucess": "AM-PS-T02",
+                    "getGuardianMsisdnFailure": "AM-PS-T65",
+                    "getMinorMsisdnListSuccess": "AM-PS-T20",
+                    "getMinorMsisdnListFailure": "AM-PS-T21",
+                    "accountUpdatedSuccess": "AM-PS-T30",
+                    "accountUpgradedSuccess": "AM-PS-T50",
+                    "guardianMsisdnUpdatedSuccess": "AM-PS-T40",
+                    "guardianMsisdnUpdatedFailure": "AM-PS-T22",
+                    "invalidParams": "AM-PS-T422",
+                    "error": "AM-PS-T500",
+                    "accountUpdatedFailure": "AM-PS-T24",
+                    "cnicNotFound": "AM-PS-T54",
+                    "wrongCnicIssueDate": "AM-PS-T55",
+                    "wrongCnicExpiryDate": "AM-PS-T56",
+                    "migrationError": "AM-PS-T57",
+                    "migrationSuccess": "AM-PS-T58",
+                    "guardianStatusNotActive": "AM-PS-T25",
+                    "guardianAccountBlacklisted": "AM-PS-T26",
+                    "guardianTrustLevelNotAllowed": "AM-PS-T27",
+                    "NadraCheckError": "AM-PS-T28",
+                    "minorAgeLimitExceed": "AM-PS-T29",
+                    "accountCreatedFailure": "AM-PS-T31",
+                    "minorAccountAlreadyExists": "AM-PS-T32",
+                    "minorInvalidBform": "AM-PS-T33",
+                    "minorAccountFailure": "AM-PS-T34",
+                    "minorAccountRegisterSuccess": "AM-PS-T35",
+                    "minorAccountExistsAgainstCnic": "AM-PS-T36"
+                },
+                "merchantCnicExpiry": {
+                    "default": "AM-MCE-T08",
+                    "cpsFailure": "AM-MCE-T03",
+                    "successQuery": "AM-MCE-T12",
+                    "validationError": "AM-MCE-T10",
+                    "nadraIncorrectDate": "AM-MCE-T04",
+                    "nadraDefault": "AM-MCE-T09",
+                    "updateSuccess": "AM-MCE-T01",
+                    "nadraVerificationLimit": "AM-MCE-T06",
+                    "updateNadra": "AM-MCE-T07",
+                    "cpsDateExpired": "AM-MCE-T13",
+                    "hitLimitExceeded": "AM-MCE-T14"
+                },
+                "merchantCnicExpiryUSSD": {
+                    "default": "AM-MCE-T08",
+                    "cpsSuccess": "AM-MCE-T15",
+                    "cpsQueryIdentyInfoKYCSuccess": "AM-MCE-T16",
+                    "dataNotFound": "AM-MCE-T17"
+                },
+                "getVelocity": {
+                    "success": "AM-GV-SC-T00",
+                    "exhausted": "AM-GV-EX-T01",
+                    "internal": "AM-GV-IN-T02"
+                },
+                "raast": {
+                    "GENERAL": "AM-RPS-T500",
+                    "SUCCESS": "AM-RPS-T200",
+                    "INVALID_HEADERS_BODY": "AM-RPS-T001",
+                    "ALREADY_LINKED_TO_OTHER": "AM-RPS-T002",
+                    "RAAST_API_FAILED": "AM-RPS-T003",
+                    "ALREADY_LINKED_TO_JC": "AM-RPS-T004",
+                    "DB_INSERTION_FAILED": "AM-RPS-T005",
+                    "CUST_NOT_FOUND_DB": "AM-RPS-T006",
+                    "CUST_NOT_FOUND_RAAST": "AM-RPS-T007",
+                    "CPS_FAILURE": "AM-RPS-T008",
+                    "MISSING_PARAM": "AM-RPS-T009"
+                },
+                "nadraCnicExpiry": {
+                    "default": "AM-MCE-T08",
+                    "cnicExpired": "AM-MCE-T18",
+                    "cnicNotExpired": "AM-MCE-T19",
+                    "validationError": "AM-MCE-T10",
+                    "nadraDefault": "AM-MCE-T09"
+                },
+                "verifyJCUser": {
+                    "default": "AM-MCE-T08",
+                    "cpsQueryIdentyInfoKYCSuccess": "AM-MCE-T16",
+                    "cpsQueryIdentyInfoKYCFailur": "AM-MCE-T17"
+                },
+                "profanityList": {
+                    "success": "AM-PL-T01"
+                },
+                "beneficiary": {
+                    "beneficiaryExists": "AM-BF-T1",
+                    "beneficiaryCreatedSuccess": "AM-BF-T2",
+                    "beneficiaryEmpty": "AM-BF-T3",
+                    "beneficiaryGetSuccess": "AM-BF-T4",
+                    "invalidParams": "AM-BF-T5",
+                    "error": "AM-BF-T6",
+                    "beneficiaryUpdatedSuccess": "AM-BF-T7",
+                    "beneficiaryDeletedSuccess": "AM-BF-T8"
+                },
+                "favorite": {
+                    "beneficiaryExists": "AM-FA-T1",
+                    "beneficiaryCreatedSuccess": "AM-FA-T2",
+                    "beneficiaryEmpty": "AM-FA-T3",
+                    "beneficiaryGetSuccess": "AM-FA-T4",
+                    "invalidParams": "AM-FA-T5",
+                    "error": "AM-FA-T6",
+                    "beneficiaryUpdatedSuccess": "AM-FA-T7",
+                    "beneficiaryDeletedSuccess": "AM-FA-T8",
+                    "unableToHanlde": "AM-FA-T9"
+                },
+                "bundleSubscription": {
+                    "telenorBundle": {
+                        "invalidToken": "GSM-MB-T300",
+                        "AssetStatus": "GSM-MB-T316"
+                    },
+                    "zongBundle": {
+                        "zongErrorResponseCode": {
+                            "1001": "GSM-MB-Z301",
+                            "1002": "GSM-MB-Z302",
+                            "1099": "GSM-MB-Z303",
+                            "9999": "GSM-MB-Z304",
+                            "20315": "GSM-MB-Z305"
+                        }
+                    }
+                },
+                "p2mRefund": {
+                    "internal": "QR-MR-T01",
+                    "refundFailure": "QR-MR-T02",
+                    "success": "QR-MR-T03",
+                    "invalidHeader": "QR-MR-T04",
+                    "invalidBody": "QR-MR-T05",
+                    "trxAlreadyReversed": "QR-MR-T06"
+                }
+            },
+            "transactionType": {
+                "c2C": "C2C",
+                "bank": "BA",
+                "CNIC": "CNIC",
+                "b2c": "B2C",
+                "b2b": "B2B"
+            },
+            "confirmUseCases": {
+                "c2C": "RequestMoney(C2",
+                "bank": "IBFT",
+                "CNIC": "CNICPayment",
+                "b2c": "RequestMoney",
+                "b2b": "RequestMoney"
+            },
+            "raastP2M" : {
+                "error" : "QR-RAAST-001"
+            }
+        },
+        "externalServices": {
+            "partnerAPI": {
+                "serviceURL": "http://partner-services-management-microservice:3000/rest/api/v1"
+            },
+            "masterDataAPI": {
+                "responseCodeURL": "http://masterdata-microservice:3000/rest/api/v1/masterdata/responseCodes",
+                "qrRatingMinAmount": "http://masterdata-microservice:3000/rest/api/v1/masterdata/configuration?key=QR_RATINGS",
+                "getMerchantLogo": "http://masterdata-microservice:3000/rest/api/v1/masterfile/files/get?fileURL=",
+                "responseCodeURL_New": "http://masterdata-microservice:3000/rest/api/v1/masterdata/responseCodes_New",
+                "getRaastBanks": "http://masterdata-microservice:3000/rest/api/v1/masterdata/bankName",
+                "getConfigByType": "http://masterdata-microservice:3000/rest/api/v1/masterdata",
+                "raastSchemes": "http://masterdata-microservice:3000/rest/api/v1/masterdata/raast/scheme"
+            },
+            "accountManagementAPI": {
+                "favListURL": "http://account-management-microservice:3000/utilitybillconfirmkafka",
+                "accountLimits": "http://account-management-microservice:3000/rest/api/v1/account/limits",
+                "qrRatingAPI": "http://account-management-microservice:3000/rest/api/v1/account/profile/rating",
+                "createOtherProfile": "http://account-management-microservice:3000/rest/api/v1/account/otherprofile",
+                "merchantRatingMinAmount": "http://account-management-microservice:3000/rest/api/v1/account/profile/minratingamount?internal=true&msisdn=",
+                "userProfileURL": "http://account-management-microservice:3000/rest/api/v1/account/profile",
+                "userProfileOnPremURL": "http://account-management-microservice-m11s.apps.pjcocp.jazz.com.pk/rest/api/v1/account/profile",
+                "getQRCode": "http://account-management-microservice:3000/rest/api/v1/account/qrcode/display",
+                "smsNotifiers": "http://account-management-microservice:3000/rest/api/v1/merchant/notifiers/sms",
+                "getAllProfile": "https://account-management-microservice-m11s.apps.tjcocp.jazz.com.pk/rest/api/v1/account/profile/all",
+                "verifyJazzCashUserURL": "http://account-management-microservice:3000/rest/api/v1/account/verifyJazzCashUser",
+                "updateNotifier": "http://account-management-microservice:3000/rest/api/v1/account/qrcode/updateNotifiers"
+            },
+            "NotificationService": {
+                "smsNotificationUrl": "http://notification-microservice:3000/rest/api/v1/notification/sms",
+                "emailNotificationUrl": "http://notification-microservice:3000/rest/api/v1/notification/email",
+                "pushNotificationUrl": "http://notification-microservice:3000/rest/api/v1/notification/pushnotification",
+                "pushNotificationByMsisdnUrl": "http://notification-microservice:3000/rest/api/v1/notification/pushnotification/msisdn"
+            },
+            "InviteEarnService": {
+                "payoneerTopup": "http://loyalty-and-rewards-management:3000/rest/api/v1/reward/payoneer/topup"
+            },
+            "NotificationMessages": {
+                "sucessLogin": "You have successfully logged in"
+            },
+            "CashRePayment": {
+                "useCase": "ReadyCashRePayment"
+            },
+            "InstantLoanRePayment": {
+                "useCase": "InstantLoanRepayment"
+            },
+            "partnerServicesAPI": {
+                "loanEligilityURL": "http://partner-services-management-microservice:3000/rest/api/v1/lending/getOffers"
+            },
+            "loyaltyRewardsAPI": {
+                "sendInviteToNonJcUser": "http://loyalty-and-rewards-management:3000/rest/api/v2/reward/invite/send",
+                "redeemPoints": "http://loyalty-and-rewards-management:3000/rest/api/v1/loyalty/points-to-redeem",
+                "adjustPoints": "http://loyalty-and-rewards-management:3000/rest/api/v1/loyalty/adjust-points",
+                "redeemPointsConsumer": "http://loyalty-and-rewards-management:3000/rest/api/v1/loyalty/consumer/points-to-redeem",
+                "adjustPointsConsumer": "http://loyalty-and-rewards-management:3000/rest/api/v1/loyalty/consumer/adjust-points"
+            },
+            "raastApi": {
+                "ibft": "http://sl-mpg-service-http-ace.apps.pjcocp.jazzcash.com.pk:80/mpgoutboundservice/v1/ibft",
+                "titleFetch": "http://sl-mpg-service-http-ace.apps.pjcocp.jazzcash.com.pk:80/mpgoutboundservice/v1/titlefetch",
+                "defaultAccAlias": "http://sl-cas-service-http-ace.apps.pjcocp.jazzcash.com.pk:80/casintegrationservice/v1/getDefaultAccountByAlias",
+                "createIban": "http://account-management-microservice:3000/rest/api/v1/acct-mgmt/internal/findcreateiban",
+                "defaultAccountByAlias": "http://10.50.13.42:8281/casintegrationservice/v1/getDefaultAccountByAlias"
+            },
+            "historyApi" : {
+                "insert": "http://transaction-history-revamp-is.ace:7800/transactionhistoryrevampservice/v1/TrxService"
+            },
+            "p2m" : {
+                "WSO2_P2M" : "http://10.205.155.78:8281",
+                "CONFIRM_URL":"/p2moutboundservice/v1/payment"
+            }
+        },
+        "imageFileSize": {
+            "width": 1240,
+            "height": 720
+        },
+        "requestToPayinvoiceIDPrefix": "INV",
+        "IBFT": {
+            "incoming": {
+                "identityTypeMapping": [
+                    "1000",
+                    "3000"
+                ],
+                "identityStatusMapping": [
+                    {
+                        "identityType": "1000",
+                        "identityStatus": [
+                            "03"
+                        ]
+                    },
+                    {
+                        "identityType": "3000",
+                        "identityStatus": [
+                            "03"
+                        ]
+                    }
+                ],
+                "trustLevelMapping": [
+                    "1000_03_1190"
+                ],
+                "bankIMDMapping": [
+                    {
+                        "bankIMDID": "3101991",
+                        "bankCode": "A00068",
+                        "merchantName": "EasyPaisa"
+                    },
+                    {
+                        "bankIMDID": "3101992",
+                        "bankCode": "A00068",
+                        "merchantName": "EasyPaisa"
+                    }
+                ],
+                "limitsMapping": [
+                    {
+                        "identityTypeByTrustLevel": "1000_03",
+                        "limitsRules": [
+                            "2",
+                            "3",
+                            "4"
+                        ]
+                    },
+                    {
+                        "identityTypeByTrustLevel": "3000_03",
+                        "limitsRules": [
+                            "5",
+                            "6",
+                            "7"
+                        ]
+                    },
+                    {
+                        "identityTypeByTrustLevel": "3000_52",
+                        "limitsRules": [
+                            "4",
+                            "3",
+                            "2"
+                        ]
+                    }
+                ],
+                "incomingIBFTErrorCodesMapping": [
+                    {
+                        "cpsErrorCode": "-1",
+                        "appErrorCode": "PT-IFT-T41"
+                    },
+                    {
+                        "cpsErrorCode": "1",
+                        "appErrorCode": "PT-IFT-T42"
+                    },
+                    {
+                        "cpsErrorCode": "10",
+                        "appErrorCode": "PT-IFT-T62"
+                    },
+                    {
+                        "cpsErrorCode": "11",
+                        "appErrorCode": "PT-IFT-T62"
+                    },
+                    {
+                        "cpsErrorCode": "12",
+                        "appErrorCode": "PT-IFT-T62"
+                    },
+                    {
+                        "cpsErrorCode": "13",
+                        "appErrorCode": "PT-IFT-T65"
+                    },
+                    {
+                        "cpsErrorCode": "14",
+                        "appErrorCode": "PT-IFT-T65"
+                    },
+                    {
+                        "cpsErrorCode": "15",
+                        "appErrorCode": "PT-IFT-T62"
+                    },
+                    {
+                        "cpsErrorCode": "16",
+                        "appErrorCode": "PT-IFT-T62"
+                    },
+                    {
+                        "cpsErrorCode": "2000",
+                        "appErrorCode": "PT-IFT-T61"
+                    },
+                    {
+                        "cpsErrorCode": "2001",
+                        "appErrorCode": "PT-IFT-T04"
+                    },
+                    {
+                        "cpsErrorCode": "2002",
+                        "appErrorCode": "PT-IFT-T02"
+                    },
+                    {
+                        "cpsErrorCode": "2003",
+                        "appErrorCode": "PT-IFT-T05"
+                    },
+                    {
+                        "cpsErrorCode": "2004",
+                        "appErrorCode": "PT-IFT-T05"
+                    },
+                    {
+                        "cpsErrorCode": "2005",
+                        "appErrorCode": "PT-IFT-T05"
+                    },
+                    {
+                        "cpsErrorCode": "2006",
+                        "appErrorCode": "PT-IFT-T07"
+                    },
+                    {
+                        "cpsErrorCode": "2007",
+                        "appErrorCode": "PT-IFT-T71"
+                    },
+                    {
+                        "cpsErrorCode": "2008",
+                        "appErrorCode": "PT-IFT-T02"
+                    },
+                    {
+                        "cpsErrorCode": "2009",
+                        "appErrorCode": "PT-IFT-T03"
+                    },
+                    {
+                        "cpsErrorCode": "2010",
+                        "appErrorCode": "PT-IFT-T71"
+                    },
+                    {
+                        "cpsErrorCode": "2011",
+                        "appErrorCode": "PT-IFT-T51"
+                    },
+                    {
+                        "cpsErrorCode": "2012",
+                        "appErrorCode": "PT-IFT-T71"
+                    },
+                    {
+                        "cpsErrorCode": "2013",
+                        "appErrorCode": "PT-IFT-T71"
+                    },
+                    {
+                        "cpsErrorCode": "2014",
+                        "appErrorCode": "PT-IFT-T71"
+                    },
+                    {
+                        "cpsErrorCode": "2016",
+                        "appErrorCode": "PT-IFT-T53"
+                    },
+                    {
+                        "cpsErrorCode": "2017",
+                        "appErrorCode": "PT-IFT-T53"
+                    },
+                    {
+                        "cpsErrorCode": "2018",
+                        "appErrorCode": "PT-IFT-T55"
+                    },
+                    {
+                        "cpsErrorCode": "2019",
+                        "appErrorCode": "PT-IFT-T52"
+                    },
+                    {
+                        "cpsErrorCode": "2020",
+                        "appErrorCode": "PT-IFT-T54"
+                    },
+                    {
+                        "cpsErrorCode": "2021",
+                        "appErrorCode": "PT-IFT-T71"
+                    }
+                ]
+            },
+            "outgoing": {
+                "identityTypeMapping": [
+                    "1000",
+                    "3000"
+                ],
+                "identityStatusMapping": [
+                    {
+                        "identityType": "1000",
+                        "identityStatus": [
+                            "03"
+                        ]
+                    },
+                    {
+                        "identityType": "3000",
+                        "identityStatus": [
+                            "03"
+                        ]
+                    }
+                ],
+                "trustLevelMapping": [
+                    "1000_03_1190"
+                ],
+                "identityTypeMappingByCustomerType": {
+                    "1000": "consumer",
+                    "3000": "merchant"
+                },
+                "outgoingIBFTErrorCodesMapping": [
+                    {
+                        "cpsErrorCode": "2003",
+                        "cpsErrorDescription": [
+                            "has not subscribed to any product or the product subscription has expired",
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03",
+                            "PT-USSD-T16"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2001",
+                        "cpsErrorDescription": [
+                            "The transaction receiver does not exist.",
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T04",
+                            "PT-USSD-T04"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2015",
+                        "cpsErrorDescription": [
+                            "A third-party processing failure is returned when the AG service ViewBillInfo invoked.",
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03",
+                            "PT-USSD-T20"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2006",
+                        "cpsErrorDescription": [
+                            "Failed to authenticate the transaction by limit rule Remittance-BIO Credit Maximum Daily Transaction.",
+                            "Failed to authenticate the transaction by limit rule Daily Maximum Total Debit.",
+                            "Failed to authenticate the transaction by limit rule Daily Maximum Total Credit.",
+                            "Failed to authenticate the transaction by limit rule Monthly Maximum Total Credit.",
+                            "Failed to authenticate the transaction by limit rule Monthly Maximum Total Debit.",
+                            "Failed to authenticate the transaction by limit rule Receiver Limit Breached.",
+                            "Failed to authenticate the transaction by limit rule Remittance-BIO Credit Maximum Monthly Transaction.",
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T05",
+                            "PT-USSD-T10",
+                            "PT-USSD-T12",
+                            "PT-USSD-T19",
+                            "PT-USSD-T15",
+                            "PT-USSD-T05",
+                            "PT-USSD-T19",
+                            "PT-USSD-T17"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2002",
+                        "cpsErrorDescription": [
+                            "credit party is in the Frozen state which does not support the current service.",
+                            "The debit and credit parties of the primary transaction are using the same account.",
+                            "credit party is in the Suspended state which does not support the current service.",
+                            "credit party is in the Dormant state which does not support the current service.",
+                            "The parameter value is incorrect. No order is found based on the order ID.",
+                            "The debit and credit parties of the primary transaction are using the same account.",
+                            "The initiator and receiver of the remittance transaction must be different.",
+                            "The parameter value is incorrect. No order is found based on the order ID.",
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T07",
+                            "PT-USSD-T08",
+                            "PT-USSD-T07",
+                            "PT-USSD-T07",
+                            "PT-USSD-T03",
+                            "PT-USSD-T08",
+                            "PT-USSD-T11",
+                            "PT-USSD-T03",
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2000",
+                        "cpsErrorDescription": [
+                            "The security credential of the subscriber is incorrect.",
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T13",
+                            "PT-USSD-T14"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "-1",
+                        "cpsErrorDescription": [
+                            "No charge rule is configured for the reason type in the charge profile.",
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T14",
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2005",
+                        "cpsErrorDescription": [
+                            "Failed to match a reason type because the Identity Subtype factor of the debit party does not match.",
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T04",
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "1",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "10",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "11",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "12",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "13",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "14",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "15",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "16",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2004",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2007",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2008",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T18"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2009",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T06"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2010",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T22"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2011",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2012",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2013",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T13"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2014",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T13"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2016",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T21"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2017",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-T03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2018",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2019",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2020",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-03"
+                        ]
+                    },
+                    {
+                        "cpsErrorCode": "2022",
+                        "cpsErrorDescription": [
+                            "default"
+                        ],
+                        "appErrorCode": [
+                            "PT-USSD-03"
+                        ]
+                    }
+                ]
+            }
+        },
+        "ussdTxnCategoriesMapping": [
+            {
+                "ussdCmd": "CASHIN",
+                "txnType": "Deposits",
+                "txnTypeLabel": "Deposits",
+                "txnCategory": "Cash-in at agent",
+                "txnCategoryLabel": "Cash-in at agent"
+            },
+            {
+                "ussdCmd": "CASHOUT",
+                "txnType": "Other Payments",
+                "txnTypeLabel": "Other Payments",
+                "txnCategory": "Cash Withdrawal",
+                "txnCategoryLabel": "Cash Withdrawal"
+            },
+            {
+                "ussdCmd": "BANKCASHIN",
+                "txnType": "Money Transfer",
+                "txnTypeLabel": "Money Transfer",
+                "txnCategory": "IBFT",
+                "txnCategoryLabel": "IBFT"
+            },
+            {
+                "ussdCmd": "BANKCASHOUT",
+                "txnType": "Money Transfer",
+                "txnTypeLabel": "Money Transfer",
+                "txnCategory": "IBFT",
+                "txnCategoryLabel": "IBFT"
+            },
+            {
+                "ussdCmd": "OFT",
+                "txnType": "Money Transfer",
+                "txnTypeLabel": "Money Transfer",
+                "txnCategory": "IBFT",
+                "txnCategoryLabel": "IBFT"
+            },
+            {
+                "ussdCmd": "MERCUSTPAY",
+                "txnType": "QR Payment",
+                "txnTypeLabel": "QR Payments",
+                "txnCategory": "QR Till Payment",
+                "txnCategoryLabel": "All QR + Till ID Payments"
+            },
+            {
+                "ussdCmd": "REMIT",
+                "txnType": "Money Transfer",
+                "txnTypeLabel": "Money Transfer",
+                "txnCategory": "CNIC",
+                "txnCategoryLabel": "CNIC"
+            },
+            {
+                "ussdCmd": "BUY",
+                "txnType": "Mobile Load and Bundles",
+                "txnTypeLabel": "Mobile Load and Bundles",
+                "txnCategory": "Prepaid Load",
+                "txnCategoryLabel": "Prepaid Load (all operators)"
+            },
+            {
+                "ussdCmd": "DONATION",
+                "txnType": "Other Payments",
+                "txnTypeLabel": "Other Payments",
+                "txnCategory": "Donations",
+                "txnCategoryLabel": "Donations"
+            },
+            {
+                "ussdCmd": "SENDP2P",
+                "txnType": "Deposits",
+                "txnTypeLabel": "Money Transfer",
+                "txnCategory": "C2C",
+                "txnCategoryLabel": "JazzCash"
+            },
+            {
+                "ussdCmd": "BILLPAY",
+                "txnType": "Mobile Load and Bundles",
+                "txnTypeLabel": "Mobile Load and Bundles",
+                "txnCategory": "Postpaid Bill Payment",
+                "txnCategoryLabel": "Postpaid Bill Payment (all operators)"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    66,
+                    64,
+                    115,
+                    67,
+                    51,
+                    53,
+                    78,
+                    164,
+                    87,
+                    90,
+                    124,
+                    137,
+                    101,
+                    72,
+                    79,
+                    64,
+                    67
+                ],
+                "txnType": "Banking and Finance",
+                "txnTypeLabel": "Banking and Finance",
+                "txnCategory": "Loan Repayments",
+                "txnCategoryLabel": "Loan Repayments"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    75
+                ],
+                "txnType": "Entertainment and Online Purchases",
+                "txnTypeLabel": "Entertainment and Online Purchases",
+                "txnCategory": "Payment Gateway online vouchers",
+                "txnCategoryLabel": "Payment Gateway online vouchers"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    11,
+                    33,
+                    38,
+                    54,
+                    32,
+                    84,
+                    29,
+                    88,
+                    39,
+                    14,
+                    58,
+                    65,
+                    3,
+                    2,
+                    63,
+                    15,
+                    26,
+                    13,
+                    17,
+                    1,
+                    4,
+                    12,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    158,
+                    172
+                ],
+                "txnType": "Bill Payments",
+                "txnTypeLabel": "Bill Payments",
+                "txnCategory": "Utility Bills",
+                "txnCategoryLabel": "All Utility Bills"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    49,
+                    43,
+                    41,
+                    47,
+                    191
+                ],
+                "txnType": "Mobile Load and Bundles",
+                "txnTypeLabel": "Mobile Load and Bundles",
+                "txnCategory": "Prepaid Load",
+                "txnCategoryLabel": "Prepaid Load (all operators)"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    "PAF00001",
+                    55,
+                    71,
+                    176,
+                    146,
+                    153,
+                    163,
+                    181,
+                    157,
+                    163,
+                    157,
+                    176
+                ],
+                "txnType": "Education",
+                "txnTypeLabel": "Education",
+                "txnCategory": "Fee Payments",
+                "txnCategoryLabel": "All education fee payments"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    "DONA001",
+                    "SHIFA001",
+                    "SOS001",
+                    "CARE001",
+                    "SHAH001",
+                    "122972",
+                    "168226",
+                    "168400"
+                ],
+                "txnType": "Other Payments",
+                "txnTypeLabel": "Other Payments",
+                "txnCategory": "Donations",
+                "txnCategoryLabel": "Donations"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    48,
+                    42,
+                    46,
+                    40,
+                    190,
+                    78,
+                    170
+                ],
+                "txnType": "Mobile Load and Bundles",
+                "txnTypeLabel": "Mobile Load and Bundles",
+                "txnCategory": "Postpaid Bill Payment ( all operators )",
+                "txnCategoryLabel": "Postpaid Bill Payment ( all operators )"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    41
+                ],
+                "txnType": "Mobile Load and Bundles",
+                "txnTypeLabel": "Mobile Load and Bundles",
+                "txnCategory": "Prepaid Load (all operators)",
+                "txnCategoryLabel": "Prepaid Load (all operators)"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    3002035310
+                ],
+                "txnType": "Travel and Food",
+                "txnTypeLabel": "Travel and Food",
+                "txnCategory": "Food Delivery",
+                "txnCategoryLabel": "Food Delivery"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    3098504738
+                ],
+                "txnType": "Travel and Food",
+                "txnTypeLabel": "Travel and Food",
+                "txnCategory": "Bus Tickets",
+                "txnCategoryLabel": "Bus Tickets"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    161
+                ],
+                "txnType": "Travel and Food",
+                "txnTypeLabel": "Travel and Food",
+                "txnCategory": "M-Tag",
+                "txnCategoryLabel": "M-Tag Recharge"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    132
+                ],
+                "txnType": "Travel and Food",
+                "txnTypeLabel": "Travel and Food",
+                "txnCategory": "Careem Voucher",
+                "txnCategoryLabel": "Careem Voucher"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    3011465270
+                ],
+                "txnType": "Entertainment and Online Purchases",
+                "txnTypeLabel": "Entertainment and Online Purchases",
+                "txnCategory": "Movie Tickets",
+                "txnCategoryLabel": "Movie Tickets"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    30114652701111111
+                ],
+                "txnType": "Entertainment and Online Purchases",
+                "txnTypeLabel": "Entertainment and Online Purchases",
+                "txnCategory": "Event Tickets",
+                "txnCategoryLabel": "Event Tickets"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    180255
+                ],
+                "txnType": "Entertainment and Online Purchases",
+                "txnTypeLabel": "Entertainment and Online Purchases",
+                "txnCategory": "E-Vouchers",
+                "txnCategoryLabel": "E-Vouchers"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    1802551111
+                ],
+                "txnType": "Entertainment and Online Purchases",
+                "txnTypeLabel": "Entertainment and Online Purchases",
+                "txnCategory": "Daraz Wallet",
+                "txnCategoryLabel": "Daraz Wallet"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    66,
+                    64,
+                    115,
+                    67,
+                    51,
+                    53,
+                    78,
+                    164,
+                    87,
+                    90,
+                    124,
+                    137,
+                    101,
+                    72,
+                    79,
+                    64,
+                    67
+                ],
+                "txnType": "Banking and Finance",
+                "txnTypeLabel": "Banking and Finance",
+                "txnCategory": "Insurance repayments",
+                "txnCategoryLabel": "Insurance repayments"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    133,
+                    143,
+                    125,
+                    177
+                ],
+                "txnType": "Other Payments",
+                "txnTypeLabel": "Other Payments",
+                "txnCategory": "Corporate Payments",
+                "txnCategoryLabel": "Corporate Payments"
+            },
+            {
+                "ussdCmd": "VIEWBILL",
+                "companyIDs": [
+                    144,
+                    119,
+                    61,
+                    129,
+                    138,
+                    178
+                ],
+                "txnType": "Other Payments",
+                "txnTypeLabel": "Other Payments",
+                "txnCategory": "Govt Payments",
+                "txnCategoryLabel": "Govt Payments"
+            }
+        ],
+        "txnHistoryCategoriesMapping": [
+            {
+                "defactoType": "MoneyTransferC2C",
+                "txnTypeLabel": "Money Transfer",
+                "txnCategoryLabel": "JazzCash",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "MoneyTransferC2C",
+                "txnTypeLabel": "Funds Received",
+                "txnCategoryLabel": "JazzCash",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "IBFT",
+                "txnTypeLabel": "Money Transfer",
+                "txnCategoryLabel": "Bank",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "IBFT",
+                "txnTypeLabel": "Funds Received",
+                "txnCategoryLabel": "Bank",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "EasyPaisa - IBFT Incoming",
+                "txnTypeLabel": "Money Transfer",
+                "txnCategoryLabel": "EasyPaisa",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "CNICPayment",
+                "txnTypeLabel": "Money Transfer",
+                "txnCategoryLabel": "CNIC",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "MoneyTransferB2C",
+                "txnTypeLabel": "Funds Received",
+                "txnCategoryLabel": "JazzCash Agent",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "Donation",
+                "txnTypeLabel": "Donations",
+                "txnCategoryLabel": "Donations",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "PayBills",
+                "txnTypeLabel": "Bill Payment",
+                "txnCategoryLabel": "",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "BusTickets",
+                "txnTypeLabel": "Bus Ticket",
+                "txnCategoryLabel": "",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "DepositViaDebitCard",
+                "txnTypeLabel": "Funds Received",
+                "txnCategoryLabel": "Debit Card",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "SignupReward",
+                "txnTypeLabel": "Rewards",
+                "txnCategoryLabel": "App Sign-up",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "InviteAndEarn",
+                "txnTypeLabel": "Rewards",
+                "txnCategoryLabel": "Invite & Earn",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "InviteAndEarn",
+                "txnTypeLabel": "Rewards",
+                "txnCategoryLabel": "Invite & Earn",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "InsuranceRefund",
+                "txnTypeLabel": "Insurance",
+                "txnCategoryLabel": "Reversal of Insurance Plan",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "RefundCardOrdering",
+                "txnTypeLabel": "Refund",
+                "txnCategoryLabel": "",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "RefundMobileBundle",
+                "txnTypeLabel": "Fund Adjustments",
+                "txnCategoryLabel": "Refunds",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "RefundBusTickets",
+                "txnTypeLabel": "Refund",
+                "txnCategoryLabel": "Bus Ticket",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "RefundMovieTickets",
+                "txnTypeLabel": "Refund",
+                "txnCategoryLabel": "Movie Ticket",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "RefundEventTickets",
+                "txnTypeLabel": "Refund",
+                "txnCategoryLabel": "Event Ticket",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "RefundFoodOrdering",
+                "txnTypeLabel": "Fund Adjustments",
+                "txnCategoryLabel": "Refunds",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "RefundQRPayment",
+                "txnTypeLabel": "Fund Adjustments",
+                "txnCategoryLabel": "Refunds",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "RefundRequest2Pay",
+                "txnTypeLabel": "Fund Adjustments",
+                "txnCategoryLabel": "Refunds",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "RefundVASServices",
+                "txnTypeLabel": "Fund Adjustments",
+                "txnCategoryLabel": "Refunds",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "RefundThirdPartyTopUp",
+                "txnTypeLabel": "Fund Adjustments",
+                "txnCategoryLabel": "Refunds",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "RefundeVouchers",
+                "txnTypeLabel": "Fund Adjustments",
+                "txnCategoryLabel": "Refunds",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "InsuranceClaim",
+                "txnTypeLabel": "Fund Adjustments",
+                "txnCategoryLabel": "Insurance Claims",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "PayoneerTransaction",
+                "txnTypeLabel": "Funds Received",
+                "txnCategoryLabel": "Payoneer",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "Request2Pay",
+                "txnTypeLabel": "Money Transfer",
+                "txnCategoryLabel": "Request money",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "QRPayment",
+                "txnTypeLabel": "QR Payments",
+                "txnCategoryLabel": "",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "QRIssuingTransaction",
+                "txnTypeLabel": "QR Payments",
+                "txnCategoryLabel": "Mastercard",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "QRPaymentMasterCard",
+                "txnTypeLabel": "QR Payments",
+                "txnCategoryLabel": "Mastercard",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "Proprietary TPS",
+                "txnTypeLabel": "QR Payments",
+                "txnCategoryLabel": "All QR + Till ID  Payments",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "Proprietary TPS",
+                "txnTypeLabel": "QR Payments",
+                "txnCategoryLabel": "All QR + Till ID  Payments",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "PrePaidLoad",
+                "txnTypeLabel": "Prepaid Load",
+                "txnCategoryLabel": "",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "PostPaidLoad",
+                "txnTypeLabel": "Postpaid Bill",
+                "txnCategoryLabel": "",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "MobileBundle",
+                "txnTypeLabel": "Mobile Bundle",
+                "txnCategoryLabel": "",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "FoodOrdering",
+                "txnTypeLabel": "Travel & Food",
+                "txnCategoryLabel": "Food Delivery",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "MTag",
+                "txnTypeLabel": "Travel & Food",
+                "txnCategoryLabel": "M-Tag",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "CareemVoucher",
+                "txnTypeLabel": "Travel & Food",
+                "txnCategoryLabel": "Careem voucher",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "MovieTickets",
+                "txnTypeLabel": "Entertainment & Online Purchases",
+                "txnCategoryLabel": "Movie tickets",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "EventTickets",
+                "txnTypeLabel": "Event ticket",
+                "txnCategoryLabel": "",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "eVouchers",
+                "txnTypeLabel": "Entertainment & Online Purchases",
+                "txnCategoryLabel": "e-Vouchers",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "DarazVoucher",
+                "txnTypeLabel": "Other Wallet Top-up",
+                "txnCategoryLabel": "Daraz",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "VoucherPayment",
+                "txnTypeLabel": "Other Wallet Top-up",
+                "txnCategoryLabel": "Careem",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "CardOrderChargeWithoutMPIN",
+                "txnTypeLabel": "Debit Card Fee",
+                "txnCategoryLabel": "JazzCash ",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "ReadyCashRePayment",
+                "txnTypeLabel": "Loan Repayment",
+                "txnCategoryLabel": "Readycash",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "CardOrdering",
+                "txnTypeLabel": "Banking & Finance",
+                "txnCategoryLabel": "Debit Card ordering",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "InsuranceSubscription",
+                "txnTypeLabel": "Insurance Subscription",
+                "txnCategoryLabel": "",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "InsuranceSubPayment",
+                "txnTypeLabel": "Insurance Payment",
+                "txnCategoryLabel": "",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "InsurancePayment",
+                "txnTypeLabel": "Insurance Payment",
+                "txnCategoryLabel": "",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "LoanManagement",
+                "txnTypeLabel": "Loan",
+                "txnCategoryLabel": "Readycash",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "LoanRepayment",
+                "txnTypeLabel": "Loan",
+                "txnCategoryLabel": "Readycash",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "LoanAutoRepay",
+                "txnTypeLabel": "Loan Repayment",
+                "txnCategoryLabel": "Loan repayments",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "MutualFundPayment",
+                "txnTypeLabel": "Banking & Finance",
+                "txnCategoryLabel": "mutual funds",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "CreditCardPayment",
+                "txnTypeLabel": "Banking & Finance",
+                "txnCategoryLabel": "Credit Card payments",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "EducationPayment",
+                "txnTypeLabel": "Education",
+                "txnCategoryLabel": "All education fee payments",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "CorporatePayment",
+                "txnTypeLabel": "Other Payments",
+                "txnCategoryLabel": "Corporate payments",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "GovernmentPayment",
+                "txnTypeLabel": "Other Payments",
+                "txnCategoryLabel": "Govt payments",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "reverseTransaction",
+                "txnTypeLabel": "Fund Adjustments",
+                "txnCategoryLabel": "Purchase Payment Reversal",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "reverseTransaction",
+                "txnTypeLabel": "Fund Adjustments",
+                "txnCategoryLabel": "Purchase Payment Reversal",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "CashbackReward",
+                "txnTypeLabel": "Cashback Reward",
+                "txnCategoryLabel": "Payment",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "NanoLoanLoanReceived",
+                "txnTypeLabel": "Loan Received",
+                "txnCategoryLabel": "ReadyCash By Bank Alfalah",
+                "isDebit": "true"
+            },
+            {
+                "defactoType": "NanoLoanRepayment",
+                "txnTypeLabel": "Loan Repayment",
+                "txnCategoryLabel": "ReadyCash By Bank Alfalah",
+                "isDebit": "false"
+            },
+            {
+                "defactoType": "NanoAutoLoanRepayment",
+                "txnTypeLabel": "Loan Repayment",
+                "txnCategoryLabel": "ReadyCash By Bank Alfalah",
+                "isDebit": "false"
+            }
+        ],
+        "previousAppTxnHistoryMapping": [
+            {
+                "TRX_YPE": "Account Adjustment",
+                "txnLabel": "Funds Adjustments",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Account Adjustment",
+                "txnLabel": "Funds Adjustments",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Account Adjustment Bulk",
+                "txnLabel": "Funds Adjustments",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Auto Debit",
+                "txnLabel": "Auto Debit",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Bank Cash In for Ordinary ORG and Customer",
+                "txnLabel": "Cash Deposit",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Bank Cash Out for Ordinary ORG and Customer",
+                "txnLabel": "Cash Withdrawal",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Business Cash In",
+                "txnLabel": "Cash Deposit",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Business Cash Out",
+                "txnLabel": "Cash Withdrawal",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Cancel Bulk G2P Payment",
+                "txnLabel": "Refund",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Cancel Remittance",
+                "txnLabel": "Reversal",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Card Order Charge",
+                "txnLabel": "Card order Fee ",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Card Order Charge Refund",
+                "txnLabel": "Card order Fee Reversal",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Collecting",
+                "txnLabel": "Collection",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Customer Cancel Remittance",
+                "txnLabel": "Refund",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Customer Remit To CNIC",
+                "txnLabel": "Money Transfer",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Cash in",
+                "txnLabel": "Money Credit",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Cash out",
+                "txnLabel": "Cash Withdrawal",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Online Payment",
+                "txnLabel": "Online Payments",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Direct IBFT Incoming",
+                "txnLabel": "Incoming Bank Transfer ",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Direct IBFT Outgoing",
+                "txnLabel": "Outgoing Bank Transfer",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Direct IBFT Outgoing Reversal",
+                "txnLabel": "Bank Transfer Reversal",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Donation",
+                "txnLabel": "Donation",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "G2P Collecting",
+                "txnLabel": "Collection",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "G2P Payment",
+                "txnLabel": "Payment",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Get Loan",
+                "txnLabel": "Lending",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Get Loan",
+                "txnLabel": "Lending",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "IBFT Credit",
+                "txnLabel": "Bank Transfer ",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "IBFT Outgoing Customer",
+                "txnLabel": "Money Transfer",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "IBFT Outgoing OTC",
+                "txnLabel": "Money Transfer",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Indigo Bills (Postpaid payment)",
+                "txnLabel": "Jazz Postpaid Bill Payment",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "International Remittance",
+                "txnLabel": "Money Transfer",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Jazz Load (Prepaid top-up)",
+                "txnLabel": "Jazz Prepaid Top up",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "MFS Card Withdraw",
+                "txnLabel": "Card withdrawal",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Merchant Payment",
+                "txnLabel": "Merchant Payment",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Online Payment Reversal",
+                "txnLabel": "Reversal",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Profit Disburse",
+                "txnLabel": "Profit Disburse",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Purchase Payment",
+                "txnLabel": "Payment",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Purchase Payment Reversal",
+                "txnLabel": "Reversal",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Refund Merchant Payment",
+                "txnLabel": "Refund",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Remitting",
+                "txnLabel": "Remmitance",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Reversal MFS Card Withdraw",
+                "txnLabel": "Reversal",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Transfer(B2C)",
+                "txnLabel": "Money Transfer",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Transfer(C2C)",
+                "txnLabel": "Money Transfer",
+                "isDebit": "true"
+            },
+            {
+                "TRX_YPE": "Transfer(C2C)",
+                "txnLabel": "Money Transfer",
+                "isDebit": "false"
+            },
+            {
+                "TRX_YPE": "Utility Bills Payment",
+                "txnLabel": "Bill Payment",
+                "isDebit": "true"
+            }
+        ],
+        "txnHistoryDB2TxTypeMapping": [
+            "Transfer(B2B)",
+            "Transfer(B2C)",
+            "Transfer(C2B)",
+            "Transfer(C2C)",
+            "QR Payment",
+            "QR Refund",
+            "Get Loan"
+        ],
+        "ubpCompanyDetail": [
+            {
+                "companyCode": 1,
+                "lower_bound": 4,
+                "upper_bound": 17
+            },
+            {
+                "companyCode": 2,
+                "lower_bound": 4,
+                "upper_bound": 17
+            },
+            {
+                "companyCode": 3,
+                "lower_bound": 4,
+                "upper_bound": 17
+            },
+            {
+                "companyCode": 4,
+                "lower_bound": 4,
+                "upper_bound": 17
+            },
+            {
+                "companyCode": 11,
+                "lower_bound": 1,
+                "upper_bound": 15
+            },
+            {
+                "companyCode": 12,
+                "lower_bound": 4,
+                "upper_bound": 17
+            },
+            {
+                "companyCode": 13,
+                "lower_bound": 2,
+                "upper_bound": 15
+            },
+            {
+                "companyCode": 17,
+                "lower_bound": 1,
+                "upper_bound": 15
+            },
+            {
+                "companyCode": 26,
+                "lower_bound": 1,
+                "upper_bound": 15
+            },
+            {
+                "companyCode": 29,
+                "lower_bound": 2,
+                "upper_bound": 15
+            },
+            {
+                "companyCode": 32,
+                "lower_bound": 5,
+                "upper_bound": 18
+            },
+            {
+                "companyCode": 33,
+                "lower_bound": 1,
+                "upper_bound": 15
+            },
+            {
+                "companyCode": 38,
+                "lower_bound": 1,
+                "upper_bound": 15
+            },
+            {
+                "companyCode": 39,
+                "lower_bound": 2,
+                "upper_bound": 12
+            },
+            {
+                "companyCode": 54,
+                "lower_bound": 1,
+                "upper_bound": 15
+            },
+            {
+                "companyCode": 84,
+                "lower_bound": 2,
+                "upper_bound": 16
+            },
+            {
+                "companyCode": 88,
+                "lower_bound": 5,
+                "upper_bound": 16
+            },
+            {
+                "companyCode": 196,
+                "lower_bound": 2,
+                "upper_bound": 15
+            }
+        ],
+        "SPSU_encryption_details": {
+            "encryption_algorithm": "aes-128-cbc",
+            "encryption_secret": "57hb94ax0ziq6925",
+            "encryption_iv": "xy63kwi158cu2103"
+        },
+        "WSO2_APIS": {
+            "P2M_Refund": " http://10.205.155.78:8281/jazzcash/third-party-integration/raast/merchantReversal"
+        },
+        "thirdPartyEncryption": {
+            "ENABLED": "1",
+            "name": {
+              "qr_code": "QR_CODE"
+            },
+            "encryptionKeys": {
+              "QR_CODE": {
+                "clientName": "DigiKhata",
+                "secretKey": "t#jC@nct7496axdH",
+                "initVector": "@45n!tqaU540jCM)",
+                "isActive": true,
+                "algoName": "aes-128-cbc",
+                "internalKey": "9448821"
+              }
+            }
+        },
+        "cacheQRDisplay": {
+            "server": "datagrid",
+            "port": 11222,
+            "cacheName": "cacheQRDisplay",
+            "expiry":"3600"
+        }
+    }
+}

@@ -1,0 +1,3489 @@
+swagger: '2.0'
+info:
+  title: Payment And Transaction APIs
+  version: '1.0.0'
+  description: Payment And Transaction APIs
+host: 'ibm.com'
+basePath: /rest/api/v1/payment
+paths:
+  /c2c:
+    post:
+      security:
+        - Bearer: []
+      operationId: postSync
+      tags:
+        - 'SendMoneyC2C'
+      summary: 'Send Money to Jazz cash account'
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/c2cRequest'
+      responses:
+        '200':
+          description: The operation was successful.
+          schema:
+            properties:
+              success:
+                type: boolean
+              responseCode:
+                type: string
+                example: SM-C2C-T35
+              responseMessage_en:
+                type: string
+                example: Init Trans to other jazzcash account successful.
+              responseMessage_ur:
+                type: string
+                example: Init Trans to other jazzcash account successful.
+              data:
+                $ref: '#/definitions/c2cResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '500':
+          description: 'Unexpected Internal server error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-C2C-T01
+              responseMessage:
+                type: string
+                example: Unexpected Internal server error
+        '401':
+          description: 'Unable to connect to the Enterprise Service Bus'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-C2C-T02
+              responseMessage:
+                type: string
+                example: Unable to connect to the Enterprise Service Bus
+        '402':
+          description: 'The Request timed out'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-C2C-T03
+              responseMessage:
+                type: string
+                example: The Request timed out
+
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-C2C-T34
+              responseMessage:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+      consumes:
+        - application/json
+  /b2c:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'SendMoneyB2C'
+      summary: 'Send Money to Jazz cash account'
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/b2cRequest'
+      responses:
+        '200':
+          description: The operation was successful.
+          schema:
+            properties:
+              success:
+                type: boolean
+              responseCode:
+                type: string
+                example: SM-B2C-T35
+              responseMessage_en:
+                type: string
+                example: Init Trans to other jazzcash account successful.
+              responseMessage_ur:
+                type: string
+                example: Init Trans to other jazzcash account successful.
+              data:
+                $ref: '#/definitions/b2cResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '401':
+          description: 'Unable to connect to the Enterprise Service Bus'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-B2C-T02
+              responseMessage:
+                type: string
+                example: Unable to connect to the Enterprise Service Bus
+
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-B2C-T34
+              responseMessage:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+      consumes:
+        - application/json
+  /b2b:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'SendMoneyB2B'
+      summary: 'Send Money to Jazz cash account'
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/b2bRequest'
+      responses:
+        '200':
+          description: The operation was successful.
+          schema:
+            properties:
+              success:
+                type: boolean
+              responseCode:
+                type: string
+                example: SM-B2B-T35
+              responseMessage_en:
+                type: string
+                example: Init Trans to other jazzcash account successful.
+              responseMessage_ur:
+                type: string
+                example: Init Trans to other jazzcash account successful.
+              data:
+                $ref: '#/definitions/b2bResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '500':
+          description: 'Unexpected Internal server error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-C2C-T01
+              responseMessage:
+                type: string
+                example: Unexpected Internal server error
+        '401':
+          description: 'Unable to connect to the Enterprise Service Bus'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-B2B-T02
+              responseMessage:
+                type: string
+                example: Unable to connect to the Enterprise Service Bus
+
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-B2B-T34
+              responseMessage:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+      consumes:
+        - application/json
+  /cnic:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'SendMoneyToCNIC'
+      summary: 'Send Money to CNIC'
+      description: ''
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/cnicRequest'
+      responses:
+        '200':
+          description: The operation was successful.
+          schema:
+            properties:
+              success:
+                type: boolean
+              responseCode:
+                type: string
+                example: SM-CNIC-T35
+              responseMessage_en:
+                type: string
+                example: Init Trans to other jazzcash account successful.
+              responseMessage_ur:
+                type: string
+                example: Init Trans to other jazzcash account successful.
+              data:
+                $ref: '#/definitions/cnicResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '500':
+          description: 'Unexpected Internal server error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-CNIC-T01
+              responseMessage:
+                type: string
+                example: Unexpected Internal server error
+        '401':
+          description: 'Unable to connect to the Enterprise Service Bus'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-CNIC-T02
+              responseMessage:
+                type: string
+                example: Unable to connect to the Enterprise Service Bus
+        '402':
+          description: 'The Request timed out'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-CNIC-T03
+              responseMessage:
+                type: string
+                example: The Request timed out
+
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-CNIC-T34
+              responseMessage:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+      consumes:
+        - application/json
+  /bank:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'SendMoneyToBank'
+      summary: 'Send Money to Bank Account'
+      description: ''
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/bankRequest'
+
+      responses:
+        '200':
+          description: The operation was successful.
+          schema:
+            properties:
+              success:
+                type: boolean
+              responseCode:
+                type: string
+                example: SM-BA-35
+              responseMessage_en:
+                type: string
+                example: Init Trans to bank account successful.
+              responseMessage_ur:
+                type: string
+                example: Init Trans to bank account successful.
+              data:
+                $ref: '#/definitions/bankResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '500':
+          description: 'Unexpected Internal server error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-BA-T01
+              responseMessage:
+                type: string
+                example: Unexpected Internal server error
+        '401':
+          description: 'Unable to connect to the Enterprise Service Bus'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-BA-T02
+              responseMessage:
+                type: string
+                example: Unable to connect to the Enterprise Service Bus
+        '402':
+          description: 'The Request timed out'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-BA-T03
+              responseMessage:
+                type: string
+                example: The Request timed out
+
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-BA-T34
+              responseMessage:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+      consumes:
+        - application/json
+  /confirm:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'ConfirmTransaction'
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/sendMoneyConfirmRequest'
+      responses:
+        '200':
+          description: The operation was successful.
+          schema:
+            properties:
+              success:
+                type: boolean
+              responseCode:
+                type: string
+                example: SM-CNIC/C2C/BA-36
+              message_en:
+                type: string
+                example: Money transferred successfully to bank/CNIC/Jazzcash account
+              message_ur:
+                type: string
+                example: Money transferred successfully to Bank/CNIC/Jazzcash account
+              data:
+                $ref: '#/definitions/sendMoneyConfirmResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+
+        '501':
+          description: 'Unexpected Internal server error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-CNIC/C2C/BA-T01
+              responseMessage:
+                type: string
+                example: Unexpected Internal server error
+        '401':
+          description: 'Unable to connect to the Enterprise Service Bus'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-CNIC/C2C/BA-T02
+              responseMessage:
+                type: string
+                example: Unable to connect to the Enterprise Service Bus
+        '402':
+          description: 'The Request timed out'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-CNIC/C2C/BA-T03
+              responseMessage:
+                type: string
+                example: The Request timed out
+
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-CNIC/C2C/BA-T34
+              responseMessage:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+      consumes:
+        - application/json
+  /merchant/confirm:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'ConfirmTransaction'
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/sendMoneyMerchantConfirmRequest'
+      responses:
+        '200':
+          description: The operation was successful.
+          schema:
+            properties:
+              success:
+                type: boolean
+              responseCode:
+                type: string
+                example: SM-CNIC/C2C/BA-36
+              message_en:
+                type: string
+                example: Money transferred successfully to bank/CNIC/Jazzcash account
+              message_ur:
+                type: string
+                example: Money transferred successfully to Bank/CNIC/Jazzcash account
+              data:
+                $ref: '#/definitions/sendMoneyMerchantConfirmResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+
+        '501':
+          description: 'Unexpected Internal server error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-CNIC/C2C/BA-T01
+              responseMessage:
+                type: string
+                example: Unexpected Internal server error
+        '401':
+          description: 'Unable to connect to the Enterprise Service Bus'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-CNIC/C2C/BA-T02
+              responseMessage:
+                type: string
+                example: Unable to connect to the Enterprise Service Bus
+        '402':
+          description: 'The Request timed out'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-CNIC/C2C/BA-T03
+              responseMessage:
+                type: string
+                example: The Request timed out
+
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: SM-CNIC/C2C/BA-T34
+              responseMessage:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+      consumes:
+        - application/json
+  /utility/query:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - 'Utility Bill Query'
+      summary: 'Fetch details of utility bill'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: query
+          name: consumerRefNum
+          required: true
+          type: string
+        - in: query
+          name: companyCode
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: PT-PB-T35
+              responseMessage_en:
+                type: string
+                example: Init Trans to query bill is successful.
+              responseMessage_ur:
+                type: string
+                example: Init Trans to query bill is successful.
+
+              data:
+                $ref: '#/definitions/payBillResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '401':
+          description: 'Authentication Failedr'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-PB-T01
+              responseMessage_en:
+                type: string
+                example: Authentication Failed
+              responseMessage_ur:
+                type: string
+                example: Authentication Failed
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-PB-T34
+              responseMessage_en:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+              responseMessage_ur:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+  /utility/confirm:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Utility Bill Payment'
+      summary: 'Confirm Utility Bill Payment'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: 'encrypted'
+
+      responses:
+        '200':
+          description: 'Bill Payed Successfully'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: PT-PB-T36
+              responseMessage_en:
+                type: string
+                example: Bill Payed Successfully.
+              responseMessage_ur:
+                type: string
+                example: Bill Payed Successfully.
+              data:
+                $ref: '#/definitions/payBillConfirmResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '401':
+          description: 'Authentication Failed'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-PB-T03
+              responseMessage_en:
+                type: string
+                example: Authentication Failed
+              responseMessage_ur:
+                type: string
+                example: Authentication Failed
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-PB-T36
+              responseMessage_en:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+              responseMessage_ur:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/payBillConfirmRequest'
+        description: The request body for the operation
+  /query:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - 'Payments Query'
+      summary: 'Fetch details of other payments'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: query
+          name: consumerRefNum
+          required: true
+          type: string
+        - in: query
+          name: companyID
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: PT-PB-T35
+              responseMessage_en:
+                type: string
+                example: Init Trans to query bill is successful.
+              responseMessage_ur:
+                type: string
+                example: Init Trans to query bill is successful.
+
+              data:
+                $ref: '#/definitions/paymentsResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '401':
+          description: 'Authentication Failedr'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-PB-T01
+              responseMessage_en:
+                type: string
+                example: Authentication Failed
+              responseMessage_ur:
+                type: string
+                example: Authentication Failed
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-PB-T34
+              responseMessage_en:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+              responseMessage_ur:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+  /payments/confirm:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Payments Confirm'
+      summary: 'Confirm Other Payments'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: 'encrypted'
+
+      responses:
+        '200':
+          description: 'Bill Payed Successfully'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: PT-PB-T36
+              responseMessage_en:
+                type: string
+                example: Bill Payed Successfully.
+              responseMessage_ur:
+                type: string
+                example: Bill Payed Successfully.
+              data:
+                $ref: '#/definitions/paymentsConfirmResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '401':
+          description: 'Authentication Failed'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-PB-T03
+              responseMessage_en:
+                type: string
+                example: Authentication Failed
+              responseMessage_ur:
+                type: string
+                example: Authentication Failed
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-PB-T36
+              responseMessage_en:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+              responseMessage_ur:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/paymentsConfirmRequest'
+        description: The request body for the operation
+  /request/initiate:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Request Money Initiate'
+      summary: 'This API returns initiates the request for money transfer'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: PT-RM-T35
+              responseMessage_en:
+                type: string
+                example: Request for money initiated successfully.
+              responseMessage_ur:
+                type: string
+                example: Request for money initiated successfully.
+              data:
+                $ref: '#/definitions/requestMoneyInitiateResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '401':
+          description: 'Unexpected Internal server error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-RM-T01
+              responseMessage_en:
+                type: string
+                example: Unexpected Internal server error.
+              responseMessage_ur:
+                type: string
+                example: Unexpected Internal server error.
+        '422':
+          description: 'Failed to initiate the request for money.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-RM-T34
+              responseMessage_en:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+              responseMessage_ur:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/requestMoneyInitiateRequest'
+        description: The request body for the operation
+  /request/approve:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Request Money Approve'
+      summary: 'This API returns approves the request for money transfer'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: PT-RM-T36
+              responseMessage_en:
+                type: string
+                example: Init Trans to other jazzcash account successful.
+              responseMessage_ur:
+                type: string
+                example: Init Trans to other jazzcash account successful.
+              data:
+                $ref: '#/definitions/requestMoneyApproveResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '401':
+          description: 'Unexpected Internal server error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-RM-T36
+              responseMessage_en:
+                type: string
+                example: Unexpected Internal server error.
+              responseMessage_ur:
+                type: string
+                example: Unexpected Internal server error.
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-RM-T34
+              responseMessage_en:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+              responseMessage_ur:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters..
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/requestMoneyApproveRequest'
+        description: The request body for the operation
+  /request/confirm:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Confirm Request Money Payment'
+      summary: 'This API confirms the transfer of requested money'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: PT-RM-T36
+              responseMessage_en:
+                type: string
+                example: Money transferred successfully.
+              responseMessage_ur:
+                type: string
+                example: Money transferred successfully.
+              data:
+                $ref: '#/definitions/requestMoneyConfirmResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '401':
+          description: 'Unexpected Internal server error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-RM-T01
+              responseMessage_en:
+                type: string
+                example: Unexpected Internal server error.
+              responseMessage_ur:
+                type: string
+                example: Unexpected Internal server error.
+        '422':
+          description: 'Failed to submit the transaction due to missing mandatory parameters.'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: PT-RM-T34
+              responseMessage_en:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+              responseMessage_ur:
+                type: string
+                example: Failed to submit the transaction due to missing mandatory parameters.
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/requestMoneyConfirmRequest'
+        description: The request body for the operation
+  /qrpayment/merchantdetails:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Fetch Merchant Details'
+      summary: 'Fetch Merchant Details'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: QR-MD-AKSA-T04
+              responseMessage_en:
+                type: string
+                example: Successfully Fetched Details from AKSA
+              responseMessage_ur:
+                type: string
+                example: Successfully Fetched Details from AKSA
+              data:
+                $ref: '#/definitions/MerchantDetailsResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '422':
+          description: 'Error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: QR-MD-AKSA-T02
+              responseMessage:
+                type: string
+                example: Error on AKSA
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/MerchantDetailsRequest'
+        description: The request body for the operation
+  /qrpaymentC2B/init:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Initiate Customer to Merchant Payment'
+      summary: 'Initiate Customer to Merchant Payment'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: QR-C2B-T34
+              responseMessage_en:
+                type: string
+                example: Init Trans Customer to Merchant Successful
+              responseMessage_ur:
+                type: string
+                example: Init Trans Customer to Merchant Successful
+              data:
+                $ref: '#/definitions/qrC2BInitResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '422':
+          description: 'Error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: QR-C2B-T02
+              responseMessage:
+                type: string
+                example: Error
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/qrC2BInitRequest'
+        description: The request body for the operation
+  /qrpaymentC2B/confirm:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Confirm Customer to Merchant Payment'
+      summary: 'Confirm Customer to Merchant Payment'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: User MPIN
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+  /requesttopay/quickpay:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Confirm Customer to Merchant Payment'
+      summary: 'Confirm Customer to Merchant Payment'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: User MPIN
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: QR-C2B-T35
+              responseMessage_en:
+                type: string
+                example: Payment Successful
+              responseMessage_ur:
+                type: string
+                example: Payment Successful
+              data:
+                $ref: '#/definitions/qrC2BConfirmResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '422':
+          description: 'Error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: QR-C2B-T02
+              responseMessage:
+                type: string
+                example: Error
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/quickPayRequest'
+        description: The request body for the operation
+
+definitions:
+  c2cRequest:
+    type: object
+    properties:
+      amount:
+        type: number
+        example: 100
+      receiverDetails:
+        type: object
+        properties:
+          msisdn:
+            type: string
+            example: '920341567809'
+        required:
+          - msisdn
+      remarks:
+        type: string
+        example: 'hakjfdsa dajh'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+    required:
+      - receiverDetails
+      - amount
+  c2cResponse:
+    type: object
+    properties:
+      originatorConversationID:
+        type: string
+        example: 0230949283493
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      commission:
+        type: number
+        example: 2
+      fed:
+        type: number
+        example: 0.5
+      wht:
+        type: number
+        example: 0.3
+      receiverName:
+        type: string
+        example: AAA
+      transEndDate:
+        type: string
+        example: 20140102
+      transEndTime:
+        type: string
+        example: 210159
+      fee:
+        type: number
+        example: 0.7
+  b2cRequest:
+    type: object
+    properties:
+      amount:
+        type: number
+        example: 100
+      receiverDetails:
+        type: object
+        properties:
+          msisdn:
+            type: string
+            example: '920341567809'
+        required:
+          - msisdn
+          - type
+      remarks:
+        type: string
+        example: 'hakjfdsa dajh'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+    required:
+      - receiverDetails
+      - amount
+  b2cResponse:
+    type: object
+    properties:
+      originatorConversationID:
+        type: string
+        example: 0230949283493
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      commission:
+        type: number
+        example: 2
+      fed:
+        type: number
+        example: 0.5
+      wht:
+        type: number
+        example: 0.3
+      receiverName:
+        type: string
+        example: AAA
+      transEndDate:
+        type: string
+        example: 20140102
+      transEndTime:
+        type: string
+        example: 210159
+      fee:
+        type: number
+        example: 0.7
+  b2bRequest:
+    type: object
+    properties:
+      amount:
+        type: number
+        example: 100
+      receiverDetails:
+        type: object
+        properties:
+          msisdn:
+            type: string
+            example: '920341567809'
+        required:
+          - msisdn
+          - type
+      remarks:
+        type: string
+        example: 'hakjfdsa dajh'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+    required:
+      - receiverDetails
+      - amount
+  b2bResponse:
+    type: object
+    properties:
+      originatorConversationID:
+        type: string
+        example: 0230949283493
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      commission:
+        type: number
+        example: 2
+      fed:
+        type: number
+        example: 0.5
+      wht:
+        type: number
+        example: 0.3
+      receiverName:
+        type: string
+        example: AAA
+      transEndDate:
+        type: string
+        example: 20140102
+      transEndTime:
+        type: string
+        example: 210159
+      fee:
+        type: number
+        example: 0.7
+  cnicRequest:
+    type: object
+    properties:
+      amount:
+        type: number
+        example: 100
+      receiverDetails:
+        type: object
+        properties:
+          msisdn:
+            type: string
+            example: '920341567809'
+          cnic:
+            type: string
+            example: '2123242512529'
+      remarks:
+        type: string
+        example: 'hakjfdsa dajh'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+  cnicResponse:
+    type: object
+    properties:
+      originatorConversationID:
+        type: string
+        example: 0230949283493
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      receiverCNIC:
+        type: string
+        example: 2123242512529
+      deduction:
+        type: number
+        example: 5000.7
+      commission:
+        type: number
+        example: 2
+      fed:
+        type: number
+        example: 0.5
+      wht:
+        type: number
+        example: 0.3
+      transEndDate:
+        type: string
+        example: 20140102
+      transEndTime:
+        type: string
+        example: 210159
+      fee:
+        type: number
+        example: 0.7
+
+    required:
+      - ResponseCode
+      - ConversationID
+      - ServiceStatus
+  bankRequest:
+    type: object
+    properties:
+      amount:
+        type: number
+        format: double
+        example: 100.00
+      receiverDetails:
+        type: object
+        properties:
+          bankCode:
+            type: string
+            example: '08'
+            description: Refer to masterData/getBankList  same as bank IMD
+          bankAccountNumber:
+            type: string
+            example: '627100444444440011'
+          msisdn:
+            type: string
+            example: '03004345434'
+            description: Optional field
+      purposeofRemittanceCode:
+        type: string
+        example: '0100'
+        description: Refer to masterData/getPaymentPurposeList
+      remarks:
+        type: string
+        example: 'hakjfdsa dajh'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+    required:
+      - 'msisdn'
+      - 'amount'
+      - 'receiverDetails'
+      - 'purposeofRemittanceCode'
+      - 'channelCode'
+  bankResponse:
+    type: object
+    properties:
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      bankName:
+        type: string
+        example: HBL
+      receiverMSISDN:
+        type: string
+        example: 923345494749
+      bankAccountTitle:
+        type: string
+        example: 'Title'
+        description: Optional field
+      bankAccountNumber:
+        type: string
+        example: '00020000011005352'
+        description: Optional field
+      amount:
+        type: number
+        format: double
+        example: '867.00'
+      deduction:
+        type: number
+        example: 20
+      fed:
+        type: number
+        example: 0.5
+      wht:
+        type: number
+        example: 0.3
+      transEndDate:
+        type: string
+        example: '2004-01-05'
+      transEndTime:
+        type: string
+        example: '03:33:12.943'
+      fee:
+        type: number
+        example: 0.7
+  sendMoneyConfirmRequest:
+    type: object
+    properties:
+      transactionID:
+        type: string
+        example: 'XD2013012923789234'
+      transactionType:
+        type: string
+        example: 'C2C/BA/CNIC'
+      remarks:
+        type: string
+        example: 'hakjfdsa dajh'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+
+  sendMoneyConfirmResponse:
+    type: object
+    properties:
+      originatorConversationID:
+        type: string
+        example: 247bad68da0e4edaa0ba7eb4ddf3a9cf
+      conversationID:
+        type: string
+        example: AG_20200730_000049564a4e7f3cfc86
+      transactionID:
+        type: string
+        example: 10710713156
+      transEndDate:
+        type: string
+        example: '20200730'
+      transEndTime:
+        type: string
+        example: '150802'
+      transactionData:
+        type: 'object'
+        properties:
+          bank:
+            type: 'object'
+            properties:
+              amount:
+                type: number
+                format: double
+                example: '10.00'
+              channelCode:
+                type: string
+                example: '1020'
+              deduction:
+                type: number
+                format: double
+                example: '10.00'
+              commission:
+                type: number
+                format: double
+                example: '0.00'
+              receiverMSISDN:
+                type: string
+                example: '923345494749'
+              fed:
+                type: number
+                example: 0.0
+              wht:
+                type: number
+                example: 0.0
+              fee:
+                type: number
+                example: 0.0
+              receiverDetails:
+                type: 'object'
+                properties:
+                  bankName:
+                    type: string
+                    example: 'HBL'
+                  bankAccountNumber:
+                    type: string
+                    example: '00020000011005352'
+          C2C:
+            type: 'object'
+            properties:
+              amount:
+                type: number
+                format: double
+                example: '10.00'
+              fed:
+                type: number
+                example: 0.0
+              wht:
+                type: number
+                example: 0.0
+              fee:
+                type: number
+                example: 0.0
+              deduction:
+                type: number
+                format: double
+                example: '10.00'
+              commission:
+                type: number
+                format: double
+                example: '0.00'
+              receiverDetails:
+                type: 'object'
+                properties:
+                  beneficiaryName:
+                    type: string
+                    example: 'Jahangir Khalid'
+
+          CNIC:
+            type: 'object'
+            properties:
+              amount:
+                type: number
+                format: double
+                example: '10.00'
+              fed:
+                type: number
+                example: 0.0
+              wht:
+                type: number
+                example: 0.0
+              fee:
+                type: number
+                example: 0.0
+              deduction:
+                type: number
+                format: double
+                example: '10.00'
+              commission:
+                type: number
+                format: double
+                example: '0.00'
+              receiverDetails:
+                type: 'object'
+                properties:
+                  cnic:
+                    type: string
+                    example: '6110189641745'
+                  bankAccountNumber:
+                    type: string
+                    example: '923455917646'
+  sendMoneyMerchantConfirmRequest:
+    type: object
+    properties:
+      transactionID:
+        type: string
+        example: 'XD2013012923789234'
+      transactionType:
+        type: string
+        example: 'BA/CNIC'
+      CNIC:
+        type: object
+        properties:
+          amount:
+            type: string
+            example: '100'
+          receiverDetails:
+            type: 'object'
+            properties:
+              msisdn:
+                type: string
+                example: '923455917646'
+              cnic:
+                type: string
+                example: '611018964173'
+      BA:
+        type: object
+        properties:
+          amount:
+            type: string
+            example: '100'
+          receiverDetails:
+            type: 'object'
+            properties:
+              bankCode:
+                type: string
+                example: '49'
+              bankAccountNumber:
+                type: string
+                example: '611018964173'
+              msisdn:
+                type: string
+                example: '9234591837'
+          senderCNIC:
+            type: string
+            example: '611018964173'
+          purposeofRemittanceCode:
+            type: string
+            example: '611018964173'
+      remarks:
+        type: string
+        example: 'hakjfdsa dajh'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+  sendMoneyMerchantConfirmResponse:
+    type: object
+    properties:
+      originatorConversationID:
+        type: string
+        example: 247bad68da0e4edaa0ba7eb4ddf3a9cf
+      conversationID:
+        type: string
+        example: AG_20200730_000049564a4e7f3cfc86
+      transactionID:
+        type: string
+        example: 10710713156
+      transEndDate:
+        type: string
+        example: '20200730'
+      transEndTime:
+        type: string
+        example: '150802'
+      transactionData:
+        type: 'object'
+        properties:
+          bank:
+            type: 'object'
+            properties:
+              amount:
+                type: number
+                format: double
+                example: '10.00'
+              channelCode:
+                type: string
+                example: '1020'
+              deduction:
+                type: number
+                format: double
+                example: '10.00'
+              commission:
+                type: number
+                format: double
+                example: '0.00'
+              receiverMSISDN:
+                type: string
+                example: '923345494749'
+              fed:
+                type: number
+                example: 0.0
+              wht:
+                type: number
+                example: 0.0
+              fee:
+                type: number
+                example: 0.0
+              receiverDetails:
+                type: 'object'
+                properties:
+                  bankName:
+                    type: string
+                    example: 'HBL'
+                  bankAccountNumber:
+                    type: string
+                    example: '00020000011005352'
+          CNIC:
+            type: 'object'
+            properties:
+              amount:
+                type: number
+                format: double
+                example: '10.00'
+              fed:
+                type: number
+                example: 0.0
+              wht:
+                type: number
+                example: 0.0
+              fee:
+                type: number
+                example: 0.0
+              deduction:
+                type: number
+                format: double
+                example: '10.00'
+              commission:
+                type: number
+                format: double
+                example: '0.00'
+              receiverDetails:
+                type: 'object'
+                properties:
+                  cnic:
+                    type: string
+                    example: '6110189641745'
+                  bankAccountNumber:
+                    type: string
+                    example: '923455917646'
+  payBillResponse:
+    type: object
+    properties:
+      originatorConversationID:
+        type: string
+        example: 0230949283493
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      commission:
+        type: number
+        format: double
+        example: '867.00'
+      fed:
+        type: number
+        example: 0.5
+      wht:
+        type: number
+        example: 0.3
+      transEndDate:
+        type: string
+        example: '2004-01-05'
+      transEndTime:
+        type: string
+        example: '03:33:12.943'
+      fee:
+        type: number
+        example: 0.7
+      billingDetails:
+        type: 'object'
+        properties:
+          billingStatus:
+            type: string
+            example: 'u'
+          consumerRefNum:
+            type: string
+            example: '3415678906'
+          companyShortName:
+            type: string
+            example: 'Mobilink'
+          month:
+            type: string
+            example: 2014-01
+          dueDate:
+            type: string
+            example: '2014-09-01'
+          dueAmount:
+            type: number
+            format: double
+            example: '100.00'
+          lateAmount:
+            type: number
+            format: double
+            example: '10.00'
+          miniAmount:
+            type: number
+            format: double
+            example: '1.00'
+          paymentFlag:
+            type: number
+            example: 0
+  payBillConfirmRequest:
+    type: 'object'
+    properties:
+      amount:
+        type: string
+        example: '100'
+      isSaved:
+        type: boolean
+        example: true
+      billingDetails:
+        type: 'object'
+        properties:
+          consumerRefNum:
+            type: string
+            example: '3415678906'
+          companyCode:
+            type: string
+            example: '3434'
+          customerMSISDN:
+            type: string
+            example: '03455917646'
+        required:
+          - consumerRefNum
+          - companyCode
+      remarks:
+        type: string
+        example: 'sample remarks'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+
+    required:
+      - billingDetails
+      - isSaved
+  payBillConfirmResponse:
+    type: object
+    properties:
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      transEndDate:
+        type: string
+        example: '2004-01-05'
+      transEndTime:
+        type: string
+        example: '03:33:12.943'
+      transactionType:
+        type: string
+        example: 'C2B'
+      transactionData:
+        type: 'object'
+        properties:
+          deduction:
+            type: number
+            format: double
+            example: '5000.00'
+          commission:
+            type: number
+            format: double
+            example: '867.00'
+          fed:
+            type: number
+            example: 0.5
+          wht:
+            type: number
+            example: 0.3
+          fee:
+            type: number
+            example: 0.7
+          billingDetails:
+            type: 'object'
+            properties:
+              consumerRefNum:
+                type: string
+                example: '3415678906'
+              companyShortName:
+                type: string
+                example: 'Mobilink'
+              month:
+                type: string
+                example: 2014-01
+              dueDate:
+                type: string
+                example: '2014-09-01'
+              dueAmount:
+                type: number
+                format: double
+                example: '100.00'
+              amount:
+                type: number
+                format: double
+                example: '10.00'
+  paymentsResponse:
+    type: object
+    properties:
+      originatorConversationID:
+        type: string
+        example: 0230949283493
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      commission:
+        type: number
+        format: double
+        example: '867.00'
+      fed:
+        type: number
+        example: 0.5
+      wht:
+        type: number
+        example: 0.3
+      transEndDate:
+        type: string
+        example: '2004-01-05'
+      transEndTime:
+        type: string
+        example: '03:33:12.943'
+      fee:
+        type: number
+        example: 0.7
+      paymentDetails:
+        type: 'object'
+        properties:
+          billingStatus:
+            type: string
+            example: 'u'
+          consumerRefNum:
+            type: string
+            example: '3415678906'
+          companyShortName:
+            type: string
+            example: 'Mobilink'
+          month:
+            type: string
+            example: 2014-01
+          dueDate:
+            type: string
+            example: '2014-09-01'
+          dueAmount:
+            type: number
+            format: double
+            example: '100.00'
+          lateAmount:
+            type: number
+            format: double
+            example: '10.00'
+          miniAmount:
+            type: number
+            format: double
+            example: '1.00'
+          paymentFlag:
+            type: number
+            example: 0
+  paymentsConfirmRequest:
+    type: 'object'
+    properties:
+      amount:
+        type: string
+        example: '100'
+      isSaved:
+        type: string
+        example: 'true'
+      companyDetails:
+        type: 'object'
+        properties:
+          consumerRefNum:
+            type: string
+            example: '3415678906'
+          companyID:
+            type: string
+            example: '3434'
+          customerMSISDN:
+            type: string
+            example: '03455917646'
+        required:
+          - consumerRefNum
+          - companyID
+      remarks:
+        type: string
+        example: 'sample remarks'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+
+    required:
+      - paymentDetails
+  paymentsConfirmResponse:
+    type: object
+    properties:
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      transEndDate:
+        type: string
+        example: '2004-01-05'
+      transEndTime:
+        type: string
+        example: '03:33:12.943'
+      transactionType:
+        type: string
+        example: 'C2B'
+      transactionData:
+        type: 'object'
+        properties:
+          deduction:
+            type: number
+            format: double
+            example: '5000.00'
+          commission:
+            type: number
+            format: double
+            example: '867.00'
+          fed:
+            type: number
+            example: 0.5
+          wht:
+            type: number
+            example: 0.3
+          fee:
+            type: number
+            example: 0.7
+          paymentDetails:
+            type: 'object'
+            properties:
+              consumerRefNum:
+                type: string
+                example: '3415678906'
+              companyShortName:
+                type: string
+                example: 'Mobilink'
+              month:
+                type: string
+                example: 2014-01
+              dueDate:
+                type: string
+                example: '2014-09-01'
+              dueAmount:
+                type: number
+                format: double
+                example: '100.00'
+              amount:
+                type: number
+                format: double
+                example: '10.00'
+  requestMoneyInitiateRequest:
+    type: 'object'
+    properties:
+      amount:
+        type: number
+        format: double
+        example: 100
+      receiverDetails:
+        type: 'object'
+        properties:
+          msisdn:
+            type: 'string'
+            example: '920341567809'
+        required:
+          - msisdn
+      remarks:
+        type: string
+        example: 'hakjfdsa dajh'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+
+    required:
+      - amount
+      - receiverDetails
+  requestMoneyInitiateResponse:
+    type: object
+    properties:
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      transactionType:
+        type: string
+        example: RequestMoney
+      transactionStatus:
+        type: string
+        example: Pending/Complete
+      transEndDate:
+        type: string
+        example: '2004-01-05'
+      transEndTime:
+        type: string
+        example: '03:33:12.943'
+      amount:
+        type: number
+        example: 0.7
+  requestMoneyApproveRequest:
+    type: 'object'
+    properties:
+      amount:
+        type: number
+        format: double
+        example: 100
+      receiverDetails:
+        type: 'object'
+        properties:
+          msisdn:
+            type: 'string'
+            example: '920341567809'
+          cnic:
+            type: 'string'
+            example: '611018964173'
+        required:
+          - msisdn
+          - cnic
+
+      remarks:
+        type: string
+        example: 'hakjfdsa dajh'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+    required:
+      - amount
+      - receiverDetails
+  requestMoneyApproveResponse:
+    type: object
+    properties:
+      originatorConversationID:
+        type: string
+        example: 0230949283493
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      commission:
+        type: number
+        format: double
+        example: 2.0
+      fed:
+        type: number
+        format: double
+        example: 0.5
+      wht:
+        type: number
+        format: double
+        example: 0.3
+      beneficiaryName:
+        type: string
+        example: AAA
+      transEndDate:
+        type: string
+        example: '2004-01-05'
+      transEndTime:
+        type: string
+        example: '03:33:12.943'
+      fee:
+        type: number
+        format: double
+        example: 0.7
+  requestMoneyConfirmRequest:
+    type: 'object'
+    properties:
+      transactionID:
+        type: string
+        example: 'XD2013012923789234'
+      remarks:
+        type: string
+        example: 'hakjfdsa dajh'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+    required:
+      - transactionID
+  requestMoneyConfirmResponse:
+    type: object
+    properties:
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      transEndDate:
+        type: string
+        example: '2004-01-05'
+      transEndTime:
+        type: string
+        example: '03:33:12.943'
+      transactionType:
+        type: string
+        example: 'C2C'
+      transactionData:
+        type: 'object'
+        properties:
+          msisdn:
+            type: string
+            example: '9232192727200'
+          amount:
+            type: number
+            format: double
+            example: '100.00'
+          channelCode:
+            type: string
+            example: '1020'
+          deduction:
+            type: number
+            format: double
+            example: '5000.00'
+          commission:
+            type: number
+            format: double
+            example: '867.00'
+          fed:
+            type: number
+            example: 0.5
+          wht:
+            type: number
+            example: 0.3
+          fee:
+            type: number
+            example: 0.7
+          receiverDetails:
+            type: 'object'
+            properties:
+              receiverCNIC:
+                type: string
+                example: '2123242512529'
+              msisdn:
+                type: string
+                example: '9232188827288'
+  MerchantDetailsRequest:
+    type: 'object'
+    properties:
+      type:
+        type: string
+        example: 'qrStatic / qrDynamic / tillNumber'
+      payload:
+        type: string
+        example: '00001111'
+      remarks:
+        type: string
+        example: 'sample remarks'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+    required:
+      - 'type'
+      - 'payload'
+  MerchantDetailsResponse:
+    type: object
+    properties:
+      merchantMsisdn:
+        type: string
+        example: 03015091633
+      merchantName:
+        type: string
+        example: Al Barkat
+      tillNumber:
+        type: string
+        example: '00001111'
+      merchantRating:
+        type: string
+        example: '4'
+  qrC2BInitRequest:
+    type: 'object'
+    properties:
+      amount:
+        type: string
+        example: '500'
+      receiverMsisdn:
+        type: string
+        example: '923015091633'
+      remarks:
+        type: string
+        example: 'sample remarks'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+    required:
+      - 'amount'
+      - 'receiverMsisdn'
+  qrC2BInitResponse:
+    type: object
+    properties:
+      originatorConversationID:
+        type: string
+        example: AG_20130129T102103
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      txEndDate:
+        type: string
+        example: '2004-01-05'
+      txEndTime:
+        type: string
+        example: '03:33:12.943'
+      amount:
+        type: string
+        example: '10.00'
+      fee:
+        type: string
+        example: '0.00'
+  qrC2BConfirmRequest:
+    type: 'object'
+    properties:
+      transactionID:
+        type: string
+        example: '010710821961'
+      transactionType:
+        type: string
+        example: 'Closed Loop'
+      paidVia:
+        type: string
+        example: 'Scan from Camera, Scan from gallery, Till Number'
+      qrCode:
+        type: string
+        example: 'Static / Till Number'
+      merchantDetails:
+        type: object
+        properties:
+          msisdn:
+            type: string
+            example: '923462104357'
+          name:
+            type: string
+            example: 'Al Barkat.com'
+          tillNumber:
+            type: string
+            example: '00000016'
+      remarks:
+        type: string
+        example: 'sample remarks'
+      additionalDetails:
+        type: 'object'
+        properties:
+          key:
+            type: string
+            example: 'abc'
+          value:
+            type: string
+            example: 'def'
+    required:
+      - 'transactionID'
+      - 'transactionType'
+      - 'paidVia'
+      - 'qrCode'
+      - 'merchantDetails'
+  qrC2BConfirmResponse:
+    type: 'object'
+    properties:
+      txID:
+        type: string
+        example: '010710821961'
+      txType:
+        type: string
+        example: 'Closed Loop'
+      paidVia:
+        type: string
+        example: 'Scan from Camera, Scan from gallery, Till Number'
+      qrCode:
+        type: string
+        example: 'Static / Till Number'
+      msisdn:
+        type: string
+        example: '03xxxxx'
+      amount:
+        type: string
+        example: '100'
+      fee:
+        type: string
+        example: '0.00'
+      txEndDate:
+        type: string
+        example: '20140102'
+      txEndTime:
+        type: string
+        example: '210159'
+      contextData:
+        type: object
+        properties:
+          ocvID:
+            type: string
+            example: 'S_X2013012921001'
+          cvID:
+            type: string
+            example: 'AG_20130129T102103'
+          merchantDetails:
+            type: object
+            properties:
+              msisdn:
+                type: string
+                example: '923462104357'
+              name:
+                type: string
+                example: 'Al Barkat.co'
+              tillNumber:
+                type: string
+                example: '00000016'
+  quickPayRequest:
+    type: 'object'
+    properties:
+      amount:
+        type: string
+        example: 1
+      attachment:
+        type: object
+        example: '@Multipart Image Object'
+        description: 'Multipart File Object'
+      description:
+        type: string
+        example: 'Nido Fortigrom'
+      recepientDetails:
+        type: object
+        properties:
+          phoneNo:
+            type: string
+            example: '923462104357'
+          email:
+            type: string
+            example: 'example@gmail.com'
+    required:
+      - 'amount'
+      - 'attachment'
+      - 'description'
+      - 'recepientDetails'
+  quickPayResponse:
+    type: 'object'
+    properties:
+      txID:
+        type: string
+        example: '010710821961'
+      txType:
+        type: string
+        example: 'Closed Loop'
+      paidVia:
+        type: string
+        example: 'Scan from Camera, Scan from gallery, Till Number'
+      qrCode:
+        type: string
+        example: 'Static / Till Number'
+      msisdn:
+        type: string
+        example: '03xxxxx'
+      amount:
+        type: string
+        example: '100'
+      fee:
+        type: string
+        example: '0.00'
+      txEndDate:
+        type: string
+        example: '20140102'
+      txEndTime:
+        type: string
+        example: '210159'
+      contextData:
+        type: object
+        properties:
+          ocvID:
+            type: string
+            example: 'S_X2013012921001'
+          cvID:
+            type: string
+            example: 'AG_20130129T102103'
+          merchantDetails:
+            type: object
+            properties:
+              msisdn:
+                type: string
+                example: '923462104357'
+              name:
+                type: string
+                example: 'Al Barkat.co'
+              tillNumber:
+                type: string
+                example: '00000016'
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header

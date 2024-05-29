@@ -1,0 +1,286 @@
+swagger: "2.0"
+info:
+  description: "This APIs related to Jazz cash integration for USSD APIs"
+  version: "1.0.0"
+  title: "Jazz Cash USSD Integration"
+basePath: //gw.icp-proxy.jazzcash-fra04-b3c-32x128-32e4d82b5ac35ba812aabbeece8661d9-0000.eu-de.containers.appdomain.cloud/jazzcashtestorg/sandbox/
+
+schemes:
+- "https"
+- "http"
+
+paths:
+
+  /rest/api/v1/payment/ussd/initiate:
+    post:
+      tags:
+      - "USSD"
+      summary: ""
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - in: header
+        name: Content-Type
+        required: true
+        type: string
+        description: "application/json"
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - easypaisa
+        description: Describes channel code
+      - in: header
+        name: X-IBM-CLIENT-ID
+        required: true
+        type: string
+        description: Client credentials required for API Connect
+      - in: header
+        name: X-IBM-CLIENT-SECRET
+        required: true
+        type: string
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/USSD_Initiate'
+        description: The request body for the operation
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            properties:
+             responseCode:
+              type: string
+              example: "PT-USSD-T01"
+             responseMessage:
+              type: string
+              example: Success.
+             textMessage:
+              type: string
+              example: "Send Rs 100 to User, Channel/BankName A/C # 3342? Fees: Rs 5. Enter MPIN to Confirm"    
+             data:
+               $ref: "#/definitions/Response_USSD_Initiate"
+        "422":
+          description: "TRANSACTION_NOT_ALLOWED"
+          schema:
+            properties:
+             responseCode:
+              type: string
+              example: "PT-USSD-T02"
+             responseMessage:
+              type: string
+              example: Daily receiving limit reached
+             textMessage:
+              type: string
+              example: "error message"
+
+  /rest/api/v1/payment/ussd/confirm:
+    post:
+      tags:
+      - "USSD"
+      summary: ""
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - in: header
+        name: Content-Type
+        required: true
+        type: string
+        description: "application/json"
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - easypaisa
+        description: Describes channel code
+      - in: header
+        name: X-IBM-CLIENT-ID
+        required: true
+        type: string
+        description: Client credentials required for API Connect
+      - in: header
+        name: X-IBM-CLIENT-SECRET
+        required: true
+        type: string
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/USSD_Confirm'
+        description: The request body for the operation
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            properties:
+             responseCode:
+              type: string
+              example: "PT-USSD-T01"
+             responseMessage:
+              type: string
+              example: Success.
+             textMessage:
+              type: string
+              example: "Rs 100 sent to Channel/BankName A/C # 3342. Fees: Rs 5, Deduction:Rs. 105, Balance: Rs 10,091. TID: 2467643785"   
+             data:
+               $ref: "#/definitions/Response_USSD_Confirm"
+        "422":
+          description: "TRANSACTION_NOT_ALLOWED"
+          schema:
+            properties:
+             responseCode:
+              type: string
+              example: "PT-USSD-T02"
+             responseMessage:
+              type: string
+              example: Daily receiving limit reached
+             textMessage:
+              type: string
+              example: "error message"
+              
+definitions:
+
+  USSD_Initiate:
+    type: "object"
+    properties:
+      senderMsisdn:
+        type: string
+        example: "923315231351"        
+      accountNumber:
+        type: string
+        example: "2443785"
+      amount:
+        type: number
+        format: float
+        example: 100.00
+      receiverMsisdn:
+        type: string
+        example: "923315231992"
+      paymentPurpose:
+        type: string
+        example: "********"
+      bankCode:
+        type: string
+        example: "0068"
+      reserveParameterOne:
+        type: string
+        example: "reserve parameter"        
+      reserveParameterTwo:
+        type: string
+        example: "reserve parameter"   
+        
+  USSD_Confirm:
+    type: "object"
+    properties:
+      senderMsisdn:
+        type: string
+        example: "923315231351"
+      mpin:
+        type: string
+        example: "*******" 
+      bankCode:
+        type: string
+        example: "abc11121"
+      originatorConversationID:
+        type: string
+        example: "24437859319121921"
+      transactionID:
+        type: string
+        example: "2467643785"
+      reserveParameterOne:
+        type: string
+        example: "reserve parameter"        
+      reserveParameterTwo:
+        type: string
+        example: "reserve parameter"   
+        
+  Response_USSD_Initiate:
+    type: "object"
+    properties:
+      originatorConversationID:
+        type: string
+        example: "24437859319121921"
+      transactionID:
+        type: string
+        example: "2467643785"
+      MPINConfirmationCheck:
+        type: boolean
+        example: true
+      msisdn:
+        type: string
+        example: "923315231992" 
+      bankCode:
+        type: string
+        example: "0068"
+      receiverAccountTitle:
+        type: string
+        example: "Moughees Baig"
+      receiverAccountNumber:
+        type: string
+        example: "03458505731"
+      amount:
+        type: number
+        format: float
+        example: 100.00
+      fees:
+        type: number
+        format: float
+        example: 10.4
+      fed:
+        type: number
+        format: float
+        example: 4.3
+      wht:
+        type: number
+        format: float
+        example: 2.1
+      commission:
+        type: number
+        format: float
+        example: 1.3
+        
+  Response_USSD_Confirm:
+    type: "object"
+    properties:
+      originatorConversationID:
+        type: string
+        example: "24437859319121921"
+      transactionID:
+        type: string
+        example: "2467643785"
+      msisdn:
+        type: string
+        example: "923315231992"
+      receiverAccountTitle:
+        type: string
+        example: "Moughees Baig"
+      receiverAccountNumber:
+        type: string
+        example: "03458505731"
+      amount:
+        type: number
+        format: float
+        example: 100.00
+      tAmount:
+        type: number
+        format: float
+        example: 105.9
+      UAmount:
+        type: number
+        format: float
+        example: 10105.9
+      fees:
+        type: number
+        format: float
+        example: 5.9
+      wht:
+        type: number
+        format: float
+        example: 2.1
+      commission:
+        type: number
+        format: float
+        example: 1.3

@@ -1,0 +1,163 @@
+@startuml
+
+skinparam Monochrome true 
+
+object customObject {
+  header : {}, 
+  payload : {},
+  context : { }
+}
+object cache {
+  
+  
+  03042226922_1234 :{TXHistory:{}} // TTL 2 hrs,
+
+  txreg_03042226922 : ["1234,epoch1","5678,epoch2"],
+  
+  03042226922_5678 :{},
+   
+    {txid:"1234",txDateTime:"epoch"},
+    {txid:"5678"},txDateTime:"epoch"
+    {txid:"91011"},txDateTime:"epoch"]
+}
+
+object TXHistory {
+  
+  "txID"= "XD2013012923789234",    
+        "txType"= "One of the values in Transaction Type object",
+        "txStatus" = "Pending/Complete",
+        "msisdn"= "[Waqas] 9232192727200",
+        "amount"= 100,
+        "txEndDate"= "20140102",
+        "txEndTime"= "210159",
+        "sender.msisdn" = "9232192727200", 'optional 
+        "sender.name" = "Waqas Burney",         
+        "chCode"= "1020",
+        "debit" = true ,
+        isRepeatable = true , //consider removing this attribute 
+        txCategory = "Food Delivery",
+        fee = 50,
+        commission : 4, 'What the initiator earns 
+        "context" = "object"
+}
+
+
+object Context {
+	"_txHistory"="1"
+                "msisdn"= "[Nadeem] 9232188827288",
+                "name"= "AAA",
+                "bankCode" = "1008",
+                "receiver.bankName" = "Habib Bank Ltd",
+            "bankAcctNum" = "627100444444440000",
+            "receiver.cnic" : "61101896411111",
+            "receiver.name" = "Nadeem Abbasi",
+            "receiver.msisdn" = "923042226922", 'optional 
+            "receiver.tillID" = "12345",
+            "fee" : 50,
+			 companyName:'Telenor',
+       paymentReferenceNumber = "12312312312312",
+			 companyType:'Mobile Network',
+			 paymentIDType:'',
+			 paymentID:'',
+			 billingMonth:'',
+			 paidTo:'',
+			 network:'',
+			 dueDate:''
+			 paymentType:'',
+			 payoneerExchangeRate:'',
+			 payoneerAmountPKR:'',
+       payoneerTransferDateTime:'',
+			 payoneerTxStatus:'',
+			 email:'',
+       bundleName = "",
+       bundleNetwork = "",
+       bundleValidity="30 Days",
+       mobileLoadNumber = "03042226922",
+       mobileLoadNetwork = "Telenor, Zong, Ufone, Jazz"
+       mobileLoadBillPostPaid = 4000, 
+       loanBankName = "Standard Charterd Bank",
+       loanBillingMonth = "March ",
+       loanDueDate = "10-10-2020",
+       voucherNumberUsedForPayment : "30004", 
+       voucherPaymentBillingMonth : "1-3-2020, March ",
+       voucherPaymentDueDate : "30-3-2020",
+       employeeID : "Bykea Rider ID",
+       paymentType : "Online Transfer",
+       voucherName : "Cheetay Voucher",
+       voucherType : "e-Voucher, Printed Voucher",
+       voucherNumber : "JHI-87AA",
+       restaurant : "Ali Bhai Burger",
+       foodOrderID: "burger-008",
+       foodOrderMobileNumber: "03215562007",
+       busService : "Daewoo, Faisal Movers"
+       journeyFrom: 'Islamabad',
+			 journeyTo:'Lahore',
+			 journeyDateTime= "21-10-2020 5:00:00 PST",
+       seatsBooked :'4',
+       darazAccountName = "Sameen Azhar ",
+       darazAccountNumber = "138934439234 ",
+       darazEmail = "email@email.com ",
+			 
+}
+
+object TransactionType {
+**//One of following//** ,
+Transfer Jazzcash, 
+Transer Bank, 
+Transfer CNIC,
+Utility Bill, 
+Mobile Bundle,
+Mobile Load - Prepaid,
+Mobile Load- Postpaid
+Loan Repayment,
+Education Payment,
+Corporate Payment,
+Payoneer Account Fund Transfer,
+Static QR Payment - Closed,
+Static QR Payment Scan ,
+Static QR (Till Payments),
+Donation,
+e-Voucher,
+Careem Voucher,
+FOod Ordering,
+Bus Ticket Purchase,
+Mobile Bundles(Other Telecoms),
+Daraz
+}
+
+object MerchantType{
+Merchant 
+Donation Organization
+Restaurant 
+Transport
+Bank
+Bundle 
+Company
+Institution
+Daraz Account
+}
+
+object Tax {
+  wht = 10 ,
+  fed = 5 , 
+  gst = 3 
+}
+
+
+object paymentIDType{
+Reference No.
+Voucher Number
+Order ID
+Consumer ID
+Till ID
+}
+
+
+
+
+TXHistory o-- Context 
+TXHistory o-- Tax
+TXHistory o-- TransactionType
+
+
+@enduml

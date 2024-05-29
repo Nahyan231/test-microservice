@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: qrpayment-microservice
+  namespace: jc-microservices
+  labels:
+    app: qrpayment-microservice
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+spec:
+  ports:
+    - name: 3000-tcp
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: qrpayment-microservice
+    deploymentconfig: qrpayment-microservice
+  type: NodePort
+  sessionAffinity: None
+status:
+  loadBalancer: {}

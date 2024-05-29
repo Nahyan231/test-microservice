@@ -1,0 +1,17 @@
+apiVersion: autoscaling/v2beta1 
+kind: HorizontalPodAutoscaler
+metadata:
+  name: qrpayment-hpa 
+  namespace: qa-merchant
+spec:
+  scaleTargetRef:
+    apiVersion: apps.openshift.io/v1 
+    kind: DeploymentConfig 
+    name: qrpayment-microservice
+  minReplicas: 1 
+  maxReplicas: 5 
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 40

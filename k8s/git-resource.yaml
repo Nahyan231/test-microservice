@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: __GIT_SOURCE_NAME__
+spec:
+  type: git
+  params:
+  - name: url
+    value: __GIT_URL__
+  - name: revision
+    value: __GIT_BRANCH__

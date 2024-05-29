@@ -1,0 +1,68 @@
+{
+  "REQUESTMONEY_CONFIRM": {
+    "txID": "",
+    "msisdn": "",
+    "txStatus": "",
+    "amount": "",
+    "txEndDate": "",
+    "txEndTime": "",
+    "chCode": "",
+    "contextData": {
+      "ocvID": "",
+      "cvID": "",
+      "rxDetails": {
+        "rxCNIC": "",
+        "msisdn": ""
+      }
+    }
+  },
+  "UTILITYBILL_CONFIRM": {
+    "txID": "",
+    "txType": "",
+    "txStatus": "",
+    "msisdn": "",
+    "amount": "",
+    "txEndDate": "",
+    "txEndTime": "",
+    "chCode": "",
+    "contextData": {
+      "ocvID": "",
+      "cvID": "",
+      "billDetails": {
+        "consumerRefNum": "",
+        "companyCode": ""
+      }
+    }
+  },
+  "TRX_HISTORY": {
+    "msisdn_txID":"",
+    "txID": "",
+    "txType":"",
+    "msisdn": "",
+    "txStatus": "",
+    "amount": "",
+    "txEndDate": "",
+    "txEndTime": "",
+    "chCode": "",
+    "senderMsisdn" :"" ,
+    "senderName":"" ,
+    "debit":"" ,
+    "isRepeatable":"" ,
+    "isRefundable":"false",
+    "txCategory":"" ,
+    "fee":"" ,
+    "commission":"" ,
+    "companyCode": "",
+    "txTypeLabel":"",
+    "txCategoryLabel":"",
+    "useCase": "",
+    "contextData": {
+      "ocvID": "",
+      "cvID": "",
+      "header":"",
+      "footer":"",
+      "rxDetails": {
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "required": [],
+  "properties": {
+    "body": {
+      "type": "object",
+      "required": [],
+      "properties": {} 
+    }, 
+    "headers": {
+      "type": "object",
+      "required": [],
+      "properties": {} 
+    },
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {} 
+    },
+    "path": {
+      "type": "object",
+      "required": [],
+      "properties": {} 
+    }
+  }
+}

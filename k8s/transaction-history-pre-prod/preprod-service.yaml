@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: transaction-history-microservice
+  namespace: jc-pre-prod-microservices
+  labels:
+    app: transaction-history-microservice
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+spec:
+  ports:
+    - name: 3000-tcp
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: transaction-history-microservice
+    deploymentconfig: transaction-history-microservice
+  type: NodePort
+  sessionAffinity: None
+status:
+  loadBalancer: {}

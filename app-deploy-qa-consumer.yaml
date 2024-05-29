@@ -1,0 +1,97 @@
+apiVersion: appsody.dev/v1beta1
+kind: AppsodyApplication
+metadata:
+  annotations:
+    architecture: x86_64
+    build-date: 2021-08-05T06:36:09.401642
+    commit.image.appsody.dev/contextDir: D:\jazzcash\qrpayment-microservice
+    commit.image.appsody.dev/date: Thu Dec 2 15:16:39 2021 +0500
+    commit.image.appsody.dev/message: Merge branch 'qa-consumer' of https://github.com/JazzCash/qrpayment-microservice
+      into hotfix-qa-consumer-c2g-redeem
+    commit.stack.appsody.dev/contextDir: D:\jazzcash\jazzcash-appsody-stack
+    commit.stack.appsody.dev/date: Fri Sep 3 23:59:07 2021 +0500
+    commit.stack.appsody.dev/message: reverted version to 0.4.8
+    description: This image contains the Kabanero development stack for the Nodejs
+      Express collection
+    distribution-scope: public
+    help: For more information visit https://github.com/sclorg/s2i-nodejs-container
+    image.opencontainers.org/created: "2021-12-02T15:18:37+05:00"
+    image.opencontainers.org/documentation: https://github.com/JazzCash/qrpayment-microservice
+    image.opencontainers.org/revision: 15eec063398f7b18352f088f4bb79eb382145ac8
+    image.opencontainers.org/source: https://github.com/JazzCash/qrpayment-microservice/tree/hotfix-qa-consumer-c2g-redeem
+    image.opencontainers.org/url: https://github.com/JazzCash/qrpayment-microservice
+    k8s.io/description: Node.js 12 available as container is a base platform for building
+      and running various Node.js 12 applications and frameworks. Node.js is a platform
+      built on Chrome's JavaScript runtime for easily building fast, scalable network
+      applications. Node.js uses an event-driven, non-blocking I/O model that makes
+      it lightweight and efficient, perfect for data-intensive real-time applications
+      that run across distributed devices.
+    k8s.io/display-name: Node.js 12
+    maintainer: SoftwareCollections.org <sclorg@redhat.com>
+    name: kabanero/nodejs-express
+    openshift.io/expose-services: 8080:http
+    openshift.io/tags: builder,nodejs,nodejs12
+    redhat.com/build-host: cpt-1005.osbs.prod.upshift.rdu2.redhat.com
+    redhat.com/component: nodejs-12-container
+    redhat.com/deployments-dir: /opt/app-root/src
+    redhat.com/dev-mode: DEV_MODE:false
+    redhat.com/dev-mode.port: DEBUG_PORT:5858
+    redhat.com/license_terms: https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI
+    release: "95"
+    s2i.io/scripts-url: image:///usr/libexec/s2i
+    s2i.openshift.io/scripts-url: image:///usr/libexec/s2i
+    stack.appsody.dev/authors: Jahangir Khalid <>
+    stack.appsody.dev/configured: dev.local/appsody/jazzcash-appsody-stack:0.4
+    stack.appsody.dev/created: "2021-09-30T14:57:11+05:00"
+    stack.appsody.dev/description: Express web framework for Node.js
+    stack.appsody.dev/documentation: https://github.com/JazzCash/jazzcash-appsody-stack/tree/masterD:\jazzcash\jazzcash-appsody-stack/README.md
+    stack.appsody.dev/licenses: Apache-2.0
+    stack.appsody.dev/revision: d3724ebf10179e9b7aaf188af108519ce5a1dad3
+    stack.appsody.dev/source: https://github.com/JazzCash/jazzcash-appsody-stack/tree/masterD:\jazzcash\jazzcash-appsody-stack/image
+    stack.appsody.dev/tag: dev.local/appsody/jazzcash-appsody-stack:0.4.8
+    stack.appsody.dev/title: Node.js Express
+    stack.appsody.dev/url: https://github.com/JazzCash/jazzcash-appsody-stack/tree/masterD:\jazzcash\jazzcash-appsody-stack
+    stack.buildpacks.io/id: com.redhat.stacks.ubi8-nodejs-12
+    summary: Image for Kabanero Node.js Express development
+    url: https://access.redhat.com/containers/#/registry.access.redhat.com/ubi8/nodejs-12/images/1-95
+    usage: s2i build <SOURCE-REPOSITORY> ubi8/nodejs-12:latest <APP-NAME>
+    vcs-ref: 62720267682d5c2219989b0145b4196a48d5eefc
+    vcs-type: git
+    vendor: Kabanero
+    version: 0.4.8
+  creationTimestamp: null
+  labels:
+    image.opencontainers.org/title: qrpayment-microservice
+    stack.appsody.dev/id: jazzcash-appsody-stack
+    stack.appsody.dev/version: 0.4.8
+  name: qrpayment-microservice
+  namespace: qa-consumer
+spec:
+  applicationImage: image-registry.openshift-image-registry.svc:5000/qa-consumer/qrpayment-microservice:v1.0
+  createKnativeService: false
+  expose: true
+  livenessProbe:
+    failureThreshold: 12
+    httpGet:
+      path: /live
+      port: 3000
+    initialDelaySeconds: 5
+    periodSeconds: 2
+  monitoring:
+    labels:
+      k8s-app: qrpayment-microservice
+  readinessProbe:
+    failureThreshold: 12
+    httpGet:
+      path: /ready
+      port: 3000
+    initialDelaySeconds: 5
+    periodSeconds: 2
+    timeoutSeconds: 1
+  service:
+    annotations:
+      prometheus.io/scrape: "true"
+    port: 3000
+    type: NodePort
+  stack: jazzcash-appsody-stack
+  version: 1.0.0

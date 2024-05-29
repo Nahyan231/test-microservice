@@ -1,0 +1,3775 @@
+swagger: '2.0'
+info:
+  title: Payment And Transaction APIs
+  version: '1.0.0'
+  description: Payment And Transaction APIs
+host: 'ibm.com'
+basePath: /rest/api/v1
+paths:
+  /rest/api/v1/requesttopay/quickpay:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Request To Pay'
+      summary: 'Request to pay via quickpay'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: User MPIN
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/quickPayRequest'
+          description: The request body for the operation
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              statusCode:
+                type: number
+                example: 200
+              message_en:
+                type: string
+                example: Invoice sent Successfully
+              message_ur:
+                type: string
+                example: Invoice sent Successfully
+        '422':
+          description: 'Error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: 422
+              message_en:
+                type: string
+                example: Failed to send invoice
+              message_ur:
+                type: string
+                example: Failed to send invoice
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - 'Request To Pay'
+      summary: 'Request to pay via quickpay'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: User MPIN
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: path
+          type: string
+          name: invoiceID
+          required: true
+          description: The invoice ID of the quickpay request
+        - in: path
+          type: string
+          name: status
+          required: true
+          description: completed
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              message_en:
+                type: string
+                example: Request sent Successfully
+              message_ur:
+                type: string
+                example: Request sent Successfully
+              data:
+                items:
+                  $ref: '#/definitions/quickPayResponse'
+              merchantProfile:
+                items:
+                  $ref: '#/definitions/MerchantDetailsResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '422':
+          description: 'Error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: QR-C2B-T02
+              message_en:
+                type: string
+                example: Request failed
+              message_ur:
+                type: string
+                example: Request failed
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - 'Request To Pay'
+      summary: 'Request to pay via quickpay'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: User MPIN
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: path
+          type: string
+          required: true
+          name: invoiceID
+          description: The invoice ID of the quickpay request
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/quickPayRequest'
+          description: The request body for the operation
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              message_en:
+                type: string
+                example: Request updated Successfully
+              message_ur:
+                type: string
+                example: Request updated Successfully
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '422':
+          description: 'Error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: 422
+              message_en:
+                type: string
+                example: Request updated Successfully
+              message_ur:
+                type: string
+                example: Reques
+  /rest/api/v1/requesttopay/invoice:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Request To Pay'
+      summary: 'Request To Pay via invoice'
+      description: 'Request To Pay via invoice'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: User MPIN
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/invoiceRequest'
+          description: The request body for the operation
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              message_en:
+                type: string
+                example: Request sent Successfully
+              message_ur:
+                type: string
+                example: Request sent Successfully
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '422':
+          description: 'Error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseMessage:
+                type: string
+                example: Error
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - 'Request To Pay'
+      summary: 'Request To Pay via invoice'
+      description: 'Request To Pay via invoice'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: User MPIN
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: path
+          type: string
+          name: invoiceID
+          required: true
+          description: The invoice ID of the request
+        - in: path
+          type: string
+          name: status
+          required: true
+          description: completed
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              statusCode:
+                type: number
+                example: 200
+              message_en:
+                type: string
+                example: Request sent Successfully
+              message_ur:
+                type: string
+                example: Request sent Successfully
+              data:
+                items:
+                  $ref: '#/definitions/invoiceResponse'
+              merchantDetails:
+                items:
+                  $ref: '#/definitions/MerchantDetailsResponse'
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '422':
+          description: 'Error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              statusCode:
+                type: number
+                example: 422
+              message_en:
+                type: string
+                example: Request sent Successfully
+              message_ur:
+                type: string
+                example: Request sent Successfully
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - 'Request To Pay'
+      summary: 'Request To Pay via invoice'
+      description: 'Request To Pay via invoice'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: User MPIN
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/invoiceRequest'
+          description: The request body for the operation
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              statusCode:
+                type: number
+                example: 200
+              message_en:
+                type: string
+                example: Request updated Successfully
+              message_ur:
+                type: string
+                example: Request updated Successfully
+              additionalDetails:
+                items:
+                  $ref: '#/definitions/additionalObject'
+        '422':
+          description: 'Error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              statusCode:
+                type: number
+                example: 422
+              message_en:
+                type: string
+                example: Request failed failed
+              message_ur:
+                type: string
+                example: Request sent failed
+  /rest/api/v1/requesttopay/invoice/requestExtension:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Request To Pay'
+      summary: 'Request to pay via quickpay'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: User MPIN
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            items:
+              $ref: '#/definitions/requestExtensionRequest'
+          description: The request body for the operation
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              successCode:
+                type: number
+                example: 200
+              message_en:
+                type: string
+                example: Request sent Successfully
+              message_ur:
+                type: string
+                example: Request sent Successfully
+        '422':
+          description: 'Error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              successCode:
+                type: number
+                example: 422
+              message_en:
+                type: string
+                example: Request sent Successfully
+              message_ur:
+                type: string
+                example: Request sent Successfully
+  /rest/api/v1/requesttopay/delete:
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - 'Request To Pay'
+      summary: 'Request to pay via invoice'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: User MPIN
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            items:
+              $ref: '#/definitions/deleteRequest'
+          description: The request body for the operation
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: 200
+              message_en:
+                type: string
+                example: Request deleted Successfully
+              message_ur:
+                type: string
+                example: Request deleted Successfully
+        '422':
+          description: 'Error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              responseCode:
+                type: string
+                example: 422
+              message_en:
+                type: string
+                example: Failed to deleted invoice
+              message_ur:
+                type: string
+                example: Failed to deleted invoice
+  /rest/api/v1/requesttopay/remind:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - 'Request To Pay'
+      summary: 'Request to pay via quickpay'
+      description: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-MPIN
+          required: true
+          type: string
+          description: User MPIN
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            items:
+              $ref: '#/definitions/remindRequest'
+          description: The request body for the operation
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              successCode:
+                type: number
+                example: 200
+              message_en:
+                type: string
+                example: Request sent Successfully
+              message_ur:
+                type: string
+                example: Request sent Successfully
+        '422':
+          description: 'Error'
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: false
+              successCode:
+                type: number
+                example: 422
+              message_en:
+                type: string
+                example: Request sent Successfully
+              message_ur:
+                type: string
+                example: Request sent Successfully
+  # accepts T&C APIS ==================================================
+  /rest/api/v1/requesttopay/settings/termsandconditions:
+    post:
+      tags:
+        - 'Terms and Conditions'
+      description: ''
+      parameters:
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+            - Andriod
+            - IOS
+            - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: ''
+          schema:
+            $ref: '#/definitions/accepttermandconditionReqBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+
+  # TAX PRESET APIS ==================================================
+
+  /rest/api/v1/requesttopay/settings/taxpreset/{taxpresetID}:
+    get:
+      tags:
+        - 'Tax'
+      description: return details of give tax preset
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - name: taxpresetID
+          in: path
+          description: 'Discount Preset id to get'
+          required: true
+          type: string
+        # - in: body
+        #   name: body
+        #   description: Post body Add Tax preset
+        #   schema:
+        #     $ref: '#/definitions/getTaxPresetDetailsReqBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/taxPresetDetailResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+            
+    put:
+      tags:
+        - 'Tax'
+      description: update existing Tax preset information
+      operationId: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - name: taxpresetID
+          in: path
+          description: 'Tax Preset id to be updated'
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Post body Add Tax preset
+          schema:
+            $ref: '#/definitions/addTaxPresetReqBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+    delete:
+      tags:
+        - 'Tax'
+      description: 'remove existing tax preset'
+      operationId: 'deleteTaxPreset'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - name: taxpresetID
+          in: path
+          description: 'Tax Preset id to delete'
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+
+
+  /rest/api/v1/requesttopay/settings/taxpreset/:
+    post:
+      tags:
+        - 'Tax'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: ''
+          schema:
+            $ref: '#/definitions/addTaxPresetReqBody'
+      description: endpoint to add tax present to database
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+    get:
+      tags:
+        - 'Tax'
+      description: returns all tax presets
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        # - in: body
+        #   name: body
+        #   description: Post body Add Tax preset
+        #   schema:
+        #     $ref: '#/definitions/getTaxPresetDetailsReqBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/taxPresetDetailResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+
+  # DISCOUNT PRESET APIS ==================================================
+
+  /rest/api/v1/requesttopay/settings/discountpreset/{discountpresetID}:
+    get:
+      tags:
+        - 'Discount'
+      description: return details of a given discount preset
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - name: discountpresetID
+          in: path
+          description: 'Discount Preset id to be fetched'
+          required: true
+          type: string
+        # - in: body
+        #   name: body
+        #   description: Get Information about a given preset
+        #   schema:
+        #     $ref: '#/definitions/getDiscountPresetDetailsReqBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/discountPresetResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+            
+    put:
+      tags:
+        - 'Discount'
+      description: update existing discount preset information
+      operationId: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - name: discountpresetID
+          in: path
+          description: 'Discount Preset id to be updated'
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update a Preset
+          schema:
+            $ref: '#/definitions/addDiscountPresetBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+            
+    delete:
+      tags:
+        - 'Discount'
+      description: 'remove existing discount preset'
+      operationId: 'deleteDiscountPreset'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - name: discountpresetID
+          in: path
+          description: 'Discount Preset id to be deleted'
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+
+  /rest/api/v1/requesttopay/settings/discountpreset/:
+    post:
+      tags:
+        - 'Discount'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Add a discount Preset
+          schema:
+            $ref: '#/definitions/addDiscountPresetBody'
+      description: endpoint to add discount preset to database
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+            
+    get:
+      tags:
+        - 'Discount'
+      description: returns all discount presets
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        # - in: body
+        #   name: body
+        #   description: Get Information about a given preset
+        #   schema:
+        #     $ref: '#/definitions/getDiscountPresetDetailsReqBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/discountPresetResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+
+  # SHIPPING PRESET APIS ==================================================
+
+  /rest/api/v1/requesttopay/settings/shippingpreset/{shippingpresetID}:
+    get:
+      tags:
+        - 'Shipping'
+      description: return details of given shipping preset
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - name: shippingpresetID
+          in: path
+          description: 'Discount Preset id to be fetched'
+          required: true
+          type: string
+        # - in: body
+        #   name: body
+        #   description: Give details of a given preset
+        #   schema:
+        #     $ref: '#/definitions/getShippingPresetDetailsReqBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/shippingPresetResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+            
+    put:
+      tags:
+        - 'Shipping'
+      description: update existing shipping preset information
+      operationId: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - name: shippingpresetID
+          in: path
+          description: 'Update preset information based on ID'
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update preset information based on ID
+          schema:
+            $ref: '#/definitions/addShippingPresetBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+            
+    delete:
+      tags:
+        - 'Shipping'
+      description: 'remove existing shipping preset'
+      operationId: 'deleteShippingPreset'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - name: shippingpresetID
+          in: path
+          description: 'Shipping Preset id to be deleted'
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+            
+  /rest/api/v1/requesttopay/settings/shippingpreset/:
+    post:
+      tags:
+        - 'Shipping'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Add shipping preset information
+          schema:
+            $ref: '#/definitions/addShippingPresetBody'
+      description: endpoint to add shipping present to database
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+    
+    get:
+      tags:
+        - 'Shipping'
+      description: returns all shipping presets
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        # - in: body
+        #   name: body
+        #   description: Give details of a given preset
+        #   schema:
+        #     $ref: '#/definitions/getShippingPresetDetailsReqBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/shippingPresetResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+
+
+
+# ====================================================================
+          
+  /rest/api/v1/requestmoney/friend:
+    post:
+      tags:
+        - 'Request Money From Friend'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: ''
+          schema:
+            $ref: '#/definitions/requestMoneyFromFriendBody'
+      description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+    
+    get:
+      tags:
+        - 'Request Money From Friend'
+      description: ''
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - name: shippingpresetID
+          in: path
+          description: ''
+          required: true
+          type: string
+        # - in: body
+        #   name: body
+        #   description: Give details of a given preset
+        #   schema:
+        #     $ref: '#/definitions/getShippingPresetDetailsReqBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+              message_en:
+                type: string
+              message_ur:
+                type: string
+              data:
+                type: 'array'
+                items: 
+                
+                  $ref: '#/definitions/requestMoneyFromFriendResponse'
+    #     items:
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+            
+    put:
+      tags:
+        - 'Request Money From Friend'
+      description: ''
+      operationId: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - name: shippingpresetID
+          in: path
+          description: 'Update preset information based on ID'
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update preset information based on ID
+          schema:
+            $ref: '#/definitions/addShippingPresetBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+            
+    delete:
+      tags:
+        - 'Request Money From Friend'
+      description: ''
+      operationId: 'deleteShippingPreset'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - name: shippingpresetID
+          in: path
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+    
+  /rest/api/v1/requestmoney/friend/sendreminder:
+    post:
+      tags:
+        - 'Request Money From Friend'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: ''
+          schema:
+            type: "object"
+            properties:
+              invoiceID:
+                type: string
+                example: "5fb3eee55bc88d04e89e3bc8"
+      description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+    
+# ====================================================================
+  /rest/api/v1/requesttopay/settings/invoiceNotes/:
+    post:
+      tags:
+        - 'Invoice Notes'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Add a Invoice Note
+          schema:
+            $ref: '#/definitions/addInvoiceNoteBody'
+      description: endpoint to add a invoice note
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+    
+    get:
+      tags:
+        - 'Invoice Notes'
+      description: returns all invoice notes
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        # - in: body
+        #   name: body
+        #   description: Give details of a given preset
+        #   schema:
+        #     $ref: '#/definitions/getShippingPresetDetailsReqBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/invoiceNoteResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+
+    put:
+      tags:
+        - 'Invoice Notes'
+      description: update existing invoice note
+      operationId: ''
+      produces:
+        - 'application/json'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update Invoice Note Information based on Merchant MSISDN
+          schema:
+            $ref: '#/definitions/addInvoiceNoteBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+
+  /rest/api/v1/requesttopay/settings/advancedSettings/:
+    post:
+      tags:
+        - 'Advanced Settings'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Add Advanced Settings
+          schema:
+            $ref: '#/definitions/addAdvancedSettingsBody'
+      description: endpoint to add advanced settings
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/genericSuccessResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+    
+    get:
+      tags:
+        - 'Advanced Settings'
+      description: returns the advanced setting option based on Merchant MSISDN
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        # - in: body
+        #   name: body
+        #   description: Give details of a given preset
+        #   schema:
+        #     $ref: '#/definitions/getShippingPresetDetailsReqBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/advancedSettingsResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+
+            
+  /rest/api/v1/payment/merchantPayment/init:
+    post:
+      tags:
+        - 'payment'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Add shipping preset information
+          schema:
+            $ref: '#/definitions/merchantPaymentInitRequest'
+      description: endpoint to add shipping present to database
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: MR-PAY-T34
+              message_en:
+                type: string
+                example: Init Trans Customer to Merchant Successful
+              message_ur:
+                type: string
+                example: مرچنٹ کامیاب کرنے init کے ٹرانس کسٹمر
+              data:
+                $ref: '#/definitions/merchantPaymentInitResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+  /rest/api/v1/payment/merchantPayment/confirm:
+    post:
+      tags:
+        - 'payment'
+      parameters:
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+            - Third Party
+            - Mobile APP
+            - Backend Portal
+          description: Describes channel code
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Add shipping preset information
+          schema:
+            $ref: '#/definitions/merchantPaymentConfirmRequest'
+      description: endpoint to add shipping present to database
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              responseCode:
+                type: string
+                example: MR-PAY-T34
+              message_en:
+                type: string
+                example: Payment Successful
+              message_ur:
+                type: string
+                example: کامیاب ادائیگی
+              data:
+                $ref: '#/definitions/merchantPaymentConfirmResponse'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+definitions:
+# request money from friend
+  requestMoneyFromFriendBody:
+    type: 'object'
+    properties:
+      invoiceID:
+        type: string
+        example: 123
+      invoiceType:
+        type: string
+        example: requestmoneyfromfriend
+        enum:
+          - requestmoneyfromfriend
+      amount:
+        type: number
+        example: 1
+      attachment:
+        type: object
+        example: 'test.jpg'
+        description: 'Multipart File Object'
+      note:
+        type: string
+        example: 'I need some money'
+      status:
+        type: string
+        example: approved
+        enum:
+          - Approved
+          - Rejected
+          - Pending
+          - Delayed
+          - Canceled
+      reminders:
+        type: number
+        example: 0
+      recepientDetails:
+        type: object
+        properties:
+          phoneNo:
+            type: string
+            example: '923462104357'
+          email:
+            type: string
+            example: 'example@gmail.com'
+          name:
+            type: string
+            example: 'Test User'
+    required:
+      - 'amount'
+      - 'attachment'
+      - 'recepientDetails'
+      - 'invoiceID'
+  requestMoneyFromFriendResponse:
+    type: object
+    properties:
+      invoiceID:
+        type: string
+        example: 123
+      invoiceType:
+        type: string
+        example: requestmoneyfromfriend
+      amount:
+        type: string
+        example: 1
+      attachment:
+        type: object
+        example: 'test.jpg'
+        description: 'abc.jpg'
+      note:
+        type: string
+        example: 'Nido Fortigro'
+      status:
+        type: string
+        example: approved
+        enum:
+          - Approved
+          - Rejected
+          - Pending
+          - Delayed
+          - Canceled
+      reminders:
+        type: number
+        example: 0
+      recepientDetails:
+        type: object
+        properties:
+          phoneNo:
+            type: string
+            example: '923462104357'
+          email:
+            type: string
+            example: 'example@gmail.com'
+  # term and conditions
+  
+  
+  accepttermandconditionReqBody:
+    type: object
+    properties:
+      acceptedTerms&Conditions:
+        type: boolean
+        example: true | false
+  # defination for tax
+  addTaxPresetReqBody:
+    type: object
+    properties:
+      MSISD:
+        type: string
+        example: 92 311 123 1234
+      isDefaultPreset:
+        type: boolean
+        example: true | false
+      description:
+        type: string
+        example: 17% value added Tax
+      taxcatagory:
+        type: string
+        example: Percent / Flat
+      taxvalue:
+        type: string
+        example: 17
+  getTaxPresetReqBody:
+    type: object
+    properties:
+      MSISD:
+        type: string
+        example: 92 311 123 1234
+  getTaxPresetDetailsReqBody:
+    type: object
+    properties:
+      MSISD:
+        type: string
+        example: 92 311 123 1234
+      taxpresetID:
+        type: string
+        example: 1231231231231
+  # Tax Responses
+  TaxPresentDetails:
+    type: object
+    properties:
+      taxpresetID:
+        type: string
+        example: 1231231231231
+      Description:
+        type: string
+        example: 17 value added tax
+      taxpresetCatagory:
+        type: string
+        example: Flat | Percent
+      taxpresetvalue:
+        type: string
+        example: 17
+  taxPresetDetailResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+      message_en:
+        type: string
+      message_ur:
+        type: string
+      data:
+        $ref: '#/definitions/TaxPresentDetails'
+
+  taxPresetListResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+      message_en:
+        type: string
+      message_ur:
+        type: string
+      data:
+        type: 'array'
+        items:
+          $ref: '#/definitions/TaxPresentDetails'
+  genericSuccessResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+      message_en:
+        type: string
+      message_ur:
+        type: string
+
+    # success response generic
+    # failure resoonse generic
+
+  addDiscountPresetBody:
+    type: object
+    properties:
+      MSISDN:
+        type: string
+        example: 92 311 123 1234
+      isDefaultPreset:
+        type: boolean
+        example: true | false
+      description:
+        type: string
+        example: 17% value added Tax
+      discountcatagory:
+        type: string
+        example: Percentage/Flat
+      discountvalue:
+        type: string
+        example: 1000
+  getDiscountPresetBody:
+    type: object
+    properties:
+      MSISDN:
+        type: string
+        example: 92 311 123 1234
+      description:
+        type: string
+        example: lorem ipsum
+      discountValue:
+        type: number
+        example: 100
+  getDiscountPresetDetails:
+    type: object
+    properties:
+      MSISDN:
+        type: string
+        example: 92 311 123 1234
+      taxpresetID:
+        type: string
+        example: 1231231231231
+  getDiscountPresetDetailsReqBody:
+    type: object
+    properties:
+      MSISDN:
+        type: string
+        example: 92 311 123 1234
+      discountpresetID:
+        type: string
+        example: 1231231231231
+    # Discount Responses
+  DiscountPresetDetails:
+    type: object
+    properties:
+      discountpresetID:
+        type: string
+        example: 1231231231231
+      Description:
+        type: string
+        example: 17 value added tax
+      discountpresetCatagory:
+        type: string
+        example: Flat | Percentage
+      discountpresetvalue:
+        type: string
+        example: 17
+  discountPresetResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+      message_en:
+        type: string
+      message_ur:
+        type: string
+      data:
+        $ref: '#/definitions/DiscountPresetDetails'
+  discountPresetListResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+      message_en:
+        type: string
+      message_ur:
+        type: string
+      data:
+        type: 'array'
+        items:
+          $ref: '#/definitions/DiscountPresetDetails'
+  addShippingPresetBody:
+    type: object
+    properties:
+      MSISDN:
+        type: string
+        example: 92 311 123 1234
+      isDefaultPreset:
+        type: boolean
+        example: true | false
+      description:
+        type: string
+        example: 17% value added Tax
+      shippingCharges:
+        type: number
+        example: 1000
+  getShippingPresetReqBody:
+    type: object
+    properties:
+      MSISDN:
+        type: string
+        example: 92 311 123 1234
+  getShippingPresetDetailsReqBody:
+    type: object
+    properties:
+      MSISDN:
+        type: string
+        example: 92 311 123 1234
+      shippingpresetID:
+        type: string
+        example: 1231231231231
+  ShippingPresetDetails:
+    type: object
+    properties:
+      shippingpresetID:
+        type: string
+        example: 1231231231231
+      description:
+        type: string
+        example: 17 value added tax
+      shippingCharges:
+        type: string
+        example: 17
+  shippingPresetResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+      message_en:
+        type: string
+      message_ur:
+        type: string
+      data:
+        $ref: '#/definitions/ShippingPresetDetails'
+  shippingPresetListResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+      message_en:
+        type: string
+      message_ur:
+        type: string
+      data:
+        type: 'array'
+        items:
+          $ref: '#/definitions/ShippingPresetDetails'
+  
+  addInvoiceNoteBody:
+    type: object
+    properties:
+      MSISDN:
+        type: string
+        example: 92 311 123 1234
+      notes:
+        type: string
+        example: This is a Sample Note
+      category:
+        type: string
+        example: ''
+  invoiceNoteDetails:
+    type: object
+    properties:
+      MSISDN:
+        type: string
+        example: 92 311 123 1234
+      notes:
+        type: string
+        example: This is a Sample Note
+      category:
+        type: string
+        example: ''
+  invoiceNoteResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+      message_en:
+        type: string
+      message_ur:
+        type: string
+      data:
+        $ref: '#/definitions/invoiceNoteDetails'
+  
+  addAdvancedSettingsBody:
+    type: object
+    properties:
+      MSISDN:
+        type: string
+        example: 92 311 123 1234
+      category:
+        type: string
+        example: Blanket | Item-wise
+  advancedSettingsDetails:
+    type: object
+    properties:
+      MSISDN:
+        type: string
+        example: 92 311 123 1234
+      category:
+        type: string
+        example: Blanket | Item-wise
+  advancedSettingsResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+      message_en:
+        type: string
+      message_ur:
+        type: string
+      data:
+        $ref: '#/definitions/advancedSettingsDetails'
+
+  # success model & error model
+  error400:
+    description: Bad Request
+    type: object
+    title: Bad Request
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T01
+      responseMessage:
+        type: string
+        example: Bad Request
+  error401:
+    type: object
+    title: Unauthorized
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T02
+      responseMessage:
+        type: string
+        example: Authentication Failed
+  error402:
+    type: object
+    title: Timed-ou or Failed to submit the transaction to CPS
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T03
+      responseMessage:
+        type: string
+        example: ''
+  error409:
+    type: object
+    title: Conflict
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T06
+      responseMessage:
+        type: string
+        example: Conflict
+  error500:
+    type: object
+    title: Server Error
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T07
+      responseMessage:
+        type: string
+        example: Internal Server Error
+
+  MerchantDetailsResponse:
+    type: object
+    properties:
+      merchantMsisdn:
+        type: string
+        example: 03015091633
+      merchantName:
+        type: string
+        example: Al Barkat
+      tillNumber:
+        type: string
+        example: '00001111'
+      merchantRating:
+        type: string
+        example: '4'
+  quickPayRequest:
+    type: 'object'
+    properties:
+      invoiceID:
+        type: string
+        example: 123
+      invoiceType:
+        type: string
+        example: quickpay
+        enum:
+          - quickPay
+      txID:
+        type: string
+        example: 123xyz
+      price:
+        type: number
+        example: 1
+      attachment:
+        type: object
+        example: 'test.jpg'
+        description: 'Multipart File Object'
+      description:
+        type: string
+        example: 'Nido Fortigro'
+      status:
+        type: string
+        example: approved
+        enum:
+          - Completed
+          - Rejected
+          - Received
+          - Delayed
+      reminders:
+        type: number
+        example: 0
+      recepientDetails:
+        type: object
+        properties:
+          phoneNo:
+            type: string
+            example: '923462104357'
+          email:
+            type: string
+            example: 'example@gmail.com'
+    required:
+      - 'amount'
+      - 'attachment'
+      - 'recepientDetails'
+      - 'invoiceID'
+      - 'invoiceType'
+  quickPayResponse:
+    type: object
+    properties:
+      invoiceID:
+        type: string
+        example: 123
+      invoiceType:
+        type: string
+        example: quickPay
+      txID:
+        type: string
+        example: '123xys'
+      price:
+        type: string
+        example: 1
+      attachment:
+        type: object
+        example: 'test.jpg'
+        description: 'abc.jpg'
+      description:
+        type: string
+        example: 'Nido Fortigro'
+      status:
+        type: string
+        example: approved
+        enum:
+          - Completed
+          - Rejected
+          - Received
+          - Delayed
+      reminders:
+        type: number
+        example: 0
+      recepientDetails:
+        type: object
+        properties:
+          phoneNo:
+            type: string
+            example: '923462104357'
+          email:
+            type: string
+            example: 'example@gmail.com'
+  invoiceRequest:
+    type: object
+    properties:
+      invoiceID:
+        type: string
+        example: 1123abc
+      invoiceType:
+        type: string
+        example: requestInvoice
+        enum:
+          - requestInvoice
+      txID:
+        type: string
+        example: 123abc
+      createdDate:
+        type: string
+        example: '01-01-2020'
+      dueDate:
+        type: string
+        example: '01-01-2020'
+      status:
+        type: string
+        example: approved
+        enum:
+          - Completed
+          - Rejected
+          - Received
+          - Delayed
+      reminders:
+        type: number
+        example: 0
+      shipping:
+        type: object
+        properties:
+          description:
+            type: string
+            example: 'Shipping'
+          type:
+            type: string
+            example: 'Flat'
+          amount:
+            type: number
+            example: 500
+      attachment:
+        type: object
+        example: 'test.jpg'
+        description: 'Multipart File Object'
+      items:
+        items:
+          properties:
+            description:
+              type: string
+              example: 'Nido Fortigro'
+            price:
+              type: number
+              example: 1
+            amount:
+              type: number
+              example: 500
+            tax:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: 'Shipping'
+                type:
+                  type: string
+                  example: 'Federal Excise Duty'
+                  enum:
+                    - Percentage
+                    - Flat
+                amount:
+                  type: number
+                  example: 500
+            discount:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: '10% Discount'
+                type:
+                  type: string
+                  example: 'Federal Excise Duty'
+                  enum:
+                    - Percentage
+                    - Flat
+                amount:
+                  type: number
+                  example: 500
+      recepientDetails:
+        type: object
+        properties:
+          name:
+            type: string
+            example: 'Ali Ahmed'
+          phoneNo:
+            type: string
+            example: '923462104357'
+          email:
+            type: string
+            example: 'example@gmail.com'
+    required:
+      - 'invoiceID'
+      - 'createdDate'
+      - 'dueDate'
+      - 'shipping'
+      - 'items'
+      - 'recepientDetails'
+  invoiceResponse:
+    type: object
+    properties:
+      invoiceID:
+        type: string
+        example: 1123abc
+      invoiceType:
+        type: string
+        example: requestInvoice
+        enum:
+          - requestInvoice
+      txID:
+        type: string
+        example: 123abc
+      createdDate:
+        type: string
+        example: '01-01-2020'
+      dueDate:
+        type: string
+        example: '01-01-2020'
+      status:
+        type: string
+        example: approved
+        enum:
+          - Completed
+          - Rejected
+          - Received
+          - Delayed
+      reminders:
+        type: number
+        example: 0
+      shipping:
+        type: object
+        properties:
+          description:
+            type: string
+            example: 'Shipping'
+          type:
+            type: string
+            example: 'Flat'
+          amount:
+            type: number
+            example: 500
+      attachment:
+        type: object
+        example: 'test.jpg'
+        description: 'Multipart File Object'
+      items:
+        items:
+          properties:
+            description:
+              type: string
+              example: 'Nido Fortigro'
+            price:
+              type: number
+              example: 1
+            amount:
+              type: number
+              example: 500
+            tax:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: 'Shipping'
+                type:
+                  type: string
+                  example: 'Federal Excise Duty'
+                  enum:
+                    - Percentage
+                    - Flat
+                amount:
+                  type: number
+                  example: 500
+            discount:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: '10% Discount'
+                type:
+                  type: string
+                  example: 'Federal Excise Duty'
+                  enum:
+                    - Percentage
+                    - Flat
+                amount:
+                  type: number
+                  example: 500
+  deleteRequest:
+    type: string
+    example: 1123abc
+    required:
+      - 'invoiceID'
+  remindRequest:
+    type: object
+    properties:
+      invoiceID:
+        type: string
+        example: 1123abc
+      reminders:
+        type: number
+        example: 0
+      invoiceType:
+        type: string
+        example: 1123abc
+        enum:
+          - invoiceType
+          - quickPay
+      recepientDetails:
+        type: object
+        properties:
+          phoneNo:
+            type: number
+            example: 03331231231
+          email:
+            type: string
+            example: email@gmail.com
+  requestExtensionRequest:
+    type: object
+    properties:
+      invoiceID:
+        type: string
+        example: 1123abc
+      noOfDays:
+        type: number
+        example: 0
+      recepientDetails:
+        type: object
+        properties:
+          phoneNo:
+            type: number
+            example: 03331231231
+          email:
+            type: string
+            example: email@gmail.com
+  merchantPaymentInitRequest:
+    type: object
+    properties:
+      amount:
+        type: number
+        example: 10
+      identifier:
+        type: number
+        example: 923001231212
+      identifierType:
+        type: number
+        example: 1
+  merchantPaymentInitResponse:
+    type: object
+    properties:
+      originatorConversationID:
+        type: string
+        example: d318b7a663e848e2b84c276b318f3480
+      transactionID:
+        type: number
+        example: 010710999823
+      conversationID:
+        type: string
+        example: AG_20201027_000070e5e3e0125d1f82
+      txEndDate:
+        type: number
+        example: 20201026
+      txEndTime:
+        type: number
+        example: 20201026
+      amount:
+        type: number
+        example: 10.0
+      fee:
+        type: number
+        example: 0.0
+  merchantPaymentConfirmRequest:
+    type: object
+    properties:
+      transactionID:
+        type: number
+        example: 010710999427
+      useCase:
+        type: number
+        example: Resquest2Pay
+  merchantPaymentConfirmResponse:
+    type: object
+    properties:
+      txID:
+        type: number
+        example: 010710999907
+      txType:
+        type: string
+        example: Resquest2Pay
+      txEndDate:
+        type: number
+        example: 20201026
+      txEndTime:
+        type: number
+        example: 20201026
+      amount:
+        type: number
+        example: 20.00
+      fee:
+        type: number
+        example: 0.0
+      contextData:
+        type: object
+        properties:
+          ocvID:
+            type: string
+            example: de1e9ea15f284373963e104fb1e376c2
+          cvID:
+            type: string
+            example: AG_20201027_000058b5a9d58c7befc0
+  additionalObject:
+    type: 'object'
+    properties:
+      key:
+        type: string
+        example: 'abc'
+      value:
+        type: string
+        example: 'def'
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+
+
+
+
+

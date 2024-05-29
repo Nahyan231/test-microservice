@@ -1,0 +1,13 @@
+{
+  "name": "mockserver",
+  "version": "1.0.0",
+  "description": "Mock Server",
+  "scripts": {
+    "start:stubs": "./node_modules/.bin/robohydra ./stub.conf"
+  },
+  "dependencies": {
+    "ajv": "^6.12.3",
+    "lodash": "^4.17.19",
+    "robohydra": "^0.6.8"
+  }
+}

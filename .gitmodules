@@ -1,0 +1,3 @@
+[submodule "jazzcash-appsody-stack"]
+	path = jazzcash-appsody-stack
+	url = https://github.com/JazzCash/jazzcash-appsody-stack.git

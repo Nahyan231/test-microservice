@@ -1,0 +1,247 @@
+swagger: "2.0"
+info:
+  description: "This API init the Donations"
+  version: "1.0.0"
+  title: "Init Donations"
+host: "ibm.com"
+basePath: /rest/api/v1/donations
+tags:
+- name: "Init Donations"
+  description: "This API Init the donations"
+  externalDocs:
+    description: "Find out more on box"
+    url: "http://box.ibm"
+
+schemes:
+- "https"
+- "http"
+
+paths:
+  /rest/api/v1/donations/init:
+    post:
+      security:
+        - Bearer: []
+      tags:
+      - "Donations"
+      summary: "Init Donations"
+      description: ""
+      produces:
+      - "application/json"
+      parameters: 
+      - in: header
+        name: X-APP-TYPE
+        required: true
+        type: string
+        enum:
+         - Andriod
+         - IOS
+         - Web
+        description: Describes application or device type.
+      - in: header
+        name: X-APP-VERSION
+        required: true
+        type: string
+        description: Describes application version 1.0.1.
+      - in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+        description: Describes device ID XDFSD23345435.
+      - in: header
+        name: X-IP-ADDRESS
+        required: true
+        type: string
+        description: Describes IP Address of the device.
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - Third Party
+         - Mobile APP
+         - Backend Portal
+        description: Describes channel code   
+      - in: header
+        name: X-IBM-CLIENT-ID
+        required: true
+        type: string
+        description: Client credentials required for API Connect
+      - in: header
+        name: X-MSISDN
+        required: true
+        type: string
+
+          
+      
+      responses:
+        "200":
+          description: "Bill Payed Successfully"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: true
+             responseCode:
+              type: string
+              example: PT-DN-T36
+             responseMessage_en:
+              type: string
+              example: Init Trans for donation payment is successful
+             responseMessage_ur:
+              type: string
+              example: Init Trans for donation payment is successful
+             data:
+               $ref: "#/definitions/Response"
+             additionalDetails:
+              items:
+               $ref: "#/definitions/additionalObject"
+        "401":
+          description: "Authentication Failed"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: PT-DN-T03
+             responseMessage_en:
+              type: string
+              example: Authentication Failed
+             responseMessage_ur:
+              type: string
+              example: Authentication Failed
+        "422":
+          description: "Failed to submit the transaction due to missing mandatory parameters."
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: PT-DN-T36
+             responseMessage_en:
+              type: string
+              example: Failed to submit the transaction due to missing mandatory parameters.
+             responseMessage_ur:
+              type: string
+              example: Failed to submit the transaction due to missing mandatory parameters.
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/Request'
+        description: The request body for the operation
+  
+
+definitions:
+  
+  Request:
+    type: "object"
+    properties:
+      amount:
+        type: string
+        example: "100"
+      companyDetails:
+        type: "object"
+        properties:
+          orgShortCode:
+            type: string
+            example: "03455917646"
+        required:
+            - orgShortCode
+      remarks:
+        type: string
+        example: "sample remarks"
+      additionalDetails:
+        type: "object"
+        properties:
+          key:
+            type: string
+            example: "abc"
+          value:
+            type: string
+            example: "def"
+      
+    required:
+      - companyDetails
+      - isSaved
+  
+  Response:
+    type: object
+    properties:
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      transEndDate:
+        type: string
+        example: "2004-01-05"
+      transEndTime:
+        type: string
+        example: "03:33:12.943"
+      transactionType:
+        type: string
+        example: "C2B"
+      transactionData:
+        type: "object"
+        properties:
+          deduction:
+            type: number
+            format: double
+            example : "5000.00"
+          commission:
+            type: number
+            format: double
+            example : "867.00"
+          fed:
+            type: number
+            example: 0.5
+          wht:
+            type: number
+            example: 0.3
+          fee:
+            type: number
+            example: 0.7
+          companyDetails:
+            type: "object"
+            properties:
+              consumerRefNum:
+                type: string
+                example: "3415678906"
+              companyShortName:
+                type: string
+                example: "Mobilink"
+              month:
+                type: string
+                example: 2014-01
+              dueDate:
+                type: string
+                example: "2014-09-01"
+              dueAmount:
+                type: number
+                format: double
+                example : "100.00"
+              amount:
+                type: number
+                format: double
+                example : "10.00"
+
+  additionalObject:
+    type: "object"
+    properties:
+      key:
+        type: string
+        example: "abc"
+      value:
+        type: string
+        example: "def"
+      
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header

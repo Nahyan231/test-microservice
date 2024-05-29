@@ -1,0 +1,157 @@
+swagger: "2.0"
+info:
+  description: "Contains APIs For QR Transaction History Credit / Debit"
+  version: "1.0.0"
+  title: "GET QR Transaction History Credit / Debit"
+host: "ibm.com"
+basePath: /rest/api/v1/payment
+tags:
+- name: "QR Transaction History Credit / Debit"
+  externalDocs:
+    description: "Find out more on box"
+    url: "http://box.ibm"
+
+schemes:
+- "https"
+- "http"
+
+paths:
+  /rest/api/v1/payment/qrpayment/transactions:
+    get:
+      tags:
+      - "GET QR Transaction History Credit / Debit"
+      summary: "GET QR Transaction History Credit / Debit"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - in: query
+        name: start
+        type: string
+      - in: query
+        name: end
+        type: string
+      - in: query
+        name: range
+        type: string
+      - in: header
+        name: X-APP-TYPE
+        required: true
+        type: string
+        enum:
+         - Andriod
+         - IOS
+         - Web
+        description: Describes application or device type.
+      - in: header
+        name: X-APP-VERSION
+        required: true
+        type: string
+        description: Describes application version 1.0.1.
+      - in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+        description: Describes device ID XDFSD23345435.
+      - in: header
+        name: X-IP-ADDRESS
+        required: true
+        type: string
+        description: Describes IP Address of the device.
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - Third Party
+         - Mobile APP
+         - Backend Portal
+        description: Describes channel code
+      - in: header
+        name: X-MSISDN
+        required: true
+        type: string
+          
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: true
+             responseCode:
+              type: string
+              example: QR-PH-T02
+             responseMessage_en:
+              type: string
+              example: Successfully Fetched QR Payment History
+             responseMessage_ur:
+              type: string
+              example: Successfully Fetched QR Payment History
+             data:
+               $ref: "#/definitions/response"
+             additionalDetails:
+              items:
+               $ref: "#/definitions/additionalObject"
+        "422":
+          description: "Error"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: QR-PH-T03
+             responseMessage:
+              type: string
+              example: Unable to Fetch QR Payment History
+ 
+
+definitions:
+
+  response:
+    type: object
+    properties:
+      txID:
+        type: string
+        example: 120004
+      sender:
+        type: string
+        example: 923218100203
+      senderName:
+        type: string
+        example: Al Barkat.com
+      receiverMsisdn:
+        type: string
+        example: 923046664576
+      receiverName:
+        type: string
+        example: Faisal
+      receiverTillNumber:
+        type: string
+        example: 00000016
+      amount:
+        type: string
+        example: 200
+      fee:
+        type: string
+        example: 200
+      dateTime:
+        type: string
+        example: "2020-10-22T15:28:13.375Z"
+      type:
+        type: string
+        example: Credit
+              
+
+  additionalObject:
+    type: "object"
+    properties:
+      key:
+        type: string
+        example: "abc"
+      value:
+        type: string
+        example: "def"

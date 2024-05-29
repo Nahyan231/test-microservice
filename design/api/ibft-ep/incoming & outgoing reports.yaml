@@ -1,0 +1,122 @@
+swagger: "2.0"
+info:
+  description: "This APIs related to Jazz cash integration that will download csv files"
+  version: "1.0.0"
+  title: "Jazz Cash IBFT & USSD Reports"
+basePath: //gw.icp-proxy.jazzcash-fra04-b3c-32x128-32e4d82b5ac35ba812aabbeece8661d9-0000.eu-de.containers.appdomain.cloud/jazzcashtestorg/sandbox/
+
+schemes:
+- "https"
+- "http"
+
+paths:
+
+  /rest/api/v1/reports/statement/ibft/incoming/{start_date}/{end_date}:
+    get:
+      tags:
+      - "Incoming"
+      summary: ""
+      description: ""
+      produces:
+        - application/json
+        - text/csv
+      parameters:
+      - in: header
+        name: Content-Type
+        required: true
+        type: string
+        description: "application/json"
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - easypaisa
+        description: Describes channel code
+      - in: header
+        name: X-IBM-CLIENT-ID
+        required: true
+        type: string
+        description: Client credentials required for API Connect
+      - in: path
+        name: start_date
+        type: string
+        required: true
+        description: Start date
+      - in: path
+        name: end_date
+        type: string
+        required: true
+        description: End date
+      responses:
+        "200":
+          description: "Success"
+
+        "422":
+          description: "TRANSACTION_NOT_ALLOWED"
+          schema:
+            properties:
+             responseCode:
+              type: string
+              example: "PT-USSD-T02"
+             responseMessage:
+              type: string
+              example: Daily receiving limit reached
+             textMessage:
+              type: string
+              example: "error message"
+
+  /rest/api/v1/reports/statement/ibft/outgoing/{start_date}/{end_date}:
+    get:
+      tags:
+      - "Outgoing"
+      summary: ""
+      description: ""
+      produces:
+        - application/json
+        - text/csv
+      parameters:
+      - in: header
+        name: Content-Type
+        required: true
+        type: string
+        description: "application/json"
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - easypaisa
+        description: Describes channel code
+      - in: header
+        name: X-IBM-CLIENT-ID
+        required: true
+        type: string
+        description: Client credentials required for API Connect
+      - in: path
+        name: start_date
+        type: string
+        required: true
+        description: Start date
+      - in: path
+        name: end_date
+        type: string
+        required: true
+        description: End date
+      responses:
+        "200":
+          description: "Success"
+
+        "422":
+          description: "TRANSACTION_NOT_ALLOWED"
+          schema:
+            properties:
+             responseCode:
+              type: string
+              example: "PT-USSD-T02"
+             responseMessage:
+              type: string
+              example: Daily receiving limit reached
+             textMessage:
+              type: string
+              example: "error message"

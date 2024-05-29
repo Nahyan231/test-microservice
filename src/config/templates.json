@@ -1,0 +1,227 @@
+{
+  "ESB_REQUESTBODY": {
+    "Identity": {
+      "Caller": {
+        "CallerType": 0,
+        "ThirdPartyID": "",
+        "Password": ""
+      },
+      "Initiator": {
+        "IdentifierType": 0,
+        "Identifier": "",
+        "SecurityCredential": ""
+      },
+      "ReceiverParty": {
+        "IdentifierType": 0,
+        "Identifier": ""
+      },
+      "PrimaryParty": {
+        "IdentifierType": 0,
+        "Identifier": ""
+      },
+      "UseCase": "",
+      "Channel": "",
+      "ThirdPartyType": ""
+    },
+    "Transaction": {
+      "CommandID": "",
+      "OriginatorConversationID": "",
+      "Parameters": {
+        "Parameter": []
+      },
+      "ReferenceData": {
+        "ReferenceItem": []
+      },
+      "Timestamp": ""
+    },
+    "KeyOwner": 0,
+    "CustomObject": {}
+  },
+
+  "API_RESPONSE": {
+    "success": false,
+    "responseCode": "",
+    "responseMessage_en": "",
+    "responseMessage_ur": "",
+    "data": {}
+  },
+
+  "ESB_REQUEST_SENDMONEY": {
+    "Identity": {
+      "Caller": {
+        "CallerType": 2,
+        "ThirdPartyID": "POS_Broker",
+        "Password": "B1YNY8GylVo=",
+        "CheckSum": "",
+        "ResultURL": ""
+      },
+      "Initiator": {
+        "IdentifierType": 1,
+        "Identifier": "",
+        "SecurityCredential": "1234"
+      },
+      "PrimaryParty": {
+        "IdentifierType": 1,
+        "Identifier": ""
+      },
+      "ReceiverParty": {
+        "IdentifierType": 1,
+        "Identifier": ""
+      },
+      "AccessDevice": {}
+    },
+    "Transaction": {
+      "CommandID": "",
+      "OriginatorConversationID": "",
+      "ConversationID": "",
+      "Remark": "",
+      "Parameters": {
+        "Parameter": []
+      },
+      "ReferenceData": {
+        "ReferenceItem": []
+      },
+      "Timestamp": ""
+    },
+    "KeyOwner": 1
+  },
+  "ESB_CONFIRM_BILLPAYMENT": {
+    "Identity": {
+      "Caller": {
+        "CallerType": 2,
+        "ThirdPartyID": "POS_Broker",
+        "Password": "B1YNY8GylVo=",
+        "ResultURL": ""
+      },
+      "Initiator": {
+        "IdentifierType": 1,
+        "Identifier": ""
+      }
+    },
+    "Transaction": {
+      "CommandID": "",
+      "OriginatorConversationID": "S_X2013012921001",
+      "Parameters": {
+        "Parameter": []
+      },
+      "ReferenceData": {
+        "ReferenceItem": []
+      },
+      "Timestamp": ""
+    },
+    "KeyOwner": 1
+  },
+  "ESB_APPROVE_SENDMONEY": {
+    "Identity": {
+      "Caller": {
+        "CallerType": 2,
+        "ThirdPartyID": "POS_Broker",
+        "Password": "B1YNY8GylVo=",
+        "ResultURL": ""
+      },
+      "Initiator": {
+        "IdentifierType": 1,
+        "Identifier": ""
+      },
+      "ReceiverParty": {
+        "IdentifierType": 1,
+        "Identifier": ""
+      }
+    },
+    "Transaction": {
+      "CommandID": "",
+      "ConversationID": "",
+      "OriginatorConversationID": "",
+      "Remark": "",
+      "Parameters": {
+        "Parameter": []
+      },
+      "Timestamp": ""
+    },
+    "KeyOwner": 1
+  },
+  "PAYBILL_QUERY_RESPONSE": {
+    "success": true,
+    "responseCode": "",
+    "responseMessage_en": "The transaction was completed successfully.",
+    "responseMessage_ur": "The transaction was completed successfully.",
+    "data": {
+      "originatorConversationID": "",
+      "transactionID": "",
+      "conversationID": "",
+      "commission": "",
+      "fed": "",
+      "wht": "",
+      "transEndDate": "",
+      "transEndTime": "",
+      "fee": "",
+      "billingDetails": {
+        "billStatus": "",
+        "consumerRefNum": "",
+        "companyShortName": "",
+        "month": "",
+        "dueDate": "",
+        "dueAmount": "",
+        "lateAmount": "",
+        "miniAmount": "",
+        "paymentFlag": ""
+      }
+    }
+  },
+  "PAYBILL_CONFIRM_RESPONSE": {
+    "success": true,
+    "responseCode": "",
+    "responseMessage_en": "The transaction was completed successfully.",
+    "responseMessage_ur": "The transaction was completed successfully.",
+    "data": {
+      "transactionID": "",
+      "conversationID": "",
+      "transEndDate": "",
+      "transEndTime": "",
+      "transactionType": "C2B",
+      "transactionData": {
+        "msisdn": "",
+        "amount": 0,
+        "channelCode": "",
+        "deduction": "",
+        "commission": "",
+        "fed": "",
+        "wht": "",
+        "fee": "",
+        "billingDetails": {
+          "consumerRefNum": "",
+          "companyShortName": "",
+          "month": "",
+          "dueDate": "",
+          "dueAmount": "",
+          "amount": ""
+        }
+      }
+    }
+  },
+
+  "ESB_REQUEST_INITTRANS_CUSTOMERDEPOSIT": {
+    "Identity": {
+      "Caller": {
+        "CallerType": 2,
+        "ThirdPartyID": "POS_Broker",
+        "Password": "B1YNY8GylVo",
+        "ResultURL": "http://10.71.109.150:8888/mockResultBinding"
+      },
+      "Initiator": {
+        "IdentifierType": 1,
+        "Identifier": ""
+      }
+    },
+    "Transaction": {
+      "CommandID": "InitTrans_CustomerDeposit",
+      "ConversationID": "AG_20130129T102103",
+      "OriginatorConversationID": "S_X2013012921001",
+      "Parameters": {
+        "Parameter": []
+      },
+      "Timestamp": ""
+    },
+    "KeyOwner": 1
+  }
+}

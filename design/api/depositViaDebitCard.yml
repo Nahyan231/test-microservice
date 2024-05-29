@@ -1,0 +1,306 @@
+---
+swagger: '2.0'
+info:
+  title: Deposit Via Debit Card
+  version: 1.0.0
+  description: JazzCash APIs for Deposit Via Debit Card.
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /rest/api/v1/deposit/debitcard/check3DS:
+    post:
+      tags:
+        - Debit Card Deposit
+      parameters:
+        - in: body
+          name: body
+          description: Post body for check 3DS enrollment
+          schema:
+            $ref: '#/definitions/check3DSEnrollmentReq'
+      responses:
+        '200':
+          description: successful request
+          schema:
+            $ref: '#/definitions/check3DSEnrollmentRes'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+      summary: Checks debit card is 3D Secured or not
+    parameters:
+      - $ref: '#/parameters/acceptLanguage'
+      - $ref: '#/parameters/appType'
+      - $ref: '#/parameters/appVersion'
+      - $ref: '#/parameters/deviceID'
+      - $ref: '#/parameters/ipAddress'
+      - $ref: '#/parameters/channel'
+      - $ref: '#/parameters/ibmClientID'
+  /rest/api/v1/deposit/debitcard/confirm:
+    post:
+      tags:
+        - Debit Card Deposit
+      parameters:
+        - in: body
+          name: body
+          description: Post body for confirm deposit
+          schema:
+            $ref: '#/definitions/confirmDebitCardDepositReq'
+      responses:
+        '200':
+          description: successful request
+          schema:
+            $ref: '#/definitions/confirmDebitCardDepositRes'
+        '400':
+          description: error - bad request
+          schema:
+            $ref: '#/definitions/error400'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/error401'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/error409'
+        '500':
+          description: error - server error
+          schema:
+            $ref: '#/definitions/error500'
+      summary: Confirm deposit using MPIN
+    parameters:
+      - $ref: '#/parameters/acceptLanguage'
+      - $ref: '#/parameters/appType'
+      - $ref: '#/parameters/appVersion'
+      - $ref: '#/parameters/deviceID'
+      - $ref: '#/parameters/ipAddress'
+      - $ref: '#/parameters/channel'
+      - $ref: '#/parameters/ibmClientID'
+      - $ref: '#/parameters/mPinHeader'
+
+parameters:
+  acceptLanguage:
+    name: Accept-Language
+    description:
+      Describe which language you prefer to get back the response in ,
+      current possible values are "en" or "ur" for English and Urdu
+    in: header
+    type: string
+  appType:
+    name: X-APP-TYPE
+    description: Describes application or device type.
+    in: header
+    required: true
+    type: string
+    enum:
+      - Android
+      - IOS
+      - Web
+  appVersion:
+    name: X-APP-VERSION
+    description: Describes application version 1.0.1.
+    in: header
+    required: true
+    type: string
+  deviceID:
+    name: X-DEVICE-ID
+    description: Describes device ID XDFSD23345435.
+    in: header
+    required: true
+    type: string
+  ipAddress:
+    name: X-IP-ADDRESS
+    description: Describes IP Address of the device.
+    in: header
+    required: true
+    type: string
+  channel:
+    name: X-CHANNEL
+    description: Describes channel code
+    in: header
+    required: true
+    type: string
+    enum:
+      - Third Party
+      - Mobile APP
+      - Backend Portal
+  ibmClientID:
+    name: X-IBM-CLIENT-ID
+    description: Client credentials required for API Connect
+    in: header
+    required: true
+    type: string
+  msisdn:
+    name: X-MSISDN
+    description: Client credentials required for API Connect
+    in: header
+    required: true
+    type: string
+  mPinHeader:
+    name: X-MPIN
+    description: Client credentials required for API Connect
+    in: header
+    required: true
+    type: string
+
+definitions:
+  check3DSEnrollmentReq:
+    type: object
+    properties:
+      amount:
+        type: number
+        example: 100
+      customerCardNumber:
+        type: string
+      customerCardCvv:
+        type: string
+      customerCardExpiry:
+        type: string
+      savedCardDetails:
+        type: boolean
+  check3DSEnrollmentRes:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+        example: T01
+      responseMessage_en:
+        type: string
+        example: The transaction was completed successfully.
+      responseMessage_ur:
+        type: string
+        example: The transaction was completed successfully.
+      data:
+        type: object
+        properties:
+          htmlData:
+            type: string
+          txnRefNo:
+            type: string
+  confirmDebitCardDepositReq:
+    type: object
+    properties:
+      txnRefNo:
+        type: string
+  confirmDebitCardDepositRes:
+    type: object
+    properties:
+      success:
+        type: boolean
+        example: true
+      responseCode:
+        type: string
+      message_en:
+        type: string
+      message_ur:
+        type: string
+      data:
+        type: object
+        properties:
+          originatorConversationID:
+            type: string
+            example: 247bad68da0e4edaa0ba7eb4ddf3a9cf
+          conversationID:
+            type: string
+            example: AG_20200730_000049564a4e7f3cfc86
+          transactionID:
+            type: string
+            example: 10710713156
+          transEndDate:
+            type: string
+            example: '20200730'
+          transEndTime:
+            type: string
+            example: '150802'
+          commission:
+            type: string
+          BeneficiaryName:
+            type: string
+          Amount:
+            type: string
+
+  error400:
+    description: Bad Request
+    type: object
+    title: Bad Request
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T01
+      responseMessage:
+        type: string
+        example: Bad Request
+  error401:
+    type: object
+    title: Unauthorized
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T02
+      responseMessage:
+        type: string
+        example: Authentication Failed
+  error402:
+    type: object
+    title: Timed-ou or Failed to submit the transaction to CPS
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T03
+      responseMessage:
+        type: string
+        example: ''
+  error409:
+    type: object
+    title: Conflict
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T06
+      responseMessage:
+        type: string
+        example: Conflict
+  error500:
+    type: object
+    title: Server Error
+    properties:
+      success:
+        type: string
+        example: 'false'
+      responseCode:
+        type: string
+        example: T07
+      responseMessage:
+        type: string
+        example: Internal Server Error

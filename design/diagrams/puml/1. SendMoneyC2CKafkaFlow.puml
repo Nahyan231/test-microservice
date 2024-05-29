@@ -1,0 +1,50 @@
+@startuml Basic
+
+
+'skinparam Monochrome true 
+participant "Mobile Consumer" as alice #Cyan
+participant "Payment Microservice" as pm #Yellow
+participant "ESB<->CPS Simplified View" as cps.esb
+database "MongoDB" as mongodb 
+participant kafka 
+participant "Consumer of Kafka Topic" as topic.consumer 
+participant "Cache Manager" as cache 
+
+== Send Money C2C ==
+
+alice -> pm : Send Money C2C MakePayment
+pm -> cps.esb : InitTrans() 
+cps.esb -> kafka : SendMoneyTransactionInitiated
+kafka -> topic.consumer : saveInitTransaction()
+
+note left : ESB_Mobile_MoneyTransferC2C_Init_Passed \nis the name of the Kafka topic that will be read here
+
+topic.consumer -> cache : initTrans(2Hrs time.to.live)
+pm --> alice: Init Trans acknowledged successfully
+alice -> pm : ConfirmTrans()
+pm -> cps.esb : ConfirmTrans() 
+cps.esb -> kafka : SendMoneyTransactionConfirmed
+kafka -> topic.consumer : saveConfirmTransaction()
+
+|||
+note left : ESB_Mobile_MoneyTransferC2C_Comfirm_Passed \nis the name of the Kafka topic that will be read here
+|||
+|||
+topic.consumer -> cache : updateConfirmTX()
+
+note right : Update TTL to 7 days \nUpdate the txreg_msisdn object and add transactionid with a rollover to last 50(only for consumer) and epoch based key \n Append the same transaction to two registries txreg_receiverMsisdn and txreg_sendMsisdn
+|||
+alt If this is a mobile or web channel transaction
+
+topic.consumer -> mongodb : updateConfirmTX()
+
+note left   
+Update the transaction 
+in MongoDB 
+TransactionHistory Collection
+end note 
+end 
+|||
+
+
+@enduml

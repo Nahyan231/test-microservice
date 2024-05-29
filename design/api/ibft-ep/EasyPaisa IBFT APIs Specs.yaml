@@ -1,0 +1,608 @@
+swagger: "2.0"
+info:
+  description: "This APIs related to Jazz cash integration for payment and inquire APIs"
+  version: "1.0.0"
+  title: "Easy Paisa IBFT"
+basePath: //gw.icp-proxy.jazzcash-fra04-b3c-32x128-32e4d82b5ac35ba812aabbeece8661d9-0000.eu-de.containers.appdomain.cloud/jazzcashtestorg/sandbox/
+
+schemes:
+- "https"
+- "http"
+
+paths:
+
+  /rest/api/v1/ibft/transfer:
+    post:
+      tags:
+      - " Transfer"
+      summary: ""
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - in: header
+        name: Content-Type
+        required: true
+        type: string
+        description: "application/json"
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - easypaisa
+        description: Describes channel code
+      - in: header
+        name: X-IBM-CLIENT-ID
+        required: true
+        type: string
+        description: Client credentials required for API Connect
+      - in: header
+        name: X-IBM-CLIENT-SECRET
+        required: true
+        type: string
+      - in: header
+        name: X-API-KEY
+        required: true
+        type: string
+
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            properties:
+             responseCode:
+              type: string
+              example: "PT-IFT-T01"
+             responseMessage:
+              type: string
+              example: Success.
+             data:
+               $ref: "#/definitions/Response_Transfer"
+        "422":
+          description: "TRANSACTION_NOT_ALLOWED"
+          schema:
+            properties:
+             responseCode:
+              type: string
+              example: "PT-IFT-T02"
+             responseMessage:
+              type: string
+              example: Daily receiving limit reached
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/Request_Transfer'
+        description: The request body for the operation
+  /rest/api/v1/ibft/titlefetch:
+    post:
+      tags:
+      - " Transfer Inquiry API"
+      summary: ""
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - in: header
+        name: Content-Type
+        required: true
+        type: string
+        description: "application/json"
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - easypaisa
+        description: Describes channel code
+      - in: header
+        name: X-IBM-CLIENT-ID
+        required: true
+        type: string
+        description: Client credentials required for API Connect
+      - in: header
+        name: X-IBM-CLIENT-SECRET
+        required: true
+        type: string
+      - in: header
+        name: X-API-KEY
+        required: true
+        type: string
+
+
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            properties:
+             responseCode:
+              type: string
+              example: "PT-IFT-T01"
+             responseMessage:
+              type: string
+              example: Success.
+             data:
+               $ref: "#/definitions/Response_TitleFetch"
+        "422":
+          description: "TRANSACTION_NOT_ALLOWED"
+          schema:
+            properties:
+             responseCode:
+              type: string
+              example: "PT-IFT-T02"
+             responseMessage:
+              type: string
+              example: Daily receiving limit reached
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/Request_TitleFetch'
+        description: The request body for the operation
+  /rest/api/v1/ibft/inquiry:
+    post:
+      tags:
+      - "Transaction inquiry/status API"
+      summary: ""
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - in: header
+        name: Content-Type
+        required: true
+        type: string
+        description: "application/json"
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - easypaisa
+        description: Describes channel code
+      - in: header
+        name: X-IBM-CLIENT-ID
+        required: true
+        type: string
+        description: Client credentials required for API Connect
+      - in: header
+        name: X-IBM-CLIENT-SECRET
+        required: true
+        type: string
+      - in: header
+        name: X-API-KEY
+        required: true
+        type: string
+
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            properties:
+             httpCode:
+              type: string
+              example: "PT-IFT-T01"
+             httpMessage:
+              type: string
+              example: "Transaction completed successfully"
+             data:
+               $ref: "#/definitions/Response_Inquiry"
+        "422":
+          description: "TRANSACTION_NOT_ALLOWED"
+          schema:
+            properties:
+             responseCode:
+              type: string
+              example: "PT-IFT-T02"
+             responseMessage:
+              type: string
+              example: TRANSACTION_NOT_ALLOWED
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/Request_Inquiry'
+        description: The request body for the operation
+  /rest/api/v1/ibft/incoming/inquiry:
+    post:
+      tags:
+      - "Incoming inquiry"
+      summary: ""
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - in: header
+        name: Content-Type
+        required: true
+        type: string
+        description: "application/json"
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - easypaisa
+        description: Describes channel code
+      - in: header
+        name: X-IBM-CLIENT-ID
+        required: true
+        type: string
+        description: Client credentials required for API Connect
+      - in: header
+        name: X-IBM-CLIENT-SECRET
+        required: true
+        type: string
+      - in: header
+        name: X-API-KEY
+        required: true
+        type: string
+
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            properties:
+             httpCode:
+              type: string
+              example: "PT-IFT-T01"
+             httpMessage:
+              type: string
+              example: "Transaction completed successfully"
+             moreInformation:
+              type: string
+              example: ""
+             data:
+               $ref: "#/definitions/Response_Incoming_Inquiry"
+        "422":
+          description: "TRANSACTION_NOT_ALLOWED"
+          schema:
+            properties:
+             httpCode:
+              type: string
+              example: "PT-IFT-T02"
+             httpMessage:
+              type: string
+              example: TRANSACTION_NOT_ALLOWED
+             moreInformation:
+              type: string
+              example: ""
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/Request_Incoming_Inquiry'
+        description: The request body for the operation  
+
+definitions:
+
+  Request_Transfer:
+    type: "object"
+    properties:
+      senderTransactionID:
+        type: string
+        example: "2443785"
+      senderFinancialID:
+        type: string
+        example: "2443785"
+      debitParty:
+            type: "object"
+            properties:
+                  msisdn:
+                    type: string
+                    example: "923315231992"
+                  accountTitle:
+                    type: string
+                    example: "sarosh sajjad"
+                  iban:
+                    type: string
+                    example: "PK00TMFB0000003315231992"
+                  bankIMD:
+                    type: string
+                    example: "3101991"
+      creditParty:
+            type: "object"
+            properties:
+                  msisdn:
+                    type: string
+                    example: "923458505731"
+                  iban:
+                    type: string
+                    example: "923458505731"
+                  bankIMD:
+                    type: string
+                    example: "3101992"
+      amount:
+        type: number
+        example: 300.00
+      requestDateTime:
+        type: string
+        example: "yyyyMMddHHmmss"
+      requestDate:
+        type: string
+        example: "yyyyMMdd"
+      requestTime:
+        type: string
+        example: "HHmmss"
+      paymentPurpose:
+        type: string
+        example: "********"
+      reservedParameter1:
+        type: string
+        example: "******"
+      reservedParameter2:
+        type: string
+        example: "******"
+      reservedParameter3:
+        type: string
+        example: "******"
+      metadata:
+            type: "array"
+            items:
+              type: "object"
+              properties:
+                    key:
+                      type: string
+                      example: "type"
+                    value:
+                      type: string
+                      example: "DoJazzCashTransfer"
+  Response_Transfer:
+    type: "object"
+    properties:
+      senderTransactionID:
+        type: string
+        example: "2443785"
+      senderFinancialID:
+        type: string
+        example: "2443785"
+      receiverFinancialID:
+        type: string
+        example: "2467643785"
+      debitParty:
+            type: "object"
+            properties:
+                  msisdn:
+                    type: string
+                    example: "923315231992"
+                  accountTitle:
+                    type: string
+                    example: "sarosh sajjad"
+                  iban:
+                    type: string
+                    example: "PK00TMFB0000003315231992"
+                  bankIMD:
+                    type: string
+                    example: "3101991"
+      creditParty:
+            type: "object"
+            properties:
+                  msisdn:
+                    type: string
+                    example: "923458505731"
+                  iban:
+                    type: string
+                    example: "923458505731"
+                  bankIMD:
+                    type: string
+                    example: "3101992"
+      amount:
+        type: number
+        example: 300.00
+      requestDateTime:
+        type: string
+        example: "yyyyMMddHHmmss"
+      requestDate:
+        type: string
+        example: "yyyyMMdd"
+      requestTime:
+        type: string
+        example: "HHmmss"
+      paymentPurpose:
+        type: string
+        example: "********"
+      reservedParameter1:
+        type: string
+        example: "******"
+      reservedParameter2:
+        type: string
+        example: "******"
+      reservedParameter3:
+        type: string
+        example: "******"
+  Request_TitleFetch:
+    type: "object"
+    properties:
+      senderTransactionID:
+        type: string
+        example: "2443785"
+      debitParty:
+            type: "object"
+            properties:
+                  msisdn:
+                    type: string
+                    example: "923315231992"
+                  accountTitle:
+                    type: string
+                    example: "sarosh sajjad"
+                  iban:
+                    type: string
+                    example: "PK00TMFB0000003315231992"
+                  bankIMD:
+                    type: string
+                    example: "3101991"
+      creditParty:
+            type: "object"
+            properties:
+                  msisdn:
+                    type: string
+                    example: "923458505731"
+                  iban:
+                    type: string
+                    example: "923458505731"
+                  bankIMD:
+                    type: string
+                    example: "3101992"
+      amount:
+        type: number
+        example: 300.00
+      requestDateTime:
+        type: string
+        example: "yyyyMMddHHmmss"
+      requestDate:
+        type: string
+        example: "yyyyMMdd"
+      requestTime:
+        type: string
+        example: "HHmmss"
+      reservedParameter1:
+        type: string
+        example: "******"
+      reservedParameter2:
+        type: string
+        example: "******"
+      reservedParameter3:
+        type: string
+        example: "******"
+      metadata:
+            type: "array"
+            items:
+              type: "object"
+              properties:
+                    key:
+                      type: string
+                      example: "type"
+                    value:
+                      type: string
+                      example: "DoJazzCashTransfer"
+  Response_TitleFetch:
+    type: "object"
+    properties:
+      senderTransactionID:
+        type: string
+        example: "2443785"
+      debitParty:
+            type: "object"
+            properties:
+                  msisdn:
+                    type: string
+                    example: "923315231992"
+                  accountTitle:
+                    type: string
+                    example: "sarosh sajjad"
+                  iban:
+                    type: string
+                    example: "PK00TMFB0000003315231992"
+                  bankIMD:
+                    type: string
+                    example: "3101991"
+      creditParty:
+            type: "object"
+            properties:
+                  msisdn:
+                    type: string
+                    example: "923458505731"
+                  accountTitle:
+                    type: string
+                    example: "MOUGHEES Baig"
+                  iban:
+                    type: string
+                    example: "923458505731"
+                  bankIMD:
+                    type: string
+                    example: "3101992"
+      amount:
+        type: number
+        example: 300.00
+      requestDateTime:
+        type: string
+        example: "yyyyMMddHHmmss"
+      requestDate:
+        type: string
+        example: "yyyyMMdd"
+      requestTime:
+        type: string
+        example: "HHmmss"
+      reservedParameter1:
+        type: string
+        example: "******"
+      reservedParameter2:
+        type: string
+        example: "******"
+      reservedParameter3:
+        type: string
+        example: "******"
+  Request_Inquiry:
+    type: "object"
+    properties:
+      senderTransactionID:
+        type: string
+        example: "2443785"
+      metadata:
+            type: "array"
+            items:
+              type: "object"
+              properties:
+                    key:
+                      type: string
+                      example: "type"
+                    value:
+                      type: string
+                      example: "DoJazzCashTransfer"
+
+  Response_Inquiry:
+    type: "object"
+    properties:
+      transactionReference:
+        type: string
+        example: "2443785"
+      transactionStatus:
+        type: string
+        example: "success"
+
+  Request_Incoming_Inquiry:
+    type: "object"
+    properties:
+      senderTransactionID:
+        type: string
+        example: "2443785abc"
+      senderFinancialID:
+        type: string
+        example: "2443785xyz"
+      channel:
+        type: string
+        example: "Easypaisa"
+      check:
+        type: string
+        example: 0/1
+      metadata:
+            type: "array"
+            items:
+              type: "object"
+              properties:
+                    key:
+                      type: string
+                      example: "type"
+                    value:
+                      type: string
+                      example: "DoJazzCashTransfer"
+
+  Response_Incoming_Inquiry:
+    type: "object"
+    properties:
+      senderTransactionID:
+        type: string
+        example: "2443785sa"
+      senderFinancialID:
+        type: string
+        example: "2443785as"
+      receiverFinancialID:
+        type: string
+        example: "244378512a"
+      isReversed:
+        type: boolean
+        example: true
+      transactionStatus:
+        type: string
+        example: "success"

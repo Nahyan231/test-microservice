@@ -1,0 +1,36 @@
+infinispan:
+  clusterName: infinispan
+endpoints:
+  hotrod:
+    auth: false
+    enabled: flase
+    qop: auth
+    serverName: infinispan
+  memcached:
+    enabled: false
+  security:
+    authorization: enabled:false
+  rest:
+    cors:
+      - name: allow-all
+        allowCredentials: false
+        allowedOrigins:
+          - '*'
+        allowedMethods:
+          - GET
+          - OPTIONS
+          - POST
+          - PUT
+          - DELETE
+        allowedHeaders:
+          - X-Custom-Header
+          - Upgrade-Insecure-Requests
+        exposeHeaders:
+          - Key-Content-Type
+        maxAgeSeconds: 60
+
+  logging:
+    categories:
+      org.infinispan: info
+      org.infinispan.HOTROD_ACCESS_LOG: trace
+      org.infinispan.REST_ACCESS_LOG: trace

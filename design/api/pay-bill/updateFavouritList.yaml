@@ -1,0 +1,151 @@
+swagger: "2.0"
+info:
+  description: "This API update the saved bill from favourit list"
+  version: "1.0.0"
+  title: "UpdateFavouritList"
+host: "ibm.com"
+basePath: /rest/api/v1/account/favouriteList
+tags:
+- name: "UpdateFavouritList"
+  externalDocs:
+    description: "Find out more on box"
+    url: "http://box.ibm"
+
+schemes:
+- "https"
+- "http"
+
+paths:
+  /rest/api/v1/account/favouriteList:
+    put:
+      security:
+        - Bearer: []
+      tags:
+      - "UpdateFavouritList"
+      description: ""
+      produces:
+      - "application/json"
+      parameters: 
+        - in: header
+          name: X-APP-TYPE
+          required: true
+          type: string
+          enum:
+           - Andriod
+           - IOS
+           - Web
+          description: Describes application or device type.
+        - in: header
+          name: X-APP-VERSION
+          required: true
+          type: string
+          description: Describes application version 1.0.1.
+        - in: header
+          name: X-DEVICE-ID
+          required: true
+          type: string
+          description: Describes device ID XDFSD23345435.
+        - in: header
+          name: X-IP-ADDRESS
+          required: true
+          type: string
+          description: Describes IP Address of the device.
+        - in: header
+          name: X-CHANNEL
+          required: true
+          type: string
+          enum:
+           - Third Party
+           - Mobile APP
+           - Backend Portal
+          description: Describes channel code   
+        - in: header
+          name: X-IBM-CLIENT-ID
+          required: true
+          type: string
+          description: Client credentials required for API Connect
+        - in: header
+          name: X-MSISDN
+          required: true
+          type: string
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: true
+        "401":
+          description: "Authentication Failed"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: T02
+             responseMessage:
+              type: string
+              example: Authentication Failed.
+        "422":
+          description: "Failed to get bill details."
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: SB-T02
+             responseMessage:
+              type: string
+              example: Failed to get bill details.
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/Request'
+        description: The request body for the operation
+
+definitions:
+  Request:
+    type: "object"
+    properties:
+      msisdn:
+        type: string
+      favouriteList:
+        type: array
+        items:
+          type: object
+          properties:
+            consumerRefNum:
+              type: string
+              example: "3415678906"
+            companyCode:
+              type: string
+              example: "3434"
+            category:
+              type: string
+              example: "Daraz"
+            nickName:
+              type: string
+              example: "ABC"
+      remarks:
+        type: string
+        example: "sample remarks"
+      additionalDetails:
+        type: "object"
+        properties:
+          key:
+            type: string
+            example: "abc"
+          value:
+            type: string
+            example: "def"
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header

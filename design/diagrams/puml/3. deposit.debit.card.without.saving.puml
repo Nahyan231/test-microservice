@@ -1,0 +1,52 @@
+@startuml Basic
+autonumber
+
+title Deposit via Debit Card without saving 
+'skinparam Monochrome true 
+participant "Amna" as alice #Cyan
+participant "Payment Microservice" as pm #IndianRed
+participant "Payment Gateway" as pgw #GreenYellow
+participant "CPS" as cps 
+
+alice -> alice : Enters Debit Card details pay without saving card
+
+alice-> pm : /api/deposit/debit/
+
+pm->pm : checkCardScheme() 
+pm->pm : saveObfuscatedCardNumberInProfile() 
+pm->pm: generateTxnNumber() 28 alpha-num
+pm->pgw: /api/../Purchase/Check3DsEnrollment
+
+alt If 3DES enrolled 
+pgw-->pm : Card is enrolled - HTML Form data
+note left : c3DSecureID \n ar_Simple_Html
+
+pm--> alice: HTML form data
+alice-> alice : Enters OTP(s)
+
+alice-> pgw : Form Submit Data [POST]
+
+pgw->pm: /api/deposit/debit/callBackURL [paRES ?? ,pp_C3DSecureID]
+note left : What else will be passed besides paRES ? \n to identify the request
+|||
+pm-> pgw : /api/../Purchase/ProcessACSResult
+note left: Input \n 1. paRes \n 2. TxnRefNo \n 3. email and msisdn \n 4. TxnTimesandExpiry 
+|||
+pm -> pgw: /api/../authorize/AuthorizePayment
+|||
+pm->cps: InitTrans_CustomerDeposit()
+|||
+
+alt If deposit failed 
+pm->cps: Void API ? What is it ? Where is it ? 
+else If deposit succeeded 
+pm->pgw: /api/../authorize/capture
+end 
+
+
+else If 3DES NOT enrolled 
+pgw-->pm : Card not Enrolled - HTML Form data
+end
+
+
+@enduml

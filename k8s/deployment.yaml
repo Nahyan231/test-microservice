@@ -1,0 +1,89 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: qrpayment-microservice
+  namespace: jazzcash-microservices-dev
+  labels:
+    app: qrpayment-microservice
+    app.kubernetes.io/part-of: jazzcash-microservices
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  replicas: 1
+  revisionHistoryLimit: 10
+  test: false
+  selector:
+    matchLabels:
+      app: qrpayment-microservice
+      deploymentconfig: qrpayment-microservice
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: qrpayment-microservice
+        deploymentconfig: qrpayment-microservice
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+        - name: qrpayment-microservice
+          image: <DOCKER_IMAGE_URL>
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          env:
+            - name: PORT
+              value: '3000'
+            - name: MONGO_CONNECTION
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-connection-payment-and-transaction
+                  key: mongo-connection-string   
+            - name: CACHE_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name: cache-server
+                  key: cache_server           
+            - name: ESB_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: esb-url
+                  key: esb_url    
+            - name: MASTER_DATA_API_GET_RESPCODE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: master-data-api-get-respcode-url
+                  key: master_data_api_get_respcode_url     
+            - name: ENCRYPTION_ENABLED
+              value: 'true'
+            - name: CONSUMER_GROUP_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: consumer-groups
+                  key: CONSUMER_GROUP_PAYMENT
+            - name: CONSUMER_GROUP_USSD_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: consumer-groups
+                  key: CONSUMER_GROUP_USSD                                
+          resources:
+            limits:
+              cpu: 200m
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+

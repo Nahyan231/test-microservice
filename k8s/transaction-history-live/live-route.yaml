@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: transaction-history-microservice
+  namespace: m11s
+spec:
+  to:
+    kind: Service
+    name: transaction-history-microservice
+  port:
+    targetPort: 3000-tcp
+  

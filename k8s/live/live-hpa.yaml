@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: qrpayment-hpa
+  namespace: m11s
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: qrpayment-microservice
+    apiVersion: apps/v1
+  minReplicas: 15
+  maxReplicas: 25
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 90

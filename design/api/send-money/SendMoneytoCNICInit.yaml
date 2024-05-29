@@ -1,0 +1,226 @@
+swagger: '2.0'
+info:
+  title: SendMoney
+  version: 1.0.0
+  description: API to initiate SendMoney to CNIC, also check confirm API for confirmation
+paths:
+  /rest/api/v1/payment/cnic:
+    post:
+      security:
+        - Bearer: []
+      operationId: postSync
+      tags:
+      - "SendMoneyToCNIC"
+      summary: "Send Money to CNIC"
+      description: ""
+      produces:
+        - application/json
+      parameters: 
+      - in: header
+        name: X-APP-TYPE
+        required: true
+        type: string
+        enum:
+         - Andriod
+         - IOS
+         - Web
+        description: Describes application or device type.
+      - in: header
+        name: X-APP-VERSION
+        required: true
+        type: string
+        description: Describes application version 1.0.1.
+      - in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+        description: Describes device ID XDFSD23345435.
+      - in: header
+        name: X-IP-ADDRESS
+        required: true
+        type: string
+        description: Describes IP Address of the device.
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - Third Party
+         - Mobile APP
+         - Backend Portal
+        description: Describes channel code   
+      - in: header
+        name: X-IBM-CLIENT-ID
+        required: true
+        type: string
+        description: Client credentials required for API Connect
+      - in: header
+        name: X-MSISDN
+        required: true
+        type: string
+      - in: body
+        name: body
+        schema:
+            $ref: '#/definitions/request'
+      responses:
+        '200':
+          description: The operation was successful.
+          schema:
+           properties:
+            success:
+             type: boolean
+            responseCode:
+             type: string
+             example: SM-CNIC-T35
+            responseMessage_en:
+              type: string
+              example: Init Trans to other jazzcash account successful.
+            responseMessage_ur:
+               type: string
+               example: Init Trans to other jazzcash account successful.
+            data:
+             $ref: '#/definitions/response'
+            additionalDetails:
+              items:
+               $ref: "#/definitions/additionalObject"
+        "500":
+          description: "Unexpected Internal server error"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: SM-CNIC-T01
+             responseMessage:
+              type: string
+              example: Unexpected Internal server error
+        "401":
+          description: "Unable to connect to the Enterprise Service Bus"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: SM-CNIC-T02
+             responseMessage:
+              type: string
+              example: Unable to connect to the Enterprise Service Bus
+        "402":
+          description: "The Request timed out"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: SM-CNIC-T03
+             responseMessage:
+              type: string
+              example: The Request timed out
+
+        "422":
+          description: "Failed to submit the transaction due to missing mandatory parameters."
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: SM-CNIC-T34
+             responseMessage:
+              type: string
+              example: Failed to submit the transaction due to missing mandatory parameters.
+      consumes:
+        - application/json
+basePath: /rest/api/v1/payment/
+definitions:
+  request:
+    type: object
+    properties:
+      amount:
+        type: number
+        example: 100
+      receiverDetails:
+        type: object
+        properties:
+          msisdn:
+            type: string
+            example: "920341567809"
+          cnic:
+            type: string
+            example: "2123242512529"
+      remarks:
+        type: string
+        example: "hakjfdsa dajh"
+      additionalDetails:
+        type: "object"
+        properties:
+          key:
+            type: string
+            example: "abc"
+          value:
+            type: string
+            example: "def"
+
+  response:
+    type: object
+    properties:
+          originatorConversationID:
+            type: string
+            example: 0230949283493
+          conversationID:
+            type: string
+            example: AG_20130129T102103
+          transactionID:
+            type: string
+            example: XD2013012923789234
+          receiverCNIC:
+            type: string
+            example: 2123242512529
+          deduction:
+            type: number
+            example: 5000.7
+          commission:
+            type: number
+            example: 2
+          fed:
+            type: number
+            example: 0.5
+          wht:
+            type: number
+            example: 0.3
+          transEndDate:
+            type: string
+            example: 20140102
+          transEndTime:
+            type: string
+            example: 210159
+          fee:
+            type: number
+            example: 0.7
+
+    required:
+      - ResponseCode
+      - ConversationID
+      - ServiceStatus
+  additionalObject:
+    type: "object"
+    properties:
+      key:
+        type: string
+        example: "abc"
+      value:
+        type: string
+        example: "def"
+      
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header

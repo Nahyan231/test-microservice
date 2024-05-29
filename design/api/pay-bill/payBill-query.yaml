@@ -1,0 +1,210 @@
+swagger: "2.0"
+info:
+  description: "This API returns the details of the utility bill of the user"
+  version: "1.0.0"
+  title: "Query Utility Bill"
+host: "ibm.com"
+basePath: /rest/api/v1/payment/utility/
+tags:
+- name: "Query Utility Bill"
+  description: "Fetch details of utility bill"
+  externalDocs:
+    description: "Find out more on box"
+    url: "http://box.ibm"
+
+schemes:
+- "https"
+- "http"
+
+paths:
+  /rest/api/v1/payment/utility/query:
+    get:
+      security:
+        - Bearer: []
+      tags:
+      - "Query Utility Bill"
+      summary: "Fetch details of utility bill"
+      description: ""
+      produces:
+      - "application/json"
+      parameters: 
+      - in: header
+        name: X-APP-TYPE
+        required: true
+        type: string
+        enum:
+         - Andriod
+         - IOS
+         - Web
+        description: Describes application or device type.
+      - in: header
+        name: X-APP-VERSION
+        required: true
+        type: string
+        description: Describes application version 1.0.1.
+      - in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+        description: Describes device ID XDFSD23345435.
+      - in: header
+        name: X-IP-ADDRESS
+        required: true
+        type: string
+        description: Describes IP Address of the device.
+      - in: header
+        name: X-CHANNEL
+        required: true
+        type: string
+        enum:
+         - Third Party
+         - Mobile APP
+         - Backend Portal
+        description: Describes channel code   
+      - in: header
+        name: X-IBM-CLIENT-ID
+        required: true
+        type: string
+        description: Client credentials required for API Connect
+      - in: header
+        name: X-MSISDN
+        required: true
+        type: string
+      - in: query
+        name: consumerRefNum
+        required: true
+        type: string
+      - in: query
+        name: companyCode
+        required: true
+        type: string
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: true
+             responseCode:
+              type: string
+              example: T01
+             responseMessage:
+              type: string
+              example: The transaction was completed successfully.
+             data:
+               $ref: "#/definitions/Response"
+             additionalDetails:
+              items:
+               $ref: "#/definitions/additionalObject"
+        "401":
+          description: "Authentication Failed"
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: T02
+             responseMessage:
+              type: string
+              example: Authentication Failed.
+        "422":
+          description: "Failed to query bill details."
+          schema:
+            properties:
+             success:
+              type: boolean
+              example: false
+             responseCode:
+              type: string
+              example: AL-T02
+             responseMessage:
+              type: string
+              example: Failed to query bill details.
+  
+
+definitions:  
+  Response:
+    type: object
+    properties:
+      originatorConversationID:
+        type: string
+        example: 0230949283493
+      transactionID:
+        type: string
+        example: XD2013012923789234
+      conversationID:
+        type: string
+        example: AG_20130129T102103
+      commission:
+        type: number
+        format: double
+        example : "867.00"
+      fed:
+        type: number
+        example: 0.5
+      wht:
+        type: number
+        example: 0.3
+      transEndDate:
+        type: string
+        example: "2004-01-05"
+      transEndTime:
+        type: string
+        example: "03:33:12.943"
+      fee:
+        type: number
+        example: 0.7
+      billingDetails:
+        type: "object"
+        properties:
+          billingStatus:
+            type: string
+            example: "u"
+          consumerRefNum:
+            type: string
+            example: "3415678906"
+          companyShortName:
+            type: string
+            example: "Mobilink"
+          month:
+            type: string
+            example: 2014-01
+          dueDate:
+            type: string
+            example: "2014-09-01"
+          dueAmount:
+            type: number
+            format: double
+            example : "100.00"
+          lateAmount:
+            type: number
+            format: double
+            example : "10.00"
+          miniAmount:
+            type: number
+            format: double
+            example : "1.00"
+          paymentFlag:
+            type: number
+            example : 0
+
+  additionalObject:
+    type: "object"
+    properties:
+      key:
+        type: string
+        example: "abc"
+      value:
+        type: string
+        example: "def"
+      
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+      
+        

@@ -1,0 +1,17 @@
+apiVersion: autoscaling/v2beta1 
+kind: HorizontalPodAutoscaler
+metadata:
+  name: transaction-history-hpa 
+  namespace: jc-pre-prod-microservices
+spec:
+  scaleTargetRef:
+    apiVersion: apps.openshift.io/v1 
+    kind: DeploymentConfig 
+    name: transaction-history-microservice
+  minReplicas: 1 
+  maxReplicas: 1 
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 75

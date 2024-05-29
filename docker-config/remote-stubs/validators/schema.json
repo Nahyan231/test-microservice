@@ -1,0 +1,170 @@
+{
+    "ESB_SCHEMA": {
+        "title": "ESB",
+        "description": "ESB schema",
+        "type": "object",
+        "required": ["Identity", "KeyOwner"],
+        "properties": {
+            "Identity": {
+                "$ref": "#/definitions/Identity"
+            },
+            "Transaction": {
+                "$ref": "#/definitions/Transaction"
+            },
+            "keyOwner": {
+                "type": "integer"
+            }
+        },
+        "definitions": {
+            "Identity": {
+                "type": "object",
+                "properties": {
+                    "Caller": {
+                        "$ref": "#/definitions/Caller"
+                    },
+                    "Initiator": {
+                        "$ref": "#/definitions/Initiator"
+                    },
+                    "PrimaryParty": {
+                        "$ref": "#/definitions/PrimaryParty"
+                    },
+                    "ReceiverParty": {
+                        "$ref": "#/definitions/ReceiverParty"
+                    },
+                    "AccessDevice": {
+                        "type": "string"
+                    },
+                    "UseCase": {
+                        "type": "string"
+                    }
+                },
+                "required": ["Caller", "Initiator", "UseCase"]
+            },
+            "Caller": {
+                "type": "object",
+                "properties": {
+                    "CallerType": {
+                        "type": "integer"
+                    },
+                    "ThirdPartyID": {
+                        "type": "string"
+                    },
+                    "Password": {
+                        "type": "string"
+                    },
+                    "CheckSum": {
+                        "type": "string"
+                    },
+                    "ResultURL": {
+                        "type": "string"
+                    }
+                },
+                "required": ["CallerType", "ThirdPartyID", "Password"]
+            },
+            "Initiator": {
+                "type": "object",
+                "properties": {
+                    "IdentifierType": {
+                        "type": "integer"
+                    },
+                    "Identifier": {
+                        "type": "string"
+                    },
+                    "SecurityCredentials": {
+                        "type": "string"
+                    }
+                },
+                "required": ["IdentifierType", "Identifier"]
+            },
+            "PrimaryParty": {
+                "type": "object",
+                "properties": {
+                    "IdentifierType": {
+                        "type": "integer"
+                    },
+                    "Identifier": {
+                        "type": "string"
+                    }
+                },
+                "required": ["IdentifierType", "Identifier"]
+            },
+            "ReceiverParty": {
+                "type": "object",
+                "properties": {
+                    "IdentifierType": {
+                        "type": "integer"
+                    },
+                    "Identifier": {
+                        "type": "string"
+                    }
+                },
+                "required": ["IdentifierType", "Identifier"]
+            },
+            "Transaction": {
+                "type": "object",
+                "properties": {
+                    "CommandID": {
+                        "type": "string"
+                    },
+                    "OriginatorConversationID": {
+                        "type": "string"
+                    },
+                    "ConversationID": {
+                        "type": "string"
+                    },
+                    "Remark": {
+                        "type": "string"
+                    },
+                    "Parameters": {
+                        "type": "object",
+                        "properties": {
+                            "Parameter": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Key": {
+                                            "type": "string"
+                                        },
+                                        "Value": {
+                                            "type": "string"
+                                        }
+
+                                    },
+                                    "required": ["Key", "Value"]
+                                }
+
+                            }
+                        }
+                    },
+                    "ReferenceData": {
+                        "type": "object",
+                        "properties": {
+                            "ReferenceItem": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Key": {
+                                            "type": "string"
+                                        },
+                                        "Value": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": ["Key", "Value"]
+                                }
+                            }
+                        }
+                    },
+                    "Timestamp": {
+                        "type": "string"
+                    }
+
+                },
+                "required": ["CommandID", "OriginatorConversationID", "Parameters", "Timestamp"]
+            }
+
+        }
+    }
+}

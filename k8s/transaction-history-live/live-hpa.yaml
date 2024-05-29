@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: transaction-history-hpa
+  namespace: m11s
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: transaction-history-microservice
+    apiVersion: apps/v1
+  minReplicas: 3
+  maxReplicas: 20
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 90
