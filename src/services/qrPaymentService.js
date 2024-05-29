@@ -400,7 +400,7 @@ class QRPaymentService {
             let percentage = parseInt(fonepayResponse.CONVENIENCE_PERCENTAGE);
             let percentageAmount = (parseFloat(responseData.amount) / 100) * percentage;
             percentageAmount = Math.round(percentageAmount * 100) / 100;
-            // set data in response
+            // set data in response, making changes to this comment for new PR :D
             responseData.totalAmount = Number(responseData.amount) + percentageAmount;
             responseData.conveniencePercentageAmount = String(percentageAmount)
             responseData.conveniencePercentage = String(fonepayResponse.CONVENIENCE_PERCENTAGE);
